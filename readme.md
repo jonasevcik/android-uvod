@@ -40,6 +40,6 @@ Pro upomenutí si zvolte výraznou barvu pro anonymní třídy:
 ## Cizí styly pro import
 Vyzkoušejte, jak vám vyhovují nastavení jiných:
 
-* Google
-* Square
-* Avast
+* [Google](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
+* [Square](https://github.com/square/java-code-styles)
+* [Avast](https://github.com/avast/android-styled-dialogs/blob/master/code-formatting-config.xml)
