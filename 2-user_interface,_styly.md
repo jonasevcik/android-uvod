@@ -123,3 +123,39 @@ Manifest.xml
 ```
 <application android:theme="@style/Theme">
 ```
+
+
+## Holo
+Dříve bylo styly je nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
+* [Holo Colors](http://android-holo-colors.com/)
+* [ActionBar style generator](http://jgilfelt.github.io/android-actionbarstylegenerator/)
+
+Dnes už se nepoužívá. Vše směřuje k material designu. Původní přístup znamenal velké množství definic stylů a grafických resourců => nepřehledné, zabíralo místo.
+
+
+## Material
+Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika základních barev upravit základní UI prvky.
+
+```
+<style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
+    <item name="colorPrimary">@color/material_blue_500</item>
+    <item name="colorPrimaryDark">@color/material_blue_700</item>
+    <item name="colorAccent">@color/material_green_A200</item>
+</style>
+```
+Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
+* AppCompatAutoCompleteTextView
+* AppCompatButton
+* AppCompatCheckBox
+* AppCompatCheckedTextView
+* AppCompatEditText
+* AppCompatMultiAutoCompleteTextView
+* AppCompatRadioButton
+* AppCompatRatingBar
+* AppCompatSpinner
+* AppCompatTextView
+
+### Jak na to
+* [Using the Material Theme](http://developer.android.com/training/material/theme.html)
+* [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
+
