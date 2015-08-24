@@ -101,6 +101,8 @@ convertView = inflate(R.layout.item_row, null);
 
 Veškeré parametry *android:layout_*+ kořenového view inflatovaného layoutu jsou posuzovány ve vztahu k nadřazenému parent view. Pokud tedy nadřazený layout neuvedete, budou zahozeny a nahrazeny defaultními hodnotami. Což můžou být zrovna ty, co jste definovali, takže na první pohled nic nepoznáte.
 
+![Seznam špatně](img/3-list-wrong.png)
+
 Pokud naopak provedete inflate správně, tzn. použijete druhou metodu
 
 ```
