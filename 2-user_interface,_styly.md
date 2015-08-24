@@ -10,7 +10,7 @@ Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obr�
 Drawable si můžeme nadefinovat v XML. Výhodou je malá velikost a modifikovatelnost přímo v kódu. Výseldný obrázek skládáme z grafických primitiv, barev a přechodů.
 
 Modrý obdélník se spodními kulatými rohy:
-```
+```xml
 <shape android:shape="rectangle">
     <solid android:color="@android:color/blue_dark" />
     <corners android:bottomLeftRadius="8dp"
@@ -19,7 +19,7 @@ Modrý obdélník se spodními kulatými rohy:
 ```
 
 Drawables můžeme tvořit více vrstvé a kombinovat tak základní prvky ve složité útvary:
-```
+```xml
 <layer-list>
     <item>
         <shape>
@@ -50,7 +50,7 @@ Speciální formát PNG obrázku ([.9.png](http://developer.android.com/guide/to
 ## Selectory
 Selector je speciální drawable, která mění svůj vzhled na základě specifikovaných podmínek. Jedná se o seznam složený z drawables/barev a podmínek, kdy je zobrazit. Podmínek může být pro 1 stav specifikováno několik. Vyhodnocení podmínek probíhá odshora. Položka bez podmínek je tzv. fallback varianta.
 
-```
+```xml
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
    <item android:state_pressed="true" android:color="@color/light_blue"/>
    <item android:state_focused="true" android:color="@color/dark_blue"/>
@@ -67,7 +67,7 @@ Selector je speciální drawable, která mění svůj vzhled na základě specif
 Best practice je udržovat si definice v 2 souborech. theme.xml pro souhrn definic jednotlivých views tvořící dohromady téma celé aplikace. Dále styles.xml, ve kterém jsou již konkrétní definice pro jednotlivé prvky. Toto se dělá proto, že je třeba udržet hierarchii a přehlednost jednotlivých definic.
 
 theme.xml
-```
+```xml
 <style name="Theme" parent="android:Theme.Holo.Light">
    <item name="android:buttonStyle">@style/ButtonTheme</item>
    <item name="android:seekBarStyle">@style/SeekBarTheme</item>
@@ -75,7 +75,7 @@ theme.xml
 ```
 
 styles.xml
-```
+```xml
 <style name="ButtonTheme" parent="android:Widget.Holo.Light.Button">
    <item name="android:background">@drawable/theme_btn_default_holo_light</item>
    <item name="android:textColor">@color/white</item>
@@ -99,7 +99,7 @@ Práci se styly si můžeme zjednodušit dědičností. Např. máme definovaný
 
 Dědit lze 2 způsoby. Klíčovým slovem parent nebo tečkovou notací. Např. náš *ButtonTheme* dědí od *android:Widget.Holo.Light.Button*
 
-```
+```xml
 <style name="ButtonTheme" parent="android:Widget.Holo.Light.Button">
 ```
 
@@ -110,17 +110,17 @@ Systémové styly jde dědit jen přes parent. Pokud dědíme z vlastních styl�
 Styly lze aplikovat na jednotlivé GUI elementy, na samostatné aktivity nebo na celou aplikaci.
 
 MyLayout.xml
-```
+```xml
 <Button style="@style/ButtonTheme.Big" />
 ```
 
 Manifest.xml
-```
+```xml
 <activity android:theme="@style/Theme">
 ```
 
 Manifest.xml
-```
+```xml
 <application android:theme="@style/Theme">
 ```
 
@@ -136,7 +136,7 @@ Dnes už se nepoužívá. Vše směřuje k material designu. Původní přístup
 ## Material
 Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika základních barev upravit základní UI prvky.
 
-```
+```xml
 <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
     <item name="colorPrimary">@color/material_blue_500</item>
     <item name="colorPrimaryDark">@color/material_blue_700</item>
@@ -169,7 +169,7 @@ RelativeLayout je dobrý pro jednoduchou hierarchii Views. U složitější mů�
 
 ### Efektivní inflatování
 Uvažujme layout:
-```
+```xml
 <ViewGroup android:id="@+id/root">
     <View android:id="@+id/leaf" />
     <ViewGroup android:id="@+id/inner_group">
@@ -181,12 +181,12 @@ Uvažujme layout:
 **Rozdíl?**
 
 1)
-```
+```java
 ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
 View v = findViewById(R.id.inner_leaf);
 ```
 2)
-```
+```java
 ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
 View v = vg.findViewById(R.id.inner_leaf);
 ```
