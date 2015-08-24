@@ -17,7 +17,7 @@ Pro zrychlení responzivity dochází k recyklování jednotlivých Views polož
 ###ViewHolder
 Pomocná třída, která si pamatuje referenci na Views se kterými u getView pracujeme. Hledání view pomocí ID chvíli trvá, proto je vhodné jej dělat jen 1x a dále cachovat pomocí ViewHolderu.
 
-```
+```java
 public class FooAdapter extends BaseAdapter {
  
     private Context mContext;
@@ -71,7 +71,7 @@ public class FooAdapter extends BaseAdapter {
 ###Fixní rozměry položky
 Abychom nebrzdili Listview přepočítáváním layoutu, je vhodné využít fixní rozměry položek. U listview stačí fixní výška, u gridview i šířka. Pokud se nám to hodí, můžeme použít přímo atribut **?android:attr/listPreferredItemHeight**
 
-```
+```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight" <!-- zde pouzit atribut -->
@@ -95,7 +95,7 @@ Abychom nebrzdili Listview přepočítáváním layoutu, je vhodné využít fix
 ###Správné inflatování
 Pro inflatování nepoužívejte
 
-```
+```java
 convertView = inflate(R.layout.item_row, null);
 ```
 
@@ -105,7 +105,7 @@ Veškeré parametry *android:layout_*+ kořenového view inflatovaného layoutu 
 
 Pokud naopak provedete inflate správně, tzn. použijete druhou metodu
 
-```
+```java
 convertView = inflater.inflate(R.layout.item_row, parent, false);
 ```
 
@@ -115,7 +115,7 @@ pak uvádíte parent view, jen se nepoužije pro vložení nainflatovaného layo
 
 Pokud pracujeme s adaptérem, který vykresluje více než 1 druh položky, tak také recyklování probíhá odlišně. Je nutné rozlišovat aktuální typ dat a podle toho použít vhodný tag pro viewholder. Tagy se od sebe odliší pomocí id použitého layoutu pro daný item.
 
-```
+```java
 public class DoubleFooAdapter extends BaseAdapter {
  
     private static final int TYPE_BAR = 0;
@@ -197,7 +197,7 @@ public class DoubleFooAdapter extends BaseAdapter {
  
  }
 ```
-```
+```java
 public class MainActivity extends ListActivity {
  
     @Override
@@ -217,7 +217,7 @@ public class MainActivity extends ListActivity {
 ## RecyclerView
 Android 5.0 a Support library v7 představuje [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html) zřejmě jako reakci na to, že programátoři špatně, případně vůbec neimplementovali recyklaci Views v adaptéru. RecyclerView programátora přímo nutí k tomu využívat ViewHolder a recyklovat Views.
 
-```
+```java
 public class FooRecyclerAdapter extends RecyclerView.Adapter<FooRecyclerAdapter.ViewHolder> {
  
     private Context mContext;
@@ -257,7 +257,7 @@ public class FooRecyclerAdapter extends RecyclerView.Adapter<FooRecyclerAdapter.
     }
  }
 ```
-```
+```java
 public class RecycleActivity extends Activity {
  
     @Override
