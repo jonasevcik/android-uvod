@@ -23,8 +23,23 @@ public class Something {
 
 ## Android Studio
 Pro snažší práci s pojmenováváním a generováním getterů/setterů si nastavte:
->File -> Settings -> Editor -> Code Style -> Java -> Code Generation -> Name prefix
+> File -> Settings -> Editor -> Code Style -> Java -> Code Generation -> Name prefix
 
->Field: *m*
+> Field: *m*
 
->Static field: *s*
+> Static field: *s*
+
+
+## Zvýraznění anonymních tříd
+Anonymní třídy jsou častým zdrojem memory leaků, protože nemusí být viditelné, že přistupujete k vnějším objektům. Anonymní třída si na ně drží neviditelné reference. To působí problémy především u objektů s životním cyklem (Aktivity, Fragmenty...), které v tom případě nemohou být garbage collectovány.
+
+Pro upomenutí si zvolte výraznou barvu pro anonymní třídy:
+> File -> Settings -> Editor -> Colors & Fonts -> Java -> Anonymous class
+
+
+## Cizí styly pro import
+Vyzkoušejte, jak vám vyhovují nastavení jiných:
+
+* Google
+* Square
+* Avast
