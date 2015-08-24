@@ -3,5 +3,4 @@
 * [Introduction](README.md)
 * [Toto je Android!](1-toto-je-android.md)
 * [User Interface, styly](2-user_interface,_styly.md)
-* [Seznamy](seznamy.md)
 
