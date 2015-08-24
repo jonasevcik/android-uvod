@@ -159,3 +159,48 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
 * [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
 
+
+## Layout
+### Nepoužívejte RelativeLayout jako rodiče větvené hierarchie Views
+RelativeLayout je dobrý pro jednoduchou hierarchii Views. U složitější může nastat problém u měření jeho rozměrů. RelativeLayout totiž používá 2 průchody měření. Při prvním proběhne přeměření jednotlivých jeho ChildViews a při druhém může na základě nich nastavit své rozměry.
+* Google I/O 2013 - [Writing Custom Views for Android](https://www.youtube.com/watch?v=NYtB6mlu7vA&t=1m41s)
+* Facebook's [Custom ViewGroups](https://sriramramani.wordpress.com/2015/05/06/custom-viewgroups/#more-406)
+
+
+### Efektivní inflatování
+Uvažujme layout:
+```
+<ViewGroup android:id="@+id/root">
+    <View android:id="@+id/leaf" />
+    <ViewGroup android:id="@+id/inner_group">
+        <View android:id="@+id/inner_leaf" />
+    </ViewGroup>
+</ViewGroup>
+```
+
+**Rozdíl?**
+
+1)
+```
+ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
+View v = findViewById(R.id.inner_leaf);
+```
+2)
+```
+ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
+View v = vg.findViewById(R.id.inner_leaf);
+```
+
+Pokud v Aktivitě voláme *findViewById()*, voláme tuto metodu od kořenového View postupně na všechny jeho ChildViews, dokud dané ID nenajdeme, nebo neprojdeme celou hierarchii. V případu 1 je postup prohledávání pro View v následovný:
+> root->leaf  
+> root->inner_group  
+> inner_group->inner_leaf
+
+V případu 2 je to jen:
+> inner_group->inner_leaf
+
+
+# Kam dál?
+* [oficiální Google materiály](http://developer.android.com/training/index.html)
+* mDevCamp 2013 [Optimalizace UI](https://www.youtube.com/watch?v=X_TJOSNzNug)
+* [Nanodegree na Udacity](https://www.udacity.com/course/android-developer-nanodegree--nd801) - oficiální online kurz Androidu
