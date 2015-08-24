@@ -1,1 +1,6 @@
 /* CSS for website */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,100,100italic,300,300italic,500,500italic,700italic,900,900italic&subset=latin,latin-ext);
+
+body, p {
+    font-family: 'Roboto', sans-serif;
+}
