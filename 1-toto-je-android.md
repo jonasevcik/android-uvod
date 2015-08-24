@@ -5,7 +5,7 @@ Android běží na zařízeních s mnohdy slabým CPU a málo RAM, proto pro ně
 ## Pojmenování
 Privátní atributy mají prefix *m*. Statické atributy mají prefix *s*.
 
-```
+```java
 public class Something {
    private Object mObject;
    private static String sString;
@@ -52,7 +52,7 @@ Pro naučení efektivní práce v IDE se nechte otravovat následujícím [plugi
 ## Používejte StrictMode
 Je to mechanismus pro detekci určitých činností, na které umí nastavit penalizace. Např. dělám na UI vlákně dlouhotrvající operaci nad souborem -> zabij aplikaci. Donutí vás psát tyto operace správně. Ideální je se nechat penalizovat za všechny prohřešky:
 
-```
+```java
 public class App extends Application {
  
     @Override
@@ -111,20 +111,20 @@ ArrayList se hodí pro uchování variabilního počtu uspořádaných prvků. N
 ### Procházení Listu
 Využití foreach cyklu může být výkonnostně a paměťově náročné. Z pohledu kódu je to např. jen:
 
-```
+```java
 for (Object o : collection) {}
 ```
 
 Ve skutečnosti je pro procházení potřeba vytvořit objekt Iterator, který kolekci prochází. Při prázdné kolekci se vytvoří zbytečný objekt. Toto platí všeobecně pro kolekce a neděje se pouze u klasických polí.
 
-```
+```java
 for (Iterator<Object> iter = collection.iterator(); iter.hasNext(); ) {
    Object o = iter.next();
 }
 ```
 
 Paměťově i výkonnostně optimálnější způsob procházení je následující:
-```
+```java
 for (int i = 0, collectionSize = collection.size(); i < collectionSize; i++) {
    Object o = collection.get(i);
 }
@@ -136,13 +136,13 @@ Nesnažte se využívat tento způsob za každou cenu. Pokud by mělo dojít ke 
 ## Výčtové typy
 Na Androidu je doporučením nepoužívat enum, ale raději konstanty, pokud je potřebujete čistě jako výčet hodnot.
 
-```
+```java
 public enum WeekDay {
    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 }
 ```
 
-```
+```java
 public class WeekDay {
    public static final int MONDAY = 0;
    public static final int TUESDAY = 1;
@@ -163,14 +163,14 @@ Problém s použitím konstant, v tomto stavu nezajistí kontrolu v době kompil
 ## Android anotace
 Google představil Support Annotations, pro větší kontrolu nad kódem.
 
-```
+```groovy
 dependencies {
     compile 'com.android.support:support-annotations:22.2.0'
 }
 ```
 
 Podpora pro výčtové typy pomocí konstant. Anotace zajistí kontrolu použití správných hodnot.
-```
+```java
 @IntDef({MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY})
 @Retention(RetentionPolicy.SOURCE) //používat jen v IDE
 public @interface WeekDay {}
