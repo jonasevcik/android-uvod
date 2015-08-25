@@ -6,5 +6,5 @@
 * [Seznamy](3-seznamy.md)
 * [Životní cyklus](4-zivotni_cyklus.md)
 * [Buildovací systém](5-buildovaci_system.md)
-* Networking, vlákna
+* [Networking, vlákna](6-networking,_vlakna.md)
 
