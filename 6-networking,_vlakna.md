@@ -352,11 +352,11 @@ public class MainActivity extends AppCompatActivity {
 
 ## IntentService
 
-Více v kapitole [Services].
+Více v kapitole [Služby, notifikace, BroadcastReceiver](7-sluzby,_notifikace,_broadcastreceiver.md).
 
 ## Loader
 
-Více v kapitole [ContentProvider, Loader]
+Více v kapitole [Databáze - ContentProvider, Loader, Testy](8-databaze_-_contentprovider,_loader,_testy.md)
 
 ## Kam dál?
 * [Looper](http://pierrchen.blogspot.cz/2015/08/android-concurrent-programming-looper.html)
