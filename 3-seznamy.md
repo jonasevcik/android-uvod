@@ -74,7 +74,7 @@ Abychom nebrzdili Listview přepočítáváním layoutu, je vhodné využít fix
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight" <!-- zde pouzit atribut -->
+    android:layout_height="?android:attr/listPreferredItemHeight" 
     android:gravity="center_vertical"
     android:orientation="horizontal">
     <TextView
