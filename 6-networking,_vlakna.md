@@ -1,4 +1,4 @@
-# Networking, vlákna
+# Networking
 
 
 ### Manifest Permissions
@@ -12,16 +12,18 @@ Povolení slouží k obeznámení uživatele s tím, k čemu nebo jakým prostř
 ### StrictMode
 Od API 11 (3.0 Honeycomb) je defaultně nastaven StrictMode, aby hlídal, že veškerá práce se sítí probíhá mimo hlavní vlákno aplikace. Pokud tak neučiníte, aplikace spadne s NetworkOnMainThreadException. Je to z toho důvodu, že primární úkol hlavního vlákna jsou operace s GUI. Pokud má toto vlákno např. čekat na spojení se vzdáleným serverem, nemůže obsluhovat uživatelskou interakci s UI a dochází k zásekům, případně ke smrti aplikace v podobě ANR (Application Not Responding).
 
-## HttpURLConnection a AndroidHttpClient
-Android obsahuje pro provádění networkingu standardní API z java.net - HttpURLConnection, ale i API od Apache v podobě AndroidHttpClient (od API 8 do api 22). Androidí implementace HttpURLConnection je nedotažená a i o poznání lepší AndroidHttpClient má nedostatky převážně ve fungování timeoutů. Od API 22 je dokonce HttpClient deprecated, s doporučením opět používat HttpURLConnection.
+## HTTP klienti
+Android do api 23 obsahoval 2 implementace HTTP klienta - standardní java.net.HttpURLConnection a Apache HTTP Client v podobě v podobě AndroidHttpClient. Oba s podporou HTTPS, streamování, uploadování/stahování, nastavitelnými timeouty...
 
-Nejlepší je používat knihovnu [OkHttp](http://square.github.io/okhttp/), která vychází z obou implementací a bere z nich jen to nejlepší a přidává např. interceptory...
+AndroidHttpClient je Googlem [doporučovaný](http://android-developers.blogspot.in/2011/09/androids-http-clients.html) používat pouze pro API 7 a 8. V ostatních verzích ho převyšuje HttpURLConnection s lepší schopností cachovat a i s menší velikostí ze strany kódu.
 
-## OkHttp
+### OkHttp
 ```groovy
 compile 'com.squareup.okhttp:okhttp:2.4.0'
 ```
-Populární knihovna od Square. Umí zpracovávat jak synchronní, tak asynchronní požadavky. Definuje 3 základní typy: Request, Response, a Call. Request je synchronní požadavek, který je následován odezvou Response. Call slouží pro asynchronní volání.
+[OkHttp](http://square.github.io/okhttp/) je populární knihovna od Square. Umí zpracovávat jak synchronní, tak asynchronní požadavky. Definuje 3 základní typy: Request, Response, a Call. Request je synchronní požadavek, který je následován odezvou Response. Call slouží pro asynchronní volání.
+
+Interně tato knihovna vychází z obou implementací výše zmíněných klientů a bere s z každého to nejlepší. Výhodou je, že jako knihovna funguje na všech verzích Androidu stejně a je možné ji použít i v čisté Javě. Taktéž s ní pracují všechny networking knihovny od Square.
  
 ```java
 private final OkHttpClient client = new OkHttpClient();
@@ -69,6 +71,7 @@ Asynchronní varianta s callbackem je automaticky prováděna v druhém vlákně
 
 **Při práci s networkingovými klienty s nimi nakládejte jako se singletony.**
 
+## Další
 ### Knihovny
 * [Retrofit](http://square.github.io/retrofit/) - REST API snadno
 * [Picasso](http://square.github.io/picasso/) - Jednoduché stahování obrázků
@@ -129,7 +132,7 @@ public class DownloadManagerActivity extends Activity {
 }
 ```
 
-
+# Vlákna
 ## Thread, Runnable
 
 Stejně jako v Javě. Známe z [PV168 - Vlákna](http://kore.fi.muni.cz/wiki/index.php/PV168/Vl%C3%A1kna).
