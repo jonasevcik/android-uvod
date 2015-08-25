@@ -8,7 +8,7 @@ Lifecycle nemají jen Aktivity a Fragmenty, ale také Views, Services...
 > Aktivita A --Intent--> Aktivita B  
 > Aktivita B --Intent--> Aktivita A
 
-Pak máme na stacku 2 různé Aktivity A. Pokud chcete mít jen 1 instanci Aktivity A, musíte toto chování specifikovat v manifestu android:launchMode="singleInstance". Spouštění Aktivit je ovlivněno nejen nastavením v manifestu, ale i intentem, který je vyvolává. Více [zde](http://developer.android.com/guide/components/tasks-and-back-stack.html).
+Pak máme na stacku 2 různé Aktivity A. Pokud chcete mít jen 1 instanci Aktivity A, musíte toto chování specifikovat v manifestu *android:launchMode="singleInstance"*. Spouštění Aktivit je ovlivněno nejen nastavením v manifestu, ale i intentem, který je vyvolává. Více [zde](http://developer.android.com/guide/components/tasks-and-back-stack.html).
 
 
 ## Viditelný životní cyklus
@@ -24,6 +24,7 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 * Hlídejte si, kam dovolíte předat referenci na Context/Aktivitu.
 * Obzvlášť hlídejte nová vlákna - Thread, AsyncTask, Handler
 * U Handleru pozor u postDelayed, může se vykonat až, když Aktivita není ve viditelném lifecyclu
+* Do callbacků přidávejte logy - může na vás vyskočit v situaci, kdy nečekáte, že by mohl nastat a odhalíte leak
 * Pozor na listenery, zvlášť pokud je jím Aktivita
 * Pro debug build používat [LeakCanary](https://github.com/square/leakcanary) - Automaticky hlídá memory leaky Aktivit a dá se nakonfigurovat i pro hlídání dalších tříd
 
