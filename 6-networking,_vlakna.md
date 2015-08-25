@@ -71,6 +71,8 @@ Asynchronní varianta s callbackem je automaticky prováděna v druhém vlákně
 
 **Při práci s networkingovými klienty s nimi nakládejte jako se singletony.**
 
+* Každý klient má vlastní cookies, vlastní keepAlive, vlastní spojení
+
 ## Další
 ### Knihovny
 * [Retrofit](http://square.github.io/retrofit/) - REST API snadno
