@@ -7,5 +7,5 @@
 * [Životní cyklus](4-zivotni_cyklus.md)
 * [Buildovací systém](5-buildovaci_system.md)
 * [Networking, vlákna](6-networking,_vlakna.md)
-* Služby, notifikace, BroadcastReceiver
+* [Služby, notifikace, BroadcastReceiver](7-sluzby,_notifikace,_broadcastreceiver.md)
 
