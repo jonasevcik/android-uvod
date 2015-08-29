@@ -115,7 +115,7 @@ pak uvádíte parent view, jen se nepoužije pro vložení nainflatovaného layo
 
 Pokud list neobsahuje žádná data, není dobré jej nechat jen tak prázdný. Uživatel neví, jestli je to chyba, nebo úmysl. Je tedy dobré zobrazit minimálně text vysvětlující důvod prázdného seznamu, případně ideogram se stejným sdělením, nebo obojí.
 
-<img src="./img/3-list-no-data.png" alt="Prázdný seznam" style="width: 300px; margin: auto;" />
+<img src="./img/3-list-no-data.png" alt="Prázdný seznam" style="width: 300px;" align="middle" />
 
 ##Více druhů dat/položek
 
