@@ -4,3 +4,8 @@
 body, p {
     font-family: 'Roboto', sans-serif;
 }
+
+img {
+    max-width: 300px;
+    margin: auto;
+}
