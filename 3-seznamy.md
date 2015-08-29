@@ -119,6 +119,29 @@ Pokud list neobsahuje žádná data, není dobré jej nechat jen tak prázdný. 
     <img src="./img/3-list-no-data.png" alt="Prázdný seznam" style="width: 300px;" />
 </div>
 
+ListView s touto situací počítá a má k dispozici emptyView. Pokud používáte [ListActivity](http://developer.android.com/reference/android/app/ListActivity.html) nebo [ListFragment](http://developer.android.com/reference/android/app/ListFragment.html), stačí když ListView označíte *@android:id/list* a View který se má zobrazit, když je seznam prázdný *@android:id/empty*. ListView podle své velikosti dat ovládá visibility u emptyView. Pokud nepracujete v ListActivity ani ListFragmentu, stačí na ListView zavolat *setEmptyView()* a emptyView mu nastavit.
+
+```xml
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ViewStub
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout="@layout/list_empty_layout"/>
+</FrameLayout>
+```
+
+* [ViewStub](http://developer.android.com/reference/android/view/ViewStub.html) je použit proto, že jeho layout se inflatuje až v situaci, když je jeho visibility nastavena na VISIBLE.
+
 ##Více druhů dat/položek
 
 Pokud pracujeme s adaptérem, který vykresluje více než 1 druh položky, tak také recyklování probíhá odlišně. Je nutné rozlišovat aktuální typ dat a podle toho použít vhodný tag pro viewholder. Tagy se od sebe odliší pomocí id použitého layoutu pro daný item.
