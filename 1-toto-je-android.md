@@ -108,6 +108,10 @@ Primitivní datový typ je paměťově řádově méně náročný. "Prázdný" 
 ## Práce s (Array)Listy
 ArrayList se hodí pro uchování variabilního počtu uspořádaných prvků. Na pozadí ArrayList používá pole, které při inicializaci potřebuje definovat fixní velikost. Pokud potřebujeme vložit prvky nad kapacitu tohoto pole, je potřeba alokovat pole nové a původní prvky do něj přesunout. To s sebou nese režie. Pokud víme, že naše kolekce bude obsahovat alespoň n prvků, je dobré toto n definovat v konstruktoru *ArrayList(int initialCapacity)* a tím eliminovat zbytečné realokace.
 
+<div style="text-align: center;">
+    <img src="./img/1-arraylist.gif" alt="Chování ArrayListu" style="box-shadow: none;" />
+</div>
+
 ### Procházení Listu
 Využití foreach cyklu může být výkonnostně a paměťově náročné. Z pohledu kódu je to např. jen:
 
