@@ -176,7 +176,7 @@ Pro komunikace se Service ve vlastním procesu je třeba definovat vlastní [AID
 Service jsou spouštěny s větší prioritou, než Aktivity, protože by ze své podstaty měly dělat důležité operace. Proto je menší šance, že budou ze strany sytému zabity. I to se ovšem může stát, proto se dá service spustit s flagem, indikující, že po zabití má dojít k jejímu restartu (START_STICKY). Jsou ovšem druhy Service, které vyžadují, aby nebyly zabity vůbec - přehrávání hudby, GPS navigace. Je možné tedy Service spustit napopředí pomocí *startForeground()*. V takovém případě je po celý život Service zobrazena notifikace.
 
 <div style="text-align: center;">
-    <img src="./img/7-survival.png" alt="Životnost" style="box-shadow: none;" />
+    <img src="./img/7-survival.png" alt="Životnost" style="box-shadow: none; max-width: 520px" />
 </div>
 
 ## Notifikace
