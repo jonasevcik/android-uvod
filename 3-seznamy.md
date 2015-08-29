@@ -111,7 +111,7 @@ convertView = inflater.inflate(R.layout.item_row, parent, false);
 
 pak uvádíte parent view, jen se nepoužije pro vložení nainflatovaného layoutu - a to je kýžený výsledek.
 
-### Žádná data
+## Žádná data
 
 Pokud list neobsahuje žádná data, není dobré jej nechat jen tak prázdný. Uživatel neví, jestli je to chyba, nebo úmysl. Je tedy dobré zobrazit minimálně text vysvětlující důvod prázdného seznamu, případně ideogram se stejným sdělením, nebo obojí.
 
