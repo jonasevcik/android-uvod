@@ -101,7 +101,7 @@ convertView = inflate(R.layout.item_row, null);
 
 Veškeré parametry *android:layout_*+ kořenového view inflatovaného layoutu jsou posuzovány ve vztahu k nadřazenému parent view. Pokud tedy nadřazený layout neuvedete, budou zahozeny a nahrazeny defaultními hodnotami. Což můžou být zrovna ty, co jste definovali, takže na první pohled nic nepoznáte.
 
-![Seznam špatně](img/3-list-wrong.png)
+![Seznam špatně](./img/3-list-wrong.png)
 
 Pokud naopak provedete inflate správně, tzn. použijete druhou metodu
 
@@ -110,6 +110,12 @@ convertView = inflater.inflate(R.layout.item_row, parent, false);
 ```
 
 pak uvádíte parent view, jen se nepoužije pro vložení nainflatovaného layoutu - a to je kýžený výsledek.
+
+### Žádná data
+
+Pokud list neobsahuje žádná data, není dobré jej nechat jen tak prázdný. Uživatel neví, jestli je to chyba, nebo úmysl. Je tedy dobré zobrazit minimálně text vysvětlující důvod prázdného seznamu, případně ideogram se stejným sdělením, nebo obojí.
+
+<img src="./img/3-list-no-data.png" alt="Prázdný seznam" style="width: 300px;" />
 
 ##Více druhů dat/položek
 
