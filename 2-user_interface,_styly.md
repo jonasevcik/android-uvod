@@ -47,7 +47,7 @@ Drawables můžeme tvořit více vrstvé a kombinovat tak základní prvky ve sl
 Speciální formát PNG obrázku ([.9.png](http://developer.android.com/guide/topics/graphics/2d-graphics.html#nine-patch)), kde jsou čárami specifikovány oblasti obrázku, které je možno natahovat.
 
 <div style="text-align: center;">
-    <img src="./img/2-9patch.png" alt="Barvy" style="width: 300px; box-shadow: none;" />
+    <img src="./img/2-9patch.png" alt="Barvy" style="width: 200px; box-shadow: none;" />
 </div>
 
 
