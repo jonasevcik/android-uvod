@@ -216,7 +216,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 <li>AppCompatEditText</li>
 </ul>
 
-<ul style="float: left;">
+<ul style="float: right;">
 <li>AppCompatMultiAutoCompleteTextView</li>
 <li>AppCompatRadioButton</li>
 <li>AppCompatRatingBar</li>
