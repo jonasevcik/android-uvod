@@ -259,6 +259,10 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
     <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
 </div>
 
+<div style="text-align: center;">
+    <img src="./img/2-theme-editor.png" alt="Theme editor" style="max-width: 400px;" />
+</div>
+
 ### AppCompat
 Používejte AppCompat téma. Získáte tak Material na všech verzích systému. Je to dobrý základ pro rozšíření. Umožňuje i použití témat na úrovni Views.
 
