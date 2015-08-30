@@ -57,8 +57,8 @@ Jméno má podle rozdělení obrázku na 9 sektorů - "záplat":
 * **5** - střed může být natažen horizontálně i vertikálně
 
 <div style="text-align: center;">
-    <img src="./img/2-9patch-1area.png" alt="1 oblast" style="width: 200px; box-shadow: none;" />
-    <img src="./img/2-9patch-2areas.png" alt="2 oblasti" style="width: 200px; box-shadow: none;" />
+    <img src="./img/2-9patch-1area.png" alt="1 oblast" style="width: 200px; box-shadow: none; margin-right: 20px;" />
+    <img src="./img/2-9patch-2areas.png" alt="2 oblasti" style="width: 200px; box-shadow: none; margin-left: 20px;" />
 </div>
 
 ### Optical bounds
