@@ -140,6 +140,14 @@ Manifest.xml
 <application android:theme="@style/Theme">
 ```
 
+### Více stylů pro jeden View zaráz?
+Na jeden View jde aplikovat pouze jeden styl. Výjimkou je pouze TextView, který jde ještě stylovat pomocí textAppearance.
+```xml
+<TextView
+        android:textAppearance="@style/TextViewAppearance"
+        style="@style/TextView"
+        />
+```
 
 ## Holo
 Dříve bylo styly je nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
