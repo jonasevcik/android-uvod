@@ -182,6 +182,31 @@ Vždy u stylu textAppearance děďte z TextAppearance:
     <item name="android:textColor">#fff</item>
 </style>
 ```
+TextAppearance atributy:
+<div>
+<ul style="float: left;">
+<li>textColor</li>
+<li>textColorHighlight</li>
+<li>textColorHint</li>
+<li>textColorLink</li>
+<li>textSize</li>
+<li>textStyle</li>
+<li>fontFamily</li>
+<li>typeface</li>
+</ul>
+
+<ul style="float: right;">
+<li>textAllCaps</li>
+<li>shadowColor</li>
+<li>shadowDx</li>
+<li>shadowDy</li>
+<li>shadowRadius</li>
+<li>elegantTextHeight</li>
+<li>letterSpacing</li>
+<li>fontFeatureSettings</li>
+</ul>
+<div style="clear: both;"></div>
+</div>
 
 ## Holo
 Dříve bylo styly je nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
