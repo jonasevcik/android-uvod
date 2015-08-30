@@ -4,6 +4,9 @@
 body, p {
     font-family: 'Roboto', sans-serif;
 }
+p {
+    text-align: justify;
+}
 img {
     margin-top: 30px;
     margin-bottom: 30px;
