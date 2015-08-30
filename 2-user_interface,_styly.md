@@ -91,7 +91,7 @@ Selector je speciální drawable, která mění svůj vzhled na základě specif
 # Styly vs Témata
 Účel stylů je především oddělit definice designu od samotného kódu obsahu - podobně jako CSS na webu. Samotné prvky GUI se dají vizuálně modifikovat přímo v layoutu, ale takový kód je nepřehledný a vznikají duplicitní definice. Např. v layoutu je 10 tlačítek a pro každé by byl definován stejný styl 10x.
 
-Best practice je udržovat si definice v 2 souborech. theme.xml pro souhrn definic jednotlivých views tvořící dohromady téma celé aplikace. Dále styles.xml, ve kterém jsou již konkrétní definice pro jednotlivé prvky. Toto se dělá proto, že je třeba udržet hierarchii a přehlednost jednotlivých definic.
+Best practice je udržovat si definice ve 2 souborech. theme.xml pro souhrn definic jednotlivých views tvořící dohromady téma celé aplikace. Dále styles.xml, ve kterém jsou již konkrétní definice pro jednotlivé prvky. Toto se dělá proto, že je třeba udržet hierarchii a přehlednost jednotlivých definic.
 
 theme.xml
 ```xml
@@ -258,6 +258,14 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 <div style="text-align: center;">
     <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
 </div>
+
+### AppCompat
+Používejte AppCompat téma. Získáte tak Material na všech verzích systému. Je to dobrý základ pro rozšíření. Umožňuje použití témat na úrovni Views.
+
+```xml
+<android.support.v7.widget.Toolbar
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+```
 
 ## Layout
 ### Nepoužívejte RelativeLayout jako rodiče větvené hierarchie Views
