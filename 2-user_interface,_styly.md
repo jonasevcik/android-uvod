@@ -61,7 +61,7 @@ Jméno má podle rozdělení obrázku na 9 sektorů - "záplat":
     <img src="./img/2-9patch-2areas.png" alt="2 oblasti" style="width: 200px; box-shadow: none; margin-left: 20px;" />
 </div>
 
-Zelené oblasti se natahují v jednom směru. Růžové oblasti se natahují do obou stran. Oblastí pro natahování může být několik. To v případě, že nechcete deformovat části obrázku ve vnitřní části (ne na krajích).
+Zelené oblasti se natahují v jednom směru. Růžové oblasti se natahují do obou stran. Oblastí pro natahování může být několik. To v případě, že nechcete deformovat vnitřní část obrázku.
 
 ### Optical bounds
 Optical bounds byly zavedeny v Androidu 4.3. Určují oblast obrázku, která se "nepočítá" do jeho rozměrů. Toho se dá využít např. když je kolem útvaru 9patche nakreslen stín. Ten nechceme počítat do rozměrů útvaru.
