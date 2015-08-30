@@ -145,8 +145,7 @@ Na jeden View jde aplikovat pouze jeden styl. V√Ωjimkou je pouze TextView, kter√
 ```xml
 <TextView
         android:textAppearance="@style/TextViewAppearance"
-        style="@style/TextView"
-        />
+        style="@style/TextView"/>
 ```
 
 ## Holo
