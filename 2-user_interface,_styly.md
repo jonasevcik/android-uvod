@@ -195,7 +195,7 @@ TextAppearance atributy:
 <li>typeface</li>
 </ul>
 
-<ul style="float: right;">
+<ul style="float: left; margin-left: 30px;">
 <li>textAllCaps</li>
 <li>shadowColor</li>
 <li>shadowDx</li>
