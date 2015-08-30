@@ -101,19 +101,26 @@ Dědit lze 2 způsoby. Klíčovým slovem parent nebo tečkovou notací.
 
 * Parent
 ```xml
-<style name="Parent">
+<style name="Parent"/>
 ```
 * Explicitní dědičnost
 ```xml
-<style name="Child" parent="Parent">
+<style name="Child" parent="Parent"/>
 ```
 * Implicitní dědičnost
 ```xml
-<style name="Parent.Child">
+<style name="Parent.Child"/>
 ```
 
 Systémové styly jde dědit jen přes atribut parent. Pokud dědíme z vlastních stylů, můžeme použít jen tečkovou notaci. V příkladu *ButtonTheme.Big* má stejné atributy jako ButtonTheme, jen navíc mění velikost písma. Seznam všech [atributů](http://developer.android.com/reference/android/R.attr.html).
 
+### Použití explicitní a implicitní dědičnosti zaráz
+```xml
+<style name="Implicit"/>
+<style name="Explicit"/>
+<style name="Implicit.Child" parent="Explicit"/>
+```
+Podědí Child jak ze stylu Implicit, tak ze stylu Explicit? **Ne**, při použití obou způsobů dědičnosti, dědí potomek pouze z explicitního rodiče. Proto raději používejte jen 1 způsob dědičnosti.
 
 ## Použití
 Styly lze aplikovat na jednotlivé GUI elementy, na samostatné aktivity nebo na celou aplikaci.
