@@ -97,13 +97,22 @@ styles.xml
 ## Dědičnost
 Práci se styly si můžeme zjednodušit dědičností. Např. máme definovaný kompletní styl pro tlačítko (např. 10 atributů) a chceme vyrobit nový styl, který se liší pouze v 1 atributu. Nemusíme definovat celý nový styl ale určíme si ten původní jako rodič a definujeme jen lišící se atribut.
 
-Dědit lze 2 způsoby. Klíčovým slovem parent nebo tečkovou notací. Např. náš *ButtonTheme* dědí od *android:Widget.Holo.Light.Button*
+Dědit lze 2 způsoby. Klíčovým slovem parent nebo tečkovou notací.
 
+* Parent
 ```xml
-<style name="ButtonTheme" parent="android:Widget.Holo.Light.Button">
+<style name="Parent">
+```
+* Explicitní dědičnost
+```xml
+<style name="Child" parent="Parent">
+```
+* Implicitní dědičnost
+```xml
+<style name="Parent.Child">
 ```
 
-Systémové styly jde dědit jen přes parent. Pokud dědíme z vlastních stylů, můžeme použít jen tečkovou notaci. V příkladu *ButtonTheme.Big* má stejné atributy jako ButtonTheme, jen navíc mění velikost písma. Seznam všech [atributů](http://developer.android.com/reference/android/R.attr.html).
+Systémové styly jde dědit jen přes atribut parent. Pokud dědíme z vlastních stylů, můžeme použít jen tečkovou notaci. V příkladu *ButtonTheme.Big* má stejné atributy jako ButtonTheme, jen navíc mění velikost písma. Seznam všech [atributů](http://developer.android.com/reference/android/R.attr.html).
 
 
 ## Použití
