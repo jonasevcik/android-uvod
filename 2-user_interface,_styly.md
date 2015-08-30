@@ -56,6 +56,15 @@ Jméno má podle rozdělení obrázku na 9 sektorů - "záplat":
 * **4, 6** - boční hrany mohou být nataženy vertikálně
 * **5** - střed může být natažen horizontálně i vertikálně
 
+### Optical bounds
+
+<div style="text-align: center;">
+    <img src="./img/2-9patch-optical-bounds.png" alt="Optical bounds" style="width: 200px; box-shadow: none;" />
+</div>
+
+### Draw 9-patch editor
+[Editor](https://developer.android.com/tools/help/draw9patch.html) je součástí Android SDK. Umožňuje konvertovat PNG soubory na .9.png.
+
 
 ## Selectory
 Selector je speciální drawable, která mění svůj vzhled na základě specifikovaných podmínek. Jedná se o seznam složený z drawables/barev a podmínek, kdy je zobrazit. Podmínek může být pro 1 stav specifikováno několik. Vyhodnocení podmínek probíhá odshora. Položka bez podmínek je tzv. fallback varianta.
