@@ -50,6 +50,12 @@ Speciální formát PNG obrázku ([.9.png](http://developer.android.com/guide/to
     <img src="./img/2-9patch.png" alt="Barvy" style="width: 200px; box-shadow: none;" />
 </div>
 
+Jméno má podle rozdělení obrázku na 9 sektorů - "záplat":
+* **1, 3, 7, 9** - rohy jsou statické a nenatahují se
+* **2, 8** - horní a spodní hrany mohou být nataženy horizontálně
+* **4, 6** - boční hrany mohou být nataženy vertikálně
+* **5** - střed může být natažen horizontálně i vertikálně
+
 
 ## Selectory
 Selector je speciální drawable, která mění svůj vzhled na základě specifikovaných podmínek. Jedná se o seznam složený z drawables/barev a podmínek, kdy je zobrazit. Podmínek může být pro 1 stav specifikováno několik. Vyhodnocení podmínek probíhá odshora. Položka bez podmínek je tzv. fallback varianta.
