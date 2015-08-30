@@ -263,6 +263,12 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
     <img src="./img/2-theme-editor.png" alt="Theme editor" style="max-width: 400px;" />
 </div>
 
+* Extrakce stylu
+
+<div style="text-align: center;">
+    <img src="./img/2-extract-style.png" alt="Extrakce stylu" style="max-width: 400px;" />
+</div>
+
 ### AppCompat
 Používejte AppCompat téma. Získáte tak Material na všech verzích systému. Je to dobrý základ pro rozšíření. Umožňuje i použití témat na úrovni Views.
 
