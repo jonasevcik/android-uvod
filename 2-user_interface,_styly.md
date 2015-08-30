@@ -260,7 +260,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 </div>
 
 ### AppCompat
-Používejte AppCompat téma. Získáte tak Material na všech verzích systému. Je to dobrý základ pro rozšíření. Umožňuje použití témat na úrovni Views.
+Používejte AppCompat téma. Získáte tak Material na všech verzích systému. Je to dobrý základ pro rozšíření. Umožňuje i použití témat na úrovni Views.
 
 ```xml
 <android.support.v7.widget.Toolbar
