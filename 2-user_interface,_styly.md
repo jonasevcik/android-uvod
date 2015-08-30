@@ -223,7 +223,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 * [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
 
 <div style="text-align: center;">
-    <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shodow: none;" />
+    <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
 </div>
 
 ## Layout
