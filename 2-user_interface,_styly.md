@@ -208,21 +208,21 @@ Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika zák
 
 Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 <div>
-<div>
-* AppCompatAutoCompleteTextView
-* AppCompatButton
-* AppCompatCheckBox
-* AppCompatCheckedTextView
-* AppCompatEditText
-</div>
+<ul style="margin: auto;">
+<li>AppCompatAutoCompleteTextView</li>
+<li>AppCompatButton</li>
+<li>AppCompatCheckBox</li>
+<li>AppCompatCheckedTextView</li>
+<li>AppCompatEditText</li>
+</ul>
 
-<div>
-* AppCompatMultiAutoCompleteTextView
-* AppCompatRadioButton
-* AppCompatRatingBar
-* AppCompatSpinner
-* AppCompatTextView
-</div>
+<ul style="margin: auto;">
+<li>AppCompatMultiAutoCompleteTextView</li>
+<li>AppCompatRadioButton</li>
+<li>AppCompatRatingBar</li>
+<li>AppCompatSpinner</li>
+<li>AppCompatTextView</li>
+</ul>
 </div>
 
 ### Jak na to
