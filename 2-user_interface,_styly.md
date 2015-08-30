@@ -207,16 +207,23 @@ Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika zák
 </div>
 
 Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
+<div>
+<div>
 * AppCompatAutoCompleteTextView
 * AppCompatButton
 * AppCompatCheckBox
 * AppCompatCheckedTextView
 * AppCompatEditText
+</div>
+
+<div>
 * AppCompatMultiAutoCompleteTextView
 * AppCompatRadioButton
 * AppCompatRatingBar
 * AppCompatSpinner
 * AppCompatTextView
+</div>
+</div>
 
 ### Jak na to
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
