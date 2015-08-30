@@ -61,6 +61,8 @@ Jméno má podle rozdělení obrázku na 9 sektorů - "záplat":
     <img src="./img/2-9patch-2areas.png" alt="2 oblasti" style="width: 200px; box-shadow: none; margin-left: 20px;" />
 </div>
 
+Zelené oblasti se natahují v jednom směru. Růžové oblasti se natahují do obou stran. Oblastí pro natahování může být několik. To v případě, že nechcete deformovat části obrázku ve vnitřní části (ne na krajích).
+
 ### Optical bounds
 
 <div style="text-align: center;">
