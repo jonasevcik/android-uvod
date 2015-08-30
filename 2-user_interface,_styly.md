@@ -222,6 +222,9 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
 * [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
 
+<div style="text-align: center;">
+    <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="width: 400px;" />
+</div>
 
 ## Layout
 ### Nepoužívejte RelativeLayout jako rodiče větvené hierarchie Views
