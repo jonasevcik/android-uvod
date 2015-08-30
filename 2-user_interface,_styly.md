@@ -88,7 +88,7 @@ Selector je speciální drawable, která mění svůj vzhled na základě specif
 ```
 
 
-# Styly
+# Styly vs Témata
 Účel stylů je především oddělit definice designu od samotného kódu obsahu - podobně jako CSS na webu. Samotné prvky GUI se dají vizuálně modifikovat přímo v layoutu, ale takový kód je nepřehledný a vznikají duplicitní definice. Např. v layoutu je 10 tlačítek a pro každé by byl definován stejný styl 10x.
 
 Best practice je udržovat si definice v 2 souborech. theme.xml pro souhrn definic jednotlivých views tvořící dohromady téma celé aplikace. Dále styles.xml, ve kterém jsou již konkrétní definice pro jednotlivé prvky. Toto se dělá proto, že je třeba udržet hierarchii a přehlednost jednotlivých definic.
@@ -175,6 +175,14 @@ Na jeden View jde aplikovat pouze jeden styl. Výjimkou je pouze TextView, kter�
         style="@style/TextView"/>
 ```
 
+Vždy u stylu textAppearance děďte z TextAppearance:
+
+```xml
+<style name="MyText" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">#fff</item>
+</style>
+```
+
 ## Holo
 Dříve bylo styly je nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
 * [Holo Colors](http://android-holo-colors.com/)
@@ -259,3 +267,4 @@ V případu 2 je to jen:
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
 * mDevCamp 2013 [Optimalizace UI](https://www.youtube.com/watch?v=X_TJOSNzNug)
 * [Nanodegree na Udacity](https://www.udacity.com/course/android-developer-nanodegree--nd801) - oficiální online kurz Androidu
+* [Using styles and themes without going crazy](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1)
