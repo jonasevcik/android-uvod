@@ -259,11 +259,13 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
     <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
 </div>
 
+* Theme editor - jednoduchá definice barev
+
 <div style="text-align: center;">
     <img src="./img/2-theme-editor.png" alt="Theme editor" style="max-width: 400px;" />
 </div>
 
-* Extrakce stylu
+* Extrakce stylu z View
 
 <div style="text-align: center;">
     <img src="./img/2-extract-style.png" alt="Extrakce stylu" style="max-width: 400px;" />
