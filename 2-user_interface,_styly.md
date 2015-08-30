@@ -143,6 +143,11 @@ Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika zák
     <item name="colorAccent">@color/material_green_A200</item>
 </style>
 ```
+
+<div style="text-align: center;">
+    <img src="./img/2-colors.png" alt="Barvy" style="width: 300px;" />
+</div>
+
 Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 * AppCompatAutoCompleteTextView
 * AppCompatButton
