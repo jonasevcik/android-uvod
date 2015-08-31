@@ -41,6 +41,10 @@ Aktivitu zabije kde co, nejčastěji rotace displeje.
 * vynucení pevné orientace displeje
 * deklarace configChanges v manifestu a následná ignorace změny
 
+<div style="text-align: center;">
+    <img src="./img/4-kyocera-rise.jpg" alt="HW klávesnice" style="max-width: 300px;" />
+</div>
+
 Nastavením *android:configChanges="orientation"* k patřičné aktivitě v manifestu říkáme, že se o změny layoutu staráme sami. Takže bychom na ně měli patřičně v *public void onConfigurationChanged(Configuration newConfig)* reagovat.
 
 ### Ukládání stavu Views
