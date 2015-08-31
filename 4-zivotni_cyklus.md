@@ -32,7 +32,7 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 Aktivitu zabije kde co, nejčastěji rotace displeje.
 
 <div style="text-align: center;">
-    <img src="./img/4-screen-rotation-1.png" alt="Rotace displeje - vyplněná data" style="max-width: 300px; margin-right: 30px;" />
+    <img src="./img/4-screen-rotation-1.png" alt="Rotace displeje - vyplněná data" style="max-width: 200px; margin-right: 30px;" />
     <img src="./img/4-screen-rotation-2.png" alt="Rotace displeje - chybějící data" style="max-height: 200px; margin-left: 30px; margin-top: 0; position: relative; top: 50%; transform: translateY(-50%);" />
 </div>
 
