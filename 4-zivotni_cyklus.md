@@ -51,7 +51,7 @@ Nastavením *android:configChanges="orientation"* k patřičné aktivitě v mani
 U nativních grafických prvků řeší systém. Stačí u daného View vyplnit id. Pozor, **id musí být unikátní**, jinak se stav nemusí správně obnovit.
 
 <div style="text-align: center;">
-    <img src="./img/4-save-state.gif" alt="Ukládání stavu Views" style="max-width: 400px;" />
+    <img src="./img/4-save-state.gif" alt="Ukládání stavu Views" style="max-width: 600px;" />
 </div>
 
 #### Co ukládat?
