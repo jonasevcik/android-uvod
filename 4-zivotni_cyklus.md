@@ -31,6 +31,8 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 ## Jak přežít v životním cyklu?
 Aktivitu zabije kde co, nejčastěji rotace displeje.
 
+
+
 ### Špatné přístupy k rotaci displeje
 * ignorace
 * vynucení pevné orientace displeje
