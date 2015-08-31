@@ -70,6 +70,11 @@ Parcelable nepište ručně, nikam vás to neposune. Je to jen boilerplate code,
 * [Parceler](https://github.com/johncarl81/parceler) - parcelable pomocí anotací, nefunguje dobře s některými knihovnami (Icepick)
 
 ### Ukládání stavu Aktivity
+
+<div style="text-align: center;">
+    <img src="./img/4-activity-state.png" alt="HW klávesnice" style="max-width: 300px; box-shadow: none;" />
+</div>
+
 ```java
 public class SaveStateActivity extends Activity {
  
