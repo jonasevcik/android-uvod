@@ -48,8 +48,11 @@ Aktivitu zabije kde co, nejčastěji rotace displeje.
 Nastavením *android:configChanges="orientation"* k patřičné aktivitě v manifestu říkáme, že se o změny layoutu staráme sami. Takže bychom na ně měli patřičně v *public void onConfigurationChanged(Configuration newConfig)* reagovat.
 
 ### Ukládání stavu Views
-
 U nativních grafických prvků řeší systém. Stačí u daného View vyplnit id. Pozor, **id musí být unikátní**, jinak se stav nemusí správně obnovit.
+
+<div style="text-align: center;">
+    <img src="./img/4-save-state.gif" alt="Ukládání stavu Views" style="max-width: 400px;" />
+</div>
 
 #### Co ukládat?
 * To, co **nejde lehce** získat/**obnovit** - složitý výpočet, data ze serveru...
