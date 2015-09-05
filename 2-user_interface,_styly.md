@@ -287,7 +287,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
         width: 228px;
         height: 2px;
         position: absolute;
-        top: 64px;
+        top: 70px;
         background-color: white;
       }
       #toolbar #hint, #toolbar .heading, #toolbar #underline {
