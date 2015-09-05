@@ -259,6 +259,178 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
     <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
 </div>
 
+<style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+
+      #toolbar {
+        width: 300px;
+        height: 96px;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0,0,0,0.87);
+        margin: auto;
+        background-color: black;
+      }
+      #toolbar #hint {
+        font-weight: 400;
+        font-size: 12px;
+        position: absolute;
+        top: 16px;
+        color: white;
+      }
+      #toolbar .heading {
+        font-weight: 500;
+        font-size: 24px;
+        position: absolute;
+        top: 32px;
+      }
+      #toolbar #underline {
+        width: 228px;
+        height: 2px;
+        position: absolute;
+        top: 64px;
+        background-color: white;
+      }
+      #toolbar #hint, #toolbar .heading, #toolbar #underline {
+        left: 60px;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .color {
+        width: 20%;
+        height: 25%;
+        text-align: center;
+        float: left;
+        color: rgba(255,255,255,0.87);
+        z-index: 1;
+        transition: none;
+      }
+      .color:hover {
+        box-shadow: 0 0 10px rgba(0,0,0,0.87);
+        transform: scale(1.05);
+        z-index: 2;
+        transition: all 400ms ease-out;
+        cursor: pointer;
+      }
+      .color:hover .title {
+        color: rgba(0,0,0,0.87);  
+        text-decoration: line-through;    
+      }
+      .title {
+        position: relative;
+        top: 10px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+      }
+      .light-strong {
+        color: #fff;
+      }
+      .dark {
+        color: rgba(0,0,0,0.87);
+      }
+    </style>
+    
+    <script>
+      function invertColor(div) {
+        console.log(invert(div.style.backgroundColor));
+        div.style.backgroundColor = invert(div.style.backgroundColor);
+      }
+    
+      function invert(rgb){
+        console.log(rgb);
+        rgb = [].slice.call(arguments).join(",").replace(/rgb\(|\)|rgba\(|\)|\s/gi, '').split(',');
+        for (var i = 0; i < rgb.length; i++) rgb[i] = (i === 3 ? 1 : 255) - rgb[i];
+        return "rgb(" + rgb.join(", ") + ")";
+      }
+      
+      function setColors(element) {
+        var toolbar = document.getElementById("toolbar");
+        var hint = document.getElementById("hint");
+        var underline = document.getElementById("underline");
+        var normalColor = invert(element.style.backgroundColor);
+        var invertedColor = element.style.backgroundColor;
+        
+        toolbar.style.backgroundColor = normalColor;
+        
+        hint.style.color = invertedColor;
+        underline.style.backgroundColor = invertedColor;
+      }
+    </script>
+    
+    <div id="toolbar">
+      <span id="hint">Title</span>
+      <span class="heading light-strong">Change My Colors</span>
+      <div id="underline"></div>
+    </div>
+  
+    <div class="container">
+      <div class="color" style="background-color: #F44336" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title light-strong">Red</span>
+      </div>                                                         
+      <div class="color" style="background-color: #E91E63" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title light-strong">Pink</span>
+      </div>
+      <div class="color" style="background-color: #9C27B0" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Purple</span>
+      </div>
+      <div class="color" style="background-color: #673AB7" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Deep Purple</span>
+      </div>
+      <div class="color" style="background-color: #3F51B5" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Indigo</span>
+      </div>
+      <div class="color light-strong" style="background-color: #2196F3" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Blue</span>
+      </div>
+      <div class="color dark" style="background-color: #03A9F4" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Light Blue</span>
+      </div>
+      <div class="color dark" style="background-color: #00BCD4" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Cyan</span>
+      </div>
+      <div class="color light-strong" style="background-color: #009688" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Teal</span>
+      </div>
+      <div class="color dark" style="background-color: #4CAF50" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Green</span>
+      </div>
+      <div class="color dark" style="background-color: #8BC34A" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Light Green</span>
+      </div>
+      <div class="color dark" style="background-color: #CDDC39" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Lime</span>
+      </div>
+      <div class="color dark" style="background-color: #FFEB3B" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Yellow</span>
+      </div>
+      <div class="color dark" style="background-color: #FFC107" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Amber</span>
+      </div>
+      <div class="color dark" style="background-color: #FF9800" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Orange</span>
+      </div>
+      <div class="color light-strong" style="background-color: #FF5722" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Deep Orange</span>
+      </div>
+      <div class="color" style="background-color: #795548" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Brown</span>
+      </div>
+      <div class="color dark" style="background-color: #9E9E9E" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Grey</span>
+      </div>
+      <div class="color light-strong" style="background-color: #607D8B" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Blue Grey</span>
+      </div>
+      <div class="color" style="background-color: #000000" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
+        <span class="title">Black</span>
+      </div>
+    </div>
+
 * Theme editor - jednoduchá definice barev
 
 <div style="text-align: center;">
