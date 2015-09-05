@@ -267,68 +267,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
       <div id="underline"></div>
     </div>
   
-    <div class="container">
-      <div class="color" style="background-color: #F44336" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title light-strong">Red</span>
-      </div>                                                         
-      <div class="color" style="background-color: #E91E63" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title light-strong">Pink</span>
-      </div>
-      <div class="color" style="background-color: #9C27B0" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Purple</span>
-      </div>
-      <div class="color" style="background-color: #673AB7" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Deep Purple</span>
-      </div>
-      <div class="color" style="background-color: #3F51B5" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Indigo</span>
-      </div>
-      <div class="color light-strong" style="background-color: #2196F3" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Blue</span>
-      </div>
-      <div class="color dark" style="background-color: #03A9F4" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Light Blue</span>
-      </div>
-      <div class="color dark" style="background-color: #00BCD4" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Cyan</span>
-      </div>
-      <div class="color light-strong" style="background-color: #009688" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Teal</span>
-      </div>
-      <div class="color dark" style="background-color: #4CAF50" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Green</span>
-      </div>
-      <div class="color dark" style="background-color: #8BC34A" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Light Green</span>
-      </div>
-      <div class="color dark" style="background-color: #CDDC39" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Lime</span>
-      </div>
-      <div class="color dark" style="background-color: #FFEB3B" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Yellow</span>
-      </div>
-      <div class="color dark" style="background-color: #FFC107" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Amber</span>
-      </div>
-      <div class="color dark" style="background-color: #FF9800" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Orange</span>
-      </div>
-      <div class="color light-strong" style="background-color: #FF5722" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Deep Orange</span>
-      </div>
-      <div class="color" style="background-color: #795548" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Brown</span>
-      </div>
-      <div class="color dark" style="background-color: #9E9E9E" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Grey</span>
-      </div>
-      <div class="color light-strong" style="background-color: #607D8B" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Blue Grey</span>
-      </div>
-      <div class="color" style="background-color: #000000" onmouseover="invertColor(this)" onmouseout="invertColor(this)" onclick="setColors(this)">
-        <span class="title">Black</span>
-      </div>
-    </div>
+    
 
 * Theme editor - jednoduchá definice barev
 
