@@ -371,11 +371,16 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
         var underline = document.getElementById("underline");
         var normalColor = invert(element.style.backgroundColor);
         var invertedColor = element.style.backgroundColor;
+        var fab = document.getElementById("fab");
+        var icon = document.getElementById("icon");
         
         toolbar.style.backgroundColor = normalColor;
         
         hint.style.color = invertedColor;
         underline.style.backgroundColor = invertedColor;
+        
+        fab.style.backgroundColor = invertedColor;
+        icon.style.color = "rgb(255,255,255)";
       }
 </script>
     
@@ -383,6 +388,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
       <span id="hint">Title</span>
       <span class="heading light-strong">Change My Colors</span>
       <div id="underline"></div>
+      <div id="fab"><span id="icon">+</span></div>
 </div>
   
 <div class="container">
