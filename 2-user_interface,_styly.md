@@ -293,6 +293,23 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
       #toolbar #hint, #toolbar .heading, #toolbar #underline {
         left: 60px;
       }
+      #toolbar #fab {
+        width: 56px;
+        height: 56px;
+        position: absolute;
+        right: 16px;
+        bottom: -28px;
+        background-color: white;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);
+        border-radius: 100%;
+        text-align: center;
+      }
+      #toolbar #fab #icon {
+        position: relative;
+        top: 10px;
+        font-weight: bold;
+        font-size: 28px;
+      }
       .container {
         width: 100%;
         height: 400px;
