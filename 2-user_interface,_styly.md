@@ -268,6 +268,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
         position: relative;
         box-shadow: 0 0 10px rgba(0,0,0,0.87);
         margin: auto;
+        margin-bottom: 20px;
         background-color: black;
       }
       #toolbar #hint {
@@ -306,7 +307,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
       }
       #toolbar #fab #icon {
         position: relative;
-        top: 10px;
+        top: 8px;
         font-weight: bold;
         font-size: 28px;
       }
