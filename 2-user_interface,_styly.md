@@ -264,7 +264,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 
       #toolbar {
         width: 300px;
-        height: 96px;
+        height: 108px;
         position: relative;
         box-shadow: 0 0 10px rgba(0,0,0,0.87);
         margin: auto;
