@@ -34,7 +34,7 @@ Pro snažší práci s pojmenováváním a generováním getterů/setterů si na
 Anonymní třídy jsou častým zdrojem memory leaků, protože nemusí být viditelné, že přistupujete k vnějším objektům. Anonymní třída si na ně drží neviditelné reference. To působí problémy především u objektů s životním cyklem (Aktivity, Fragmenty...), které v tom případě nemohou být garbage collectovány.
 
 <div style="text-align: center;">
-    <img src="./img/1-anonymous-class.png" alt="Anonymní třída" style="max-width: 400px;" />
+    <img src="./img/1-anonymous-class.png" alt="Anonymní třída" style="max-width: 600px;" />
 </div>
 
 Pro upomenutí si zvolte výraznou barvu pro anonymní třídy:
