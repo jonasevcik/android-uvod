@@ -92,6 +92,10 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 
 * Ne každý nový update knihovny jenom opravuje staré chyby.
 * Tvůrce knihovny může změnit logiku chování některých metod.
+ 
+<div style="text-align: center;">
+    <img src="./img/5-specific-version.png" alt="Konkrétní verze" style="max-width: 400px;" />
+</div>
 
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
 
