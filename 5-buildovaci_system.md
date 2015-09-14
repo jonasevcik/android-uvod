@@ -13,8 +13,8 @@ Obsahuje následující soubory. Je to minimální konfigurace, se kterou je gra
 Při první interakci s wrapperem se nejdřív podívá, jestli je nahraný Gradle, když ne, stáhne a nahraje jej a provede příkaz, kterým byl vyvolán. Projekt je pak buildován touto lokální verzí.
 
 Wrapper můžeme vytvořit spuštěním příkazu
-```
-> gradle wrapper
+```shell
+gradle wrapper
 ```
 Wrapper můžeme [nakonfigurovat](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html): 
 
@@ -96,7 +96,7 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
 
 ```shell
-> gradlew androidDependencies
+gradlew androidDependencies
 ```
 
 <div style="text-align: center;">
