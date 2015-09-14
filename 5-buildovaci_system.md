@@ -94,7 +94,7 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 * Tvůrce knihovny může změnit logiku chování některých metod.
  
 <div style="text-align: center;">
-    <img src="./img/5-specific-version.png" alt="Konkrétní verze" style="max-width: 400px;" />
+    <img src="./img/5-specific-version.png" alt="Konkrétní verze" style="max-width: 500px;" />
 </div>
 
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
