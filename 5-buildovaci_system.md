@@ -80,6 +80,25 @@ Takže např.:
 
 > http://jcenter.bintray.com/com/squareup/otto/1.3.8/
 
+#### Nepoužívejte dynamické verzování u knihoven
+
+Místo specifikování konkrétního čísla verze, se jeho podřetězec dá nahradit znakem **+**. Gradle za něj automaticky doplní nejvyšší nalezenou hodnotu verze. Např:
+
+```groovy
+compile 'com.squareup:otto:1.3.+'
+```
+
+To ovšem přidá do vašeho buildu nedeterministické chování.
+
+* Ne každý nový update knihovny jenom opravuje staré chyby.
+* Tvůrce knihovny může změnit logiku chování některých metod.
+
+Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
+
+```shell
+gradlew androidDependencies
+```
+
 #### Možnosti
 Nemusíte používat pouze jCenter nebo Maven Central. Můžete zadefinovat i vlastní repozitář. Takto to dělá třeba Fabric od Twitteru.
  
