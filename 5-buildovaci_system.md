@@ -99,6 +99,10 @@ Pro detailnější analýzu závislostí vaší aplikace můžete použít pří
 gradlew androidDependencies
 ```
 
+<div style="text-align: center;">
+    <img src="./img/5-android-dependencies.png" alt="androidDependencies" style="max-width: 500px;" />
+</div>
+
 #### Možnosti
 Nemusíte používat pouze jCenter nebo Maven Central. Můžete zadefinovat i vlastní repozitář. Takto to dělá třeba Fabric od Twitteru.
  
