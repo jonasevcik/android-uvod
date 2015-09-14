@@ -96,7 +96,7 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
 
 ```shell
-gradlew androidDependencies
+> gradlew androidDependencies
 ```
 
 <div style="text-align: center;">
