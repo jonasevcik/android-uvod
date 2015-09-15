@@ -256,7 +256,7 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 UI není jen ploché (flat). Jednotlivé prvky jsou skládány a seskupovány po vrstvách. Ty pak vytvářejí dojem prostoru.
 
 <div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/romannurik/LayerVisualizer/master/examples.gif" alt="Hloubka" style="max-width: 500px; box-shadow: none;" />
+    <img src="https://raw.githubusercontent.com/romannurik/LayerVisualizer/master/examples.gif" alt="Hloubka" style="max-width: 90%; box-shadow: none;" />
 </div>
 
 * [LayerVisualizer](https://github.com/romannurik/LayerVisualizer)
