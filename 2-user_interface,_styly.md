@@ -251,6 +251,16 @@ Abyste nastylovali všechny prvky, použijte jejich AppCompat verzi:
 <div style="clear: both;"></div>
 </div>
 
+### Idea hloubky
+
+UI není jen ploché (flat). Jednotlivé prvky jsou skládány a seskupovány po vrstvách. Ty pak vytvářejí dojem prostoru.
+
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/romannurik/LayerVisualizer/master/examples.gif" alt="Hloubka" style="max-width: 500px; box-shadow: none;" />
+</div>
+
+* [LayerVisualizer](https://github.com/romannurik/LayerVisualizer)
+
 ### Jak na to
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
 * [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
