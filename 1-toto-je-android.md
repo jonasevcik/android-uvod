@@ -102,21 +102,21 @@ Na místo použití HashMap. ArrayMap implementuje plně rozhraní Map, SimpleAr
 
 
 ## SparseArray
-Na místo použití HashMap, když chceme pracovat s primitivními datovými typy - primárně s int. V případě HashMap jsou tyto při vkládání auto-boxovány a při čtení auto-unboxovány, s čímž jsou spojeny především paměťové režie. SparseArray dělá mapování int -> Object. Další implementace: SparseBooleanArray int -> boolean, SparseIntArray int -> int, SparseLongArray int -> long.
+Na místo použití HashMap, když chceme pracovat s primitivními datovými typy - primárně s int. V případě HashMap jsou tyto při vkládání [auto-boxovány](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html) a při čtení auto-unboxovány, s čímž jsou spojeny především paměťové režie. SparseArray dělá mapování int -> Object. Další implementace: SparseBooleanArray int -> boolean, SparseIntArray int -> int, SparseLongArray int -> long.
 
 
 ### Proč je auto-(un)boxing nežádoucí?
 Primitivní datový typ je paměťově řádově méně náročný. "Prázdný" objekt potřebuje 8 bytů jen na svou správu. Příklad: boolean vs Boolean. Primitivní boolean požaduje na uložení jen 1 bit. Alokovanou paměť ale zarovnáváme na byty, takže ve výsledku sežere 1 byte. Objekt Boolean požaduje tedy rovněž pro své uložení 1 byte + 8 byte pro údržbu. Virtuální stroj navíc pro efektivní přístup k paměti pracuje u objektů s alokací v násobcích 8. Tzn. pro Boolean potřebujeme fakticky 9 bytů, ale po zarovnání na násobek 8 ve výsledku zabere 16 bytů. Více [info](http://www.javamex.com/tutorials/memory/object_memory_usage.shtml).
 
 
-## Práce s (Array)Listy
+## Práce s ArrayListy
 ArrayList se hodí pro uchování variabilního počtu uspořádaných prvků. Na pozadí ArrayList používá pole, které při inicializaci potřebuje definovat fixní velikost. Pokud potřebujeme vložit prvky nad kapacitu tohoto pole, je potřeba alokovat pole nové a původní prvky do něj přesunout. To s sebou nese režie. Pokud víme, že naše kolekce bude obsahovat alespoň n prvků, je dobré toto n definovat v konstruktoru *ArrayList(int initialCapacity)* a tím eliminovat zbytečné realokace.
 
 <div style="text-align: center;">
     <img src="./img/1-arraylist.gif" alt="Chování ArrayListu" style="box-shadow: none; margin: 0;" />
 </div>
 
-### Procházení Listu
+### Procházení ArrayListu
 Využití foreach cyklu může být výkonnostně a paměťově náročné. Z pohledu kódu je to např. jen:
 
 ```java
@@ -138,7 +138,7 @@ for (int i = 0, collectionSize = collection.size(); i < collectionSize; i++) {
 }
 ```
 
-Nesnažte se využívat tento způsob za každou cenu. Pokud by mělo dojít ke zhoršení čitelnosti kódu, je rozhodně lepší se držet zjednodušené formy.
+Nesnažte se využívat tento způsob za každou cenu. Pokud by mělo dojít ke zhoršení čitelnosti kódu, je rozhodně lepší se držet zjednodušené formy. Navíc tato optimalizace neplatí pro všechny druhy Listů, jen ArrayList.
 
 
 ## Výčtové typy
