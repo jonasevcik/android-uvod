@@ -104,6 +104,33 @@ Na místo použití HashMap. ArrayMap implementuje plně rozhraní Map, SimpleAr
 ## SparseArray
 Na místo použití HashMap, když chceme pracovat s primitivními datovými typy - primárně s int. V případě HashMap jsou tyto při vkládání [auto-boxovány](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html) a při čtení auto-unboxovány, s čímž jsou spojeny především paměťové režie. SparseArray dělá mapování int -> Object. Další implementace: SparseBooleanArray int -> boolean, SparseIntArray int -> int, SparseLongArray int -> long.
 
+```java
+Map<Integer, Object> integerObjectMap = new HashMap<>(100);
+
+int integer = 10;
+Object object = new Object();
+integerObjectMap.put(integer, object);
+integerObjectMap.remove(integer);
+
+for (Map.Entry<Integer, Object> entry : integerObjectMap.entrySet()) {
+    int key = entry.getKey();
+    Object value = entry.getValue();
+}
+```
+
+```java
+SparseArray<Object> sparseArray = new SparseArray<>(100);
+
+int integer = 10;
+Object object = new Object();
+sparseArray.put(integer, object);
+sparseArray.remove(integer);
+    
+for (int index = 0, size = sparseArray.size(); index < size; index++) {
+    int key = sparseArray.keyAt(index);
+    Object value = sparseArray.valueAt(index)
+}
+```
 
 ### Proč je auto-(un)boxing nežádoucí?
 Primitivní datový typ je paměťově řádově méně náročný. "Prázdný" objekt potřebuje 8 bytů jen na svou správu. Příklad: boolean vs Boolean. Primitivní boolean požaduje na uložení jen 1 bit. Alokovanou paměť ale zarovnáváme na byty, takže ve výsledku sežere 1 byte. Objekt Boolean požaduje tedy rovněž pro své uložení 1 byte + 8 byte pro údržbu. Virtuální stroj navíc pro efektivní přístup k paměti pracuje u objektů s alokací v násobcích 8. Tzn. pro Boolean potřebujeme fakticky 9 bytů, ale po zarovnání na násobek 8 ve výsledku zabere 16 bytů. Více [info](http://www.javamex.com/tutorials/memory/object_memory_usage.shtml).
