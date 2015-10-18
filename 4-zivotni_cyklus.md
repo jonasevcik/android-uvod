@@ -1,6 +1,8 @@
 # Životní cyklus
 Aplikace v Androidu není lineárně běžící program, ani nemá stavy, jak je můžeme znát z aplikací u PC. Aby bylo možné šetřit prostředky (CPU, baterie, paměť...), podléhá androidí aplikace životnímu cyklu. Ten je řízen systémem na základě jeho stavu.
 
+* [Úplný životní cyklus](https://github.com/xxv/android-lifecycle)
+
 Lifecycle nemají jen Aktivity a Fragmenty, ale také Views, Services...
 
 **Pozor**, 1 Aktivita nemusí mít při běhu aplikace vytvořenu jen 1 instanci. Uvažujme průchod aplikací:
