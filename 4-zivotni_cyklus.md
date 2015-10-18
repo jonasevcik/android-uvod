@@ -28,6 +28,7 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 * U Handleru pozor u postDelayed, může se vykonat až, když Aktivita není ve viditelném lifecyclu
 * Do callbacků přidávejte logy - může na vás vyskočit v situaci, kdy nečekáte, že by mohl nastat a odhalíte leak
 * Pozor na listenery, zvlášť pokud je jím Aktivita
+* U Fragmentů se zaměřte na *onAttach* a *onDetach*, kde probíhá jeho napojení/odpojení na/od Aktivitu/y
 * Pro debug build používat [LeakCanary](https://github.com/square/leakcanary) - Automaticky hlídá memory leaky Aktivit a dá se nakonfigurovat i pro hlídání dalších tříd
 
 ## Jak přežít v životním cyklu?
