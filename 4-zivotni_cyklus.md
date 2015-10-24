@@ -1,6 +1,8 @@
 # Životní cyklus
 Aplikace v Androidu není lineárně běžící program, ani nemá stavy, jak je můžeme znát z aplikací u PC. Aby bylo možné šetřit prostředky (CPU, baterie, paměť...), podléhá androidí aplikace životnímu cyklu. Ten je řízen systémem na základě jeho stavu.
 
+* [Úplný životní cyklus](https://github.com/xxv/android-lifecycle)
+
 Lifecycle nemají jen Aktivity a Fragmenty, ale také Views, Services...
 
 **Pozor**, 1 Aktivita nemusí mít při běhu aplikace vytvořenu jen 1 instanci. Uvažujme průchod aplikací:
@@ -26,6 +28,7 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 * U Handleru pozor u postDelayed, může se vykonat až, když Aktivita není ve viditelném lifecyclu
 * Do callbacků přidávejte logy - může na vás vyskočit v situaci, kdy nečekáte, že by mohl nastat a odhalíte leak
 * Pozor na listenery, zvlášť pokud je jím Aktivita
+* U Fragmentů se zaměřte na *onAttach* a *onDetach*, kde probíhá jeho napojení/odpojení na/od Aktivitu/y
 * Pro debug build používat [LeakCanary](https://github.com/square/leakcanary) - Automaticky hlídá memory leaky Aktivit a dá se nakonfigurovat i pro hlídání dalších tříd
 
 ## Jak přežít v životním cyklu?

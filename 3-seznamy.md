@@ -6,7 +6,7 @@
 Implementace rozhraní Adapter. Pro použití do ListView můžete vytvořit vlastní implementaci, ale je vhodnější si vybrat buď nějakou hotovou, nebo si takovou implementaci vhodně rozšířit. Např. pro základní použití je vhodný ArrayAdapter, který jako zdroj dat využívá pole. Pro získání vlastního vzhledu stačí překrýt metodu getView(int position, View convertView, ViewGroup parent). Při použití BaseAdapteru je potřeba implementovat:
 * *getItem()*
 * *getCount()* – zde vracet počet prvků zdrojové kolekce dat
-* *hasStableIds()* – true pokud měníme za chodu prvky (mažeme, přidáváme)
+* *hasStableIds()* – false pokud měníme za chodu prvky (mažeme, přidáváme)
 * *getItemId()* – nevracet jako id pozici. Na základě id ListView pozná o jaký prvek se jedná a pokud bychom např. z prostředku listu odmazali jednu položku, tak by neaktualizoval správně vzhled. Je lepší vracet např. hash dané položky.
 * *getViewTypeCount()* – zde vracet konstantu, podle toho kolik máme druhů položek. (Ve většině případů to bude 1)
 
