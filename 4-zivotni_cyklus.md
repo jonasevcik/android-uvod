@@ -1,4 +1,7 @@
 # Životní cyklus
+
+* [Záznam z přednášky (mp3)](./recordings/4-zivotni-cyklus.mp3)
+
 Aplikace v Androidu není lineárně běžící program, ani nemá stavy, jak je můžeme znát z aplikací u PC. Aby bylo možné šetřit prostředky (CPU, baterie, paměť...), podléhá androidí aplikace životnímu cyklu. Ten je řízen systémem na základě jeho stavu.
 
 * [Úplný životní cyklus](https://github.com/xxv/android-lifecycle)
