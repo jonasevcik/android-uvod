@@ -1,4 +1,7 @@
 ## ListView, GridView
+
+* [Záznam z přednášky (mp3)](./recordings/3-seznamy.mp3)
+
 (Co je zde psáno o [ListView](http://developer.android.com/reference/android/widget/ListView.html), platí stejně pro [GridView](http://developer.android.com/reference/android/widget/GridView.html), který se chová identicky, jen zobrazuje data ve více sloupcích.) Pro zobrazení dat na telefonu jsou velmi vhodné seznamy nebo mřížka – přirozený způsob reprezentace dat. Je to speciální druh ViewGroup, který neprovádí své kompletní vykreslování po inflatování. O to se stará tzv. Adaptér. Důvodem je, že ListView může obsahovat rozsáhlé kolekce dat a generování layoutu by způsobovalo lag v UI, jelikož veškeré operace nad Views se provádí v hlavním vlákně. Adaptér se stará o uchování dat a zprostředkování vykreslení layoutu jen těch položek, které jsou aktuálně na displeji viditelné (+ nějaké Views do rezervy pro snížení odezvy). Obstarává též operace nad kolekcí zdrojových dat, aktualizaci vzhledu asociovaného listview, filtrování dat…
 
 

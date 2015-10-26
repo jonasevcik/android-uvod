@@ -1,6 +1,8 @@
 
 # Základní stavební prvky
 
+* [Záznam z přednášky (mp3)](./recordings/2-UI.mp3)
+
 
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
