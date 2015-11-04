@@ -1,5 +1,6 @@
 # Networking
 
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-Q1VnbC0waE5pQjQ/view?usp=sharing)
 
 ### Manifest Permissions
 Aby se aplikace mohla připojit k síti, je potřeba v Manifestu deklarovat povolení:
