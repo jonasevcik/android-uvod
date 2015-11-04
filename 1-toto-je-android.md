@@ -1,7 +1,7 @@
 
 # Toto je Android!
 
-* [Záznam z přednášky (mp3)](./recordings/1-this-is-android.mp3)
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-b0pLeGtQNXFJRTA/view?usp=sharing)
 
 Android běží na zařízeních s mnohdy slabým CPU a málo RAM, proto pro něj nemusí platit best practices, které znáte z Javy. I zvyklosti v pojmenovávání jsou jiné.
 
