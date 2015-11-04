@@ -1,4 +1,7 @@
 # Buildovací systém
+
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-eThUOTFYY3RWb00/view?usp=sharing)
+
 Současné Android Studio využívá pro buildování systém [Gradle](https://docs.gradle.org/current/release-notes). Ten využívá jazyka [Groovy](http://www.groovy-lang.org/), běžícího na JVM. Gradle předepisuje strukturu buildovacího skriptu pomocí DSL. Skript pak vypadá jako JSON dokument. Pro lepší porozumění je si projdětě [dokumentaci](https://docs.gradle.org/current/dsl/). Pro buildování androidích projektů se pak používá [Android plugin for Gradle](https://developer.android.com/tools/building/plugin-for-gradle.html).
 
 ## Gradle vs Gradle Wrapper
