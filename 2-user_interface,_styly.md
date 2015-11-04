@@ -1,7 +1,7 @@
 
 # Základní stavební prvky
 
-* [Záznam z přednášky (mp3)](./recordings/2-UI.mp3)
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-bGtyYml1bjJxZkU/view?usp=sharing)
 
 
 # Drawables
