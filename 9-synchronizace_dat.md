@@ -2,7 +2,8 @@
 [SyncAdapter](https://developer.android.com/reference/android/content/AbstractThreadedSyncAdapter.html) slouží ke zpracování operací na pozadí. Typicky synchronizace dat mezi zařízením a serverem. Registruje se u SyncManageru, který je společný pro celý systém a stará se o spouštění synchronizace - pokud je explicitně vyžádána nebo naplánována.
 
 Proč používat SyncAdapter, když toto obstará i Service?
-* **Optimální plánování** - Synchronizace jsou plánovány centrálně, takže jsou slučovány požadavky od více aplikací do dávek a ty jsou prováděny zaráz. Efficient Data Transfers - Understanding the Cell Radio
+* **Optimální plánování** - Synchronizace jsou plánovány centrálně, takže jsou slučovány požadavky od více aplikací do dávek a ty jsou prováděny zaráz.
+    * [Efficient Data Transfers - Understanding the Cell Radio](https://www.youtube.com/watch?v=cSIB2pDvH3E)
 * **Synchronizace jen při změnách** - SyncAdapter může sledovat změny provedené ContentProviderem a synchronizovat jen v případě, že ke změně dojde
 * **Automatické opakování požadavků** - pokud aktualizace selže (není internet, nedostupný server), provede se časem znovu, případně, až bude připojení k internetu
 * **Součást systémového nastavení** - uživatel může ovlivnit, zda bude synchronizace probíhat
@@ -16,7 +17,7 @@ Abychom se nemuseli neustále doptávat serveru, jestli se něco změnilo, je le
 ### Pravidelná synchronizace
 Pro pravidelnou synchronizaci je nutné mít zapnutou automatickou synchronizaci, jinak nefunguje. *ContentResolver.addPeriodicSync()* - umožňuje naplánovat pravidelné aktualizace v uvedeném intervalu. Tyto aktualizace jsou ale provedeny jen pokud je dostupný internet. Taktéž nemusí být vyvolány přesně po uplynutí uvedeného intervalu, ale později, až bude synchronizovat více aplikací.
 
-### Manuálnísynchronizace
+### Manuální synchronizace
 *ContentResolver.requestSync()* slouží k vyvolání synchronizace ve chvíli, kdy ji potřebujeme. Jeden z parametrů je Bundle. Do Bundlu je potřeba specifikovat parametry synchronizace:
 * SYNC_EXTRAS_MANUAL – vynutí synchronizaci, ikdyž je vypnuté automatické synchronizování
 * SYNC_EXTRAS_EXPEDITED - vynutí synchronizaci ihned, bez čekání na optimální okamžik
@@ -142,11 +143,9 @@ SyncAdapter je vždy asociován s 1 typem účtu. S tímto typem účtu však na
 ```java
 public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
  
-    // Interval at which to sync with the weather, in seconds.
+    // Interval at which to sync with the server, in seconds.
     public static final int SYNC_INTERVAL = 60 * 60 * 24; //day
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
- 
-    private static final VersionComparator VERSION_COMPARATOR = new VersionComparator();
  
     public UpdaterSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
