@@ -1,3 +1,4 @@
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-WWM5OTFRTkZNZTQ/view?usp=sharing)
 
 # android.content
 Balík [android.content](http://developer.android.com/reference/android/content/package-summary.html) obsahuje třídy přistupující k a zveřejňující data. Je to mechanizmus Androidu, zajištující bezpečnost přístupu k datům aplikací. K datům cizí aplikace nelze přímo přistupovat, pokud to explicitně nepovolí pomocí API definovaným sadou URI. Přístup k datům je umožněn přes [ContentResolver](http://developer.android.com/reference/android/content/ContentResolver.html) a [ContentProvider](http://developer.android.com/reference/android/content/ContentProvider.html).
