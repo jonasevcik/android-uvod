@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static class CountingTask extends AsyncTask<Void, Integer, Integer> {
 
-        private final WeakReference<MainActivity> mActivityWeakReference;
+        private final WeakReference<MainActivity> mActivityWeakReference; //avoid leaking Context
 
         public CountingTask(MainActivity mainActivity) {
             mActivityWeakReference = new WeakReference<>(mainActivity);
