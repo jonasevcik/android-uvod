@@ -32,7 +32,7 @@ wrapper {
 
 
 ## Struktura projektu v Android Studiu
-Struktura z Android Studia je víceprojektová. Umožňuje mít zaráz několik podprojektů. Každý projekt má vlastní *build.gradle* skript. Skript na nejvyšší úrovni obsahuje globální konfigurace pro všechny podprojekty (moduly).
+Struktura z Android Studia je víceprojektová (víceprojektová). Umožňuje mít zaráz několik podprojektů (modulů). Každý projekt má vlastní *build.gradle* skript. Skript na nejvyšší úrovni obsahuje globální konfigurace pro všechny podprojekty (moduly).
 
 ```groovy
 buildscript {
@@ -128,7 +128,7 @@ dependencies {
 Standardní Java knihovny jsou zabaleny jako *.jar, androidí knihovny jako *.aar.
 
 ### aar
-Stejně jako jar, jedná se obyčejný zip archiv. Jar obsahuje v minimální verzi přeložené class soubory s manifestem. Pro Android, ale potřebujeme specificke resources, jako je Manifest.xml, layouty, drawables... Ty ale do jar archivu nemůžeme dát, proto vznikl nový typ - AAR. Struktura archivu je následující:
+Stejně jako *jar*, jedná se o obyčejný *zip* archiv. Jar obsahuje v minimální verzi přeložené class soubory s manifestem. Pro Android ale potřebujeme specifické resources, jako je Manifest.xml, layouty, drawables... Ty ale do *jar* archivu nemůžeme dát, proto vznikl nový typ - *AAR*. Struktura archivu je následující:
 
 ```plain
 /AndroidManifest.xml (povinné)  
