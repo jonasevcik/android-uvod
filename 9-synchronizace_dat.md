@@ -1,4 +1,7 @@
 ## Synchronizace dat - SyncAdapter
+
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-eTl5a1BYZG1TbVk/view?usp=sharing)
+
 [SyncAdapter](https://developer.android.com/reference/android/content/AbstractThreadedSyncAdapter.html) slouží ke zpracování operací na pozadí. Typicky synchronizace dat mezi zařízením a serverem. Registruje se u SyncManageru, který je společný pro celý systém a stará se o spouštění synchronizace - pokud je explicitně vyžádána nebo naplánována.
 
 Proč používat SyncAdapter, když toto obstará i Service?
