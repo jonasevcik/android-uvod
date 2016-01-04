@@ -1,5 +1,7 @@
-
 ## Service
+
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-TlFKWkNyWFJ1bkk/view?usp=sharing)
+
 Service je služba, která běží na pozadí (ale na hlavním vláknu), nemá GUI a není přímo vázaná na životní cyklus nějaké Aktivity. Slouží ke zpracování dlouhotrvajících operací - stahování, přehrávání hudby na pozadí, zpracování dat...
 
 **Service, ikdyž nemá GUI, běží v hlavním vláknu aplikace. Dlouhotrvající operace je třeba dělat ve 2. vlákně.**
