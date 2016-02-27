@@ -320,3 +320,4 @@ Soubory resp. Složky jsou slučovány postupně. Uvažujme situaci, kdy máme s
 * [How to distribute your own Android library through jCenter and Maven Central from Android Studio](http://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en)
 * [Introduction to Groovy and Gradle](https://www.youtube.com/watch?v=fHhf1xG0pIA)
 * [Gradle, please](http://gradleplease.appspot.com/) - vyhledávání knihoven podle názvu
+* [Smaller APK](https://medium.com/google-developers/smallerapk-part-1-anatomy-of-an-apk-da83c25e7003#.i7rrjbuce)
