@@ -6,12 +6,14 @@
 Android běží na zařízeních s mnohdy slabým CPU a málo RAM, proto pro něj nemusí platit best practices, které znáte z Javy. I zvyklosti v pojmenovávání jsou jiné.
 
 ## Pojmenování
-Privátní atributy mají prefix *m*. Statické atributy mají prefix *s*.
+Privátní atributy mají prefix *m*. Statické atributy mají prefix *s*. Statické finální atributy jsou *CELE_KAPITALKAMI*. Ostatní jsou standardní *camelCase*.
 
 ```java
 public class Something {
    private Object mObject;
    private static String sString;
+   private static final String CONSTANT = "constant";
+   public Object otherObject;
  
    public void setObject(Object object) {
       mObject = object;
@@ -47,6 +49,7 @@ Pro upomenutí si zvolte výraznou barvu pro anonymní třídy:
 ## Cizí styly pro import
 Vyzkoušejte, jak vám vyhovují nastavení jiných:
 
+* [Android](http://source.android.com/source/code-style.html)
 * [Google](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
 * [Square](https://github.com/square/java-code-styles)
 * [Avast](https://github.com/avast/android-styled-dialogs/blob/master/code-formatting-config.xml)
