@@ -3,6 +3,7 @@
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-bGtyYml1bjJxZkU/view?usp=sharing)
 
+[Prezentace](https://docs.google.com/presentation/d/1Kuz_lo9TQp9H8U0hpqHlnvX4Qr4ruc-rnmo4hoLGIoU/edit?usp=sharing)
 
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
@@ -537,7 +538,7 @@ dependencies {
 ```
 
 <div style="text-align: center;">
-    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 500px;" />
+    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
 </div>
 
 # Kam dál?
