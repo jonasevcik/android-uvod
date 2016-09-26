@@ -537,7 +537,7 @@ dependencies {
 ```
 
 <div style="text-align: center;">
-    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 200px; box-shadow: none;" />
+    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 200px;" />
 </div>
 
 # Kam dál?
