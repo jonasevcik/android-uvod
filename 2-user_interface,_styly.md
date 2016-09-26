@@ -164,7 +164,7 @@ Styly lze aplikovat na jednotlivé GUI elementy, na samostatné aktivity nebo na
 
 MyLayout.xml
 ```xml
-<Button style="@style/ButtonTheme.Big" />
+<Button style="@style/ButtonStyle.Big" />
 ```
 
 Manifest.xml
@@ -219,7 +219,7 @@ TextAppearance atributy:
 </div>
 
 ## Holo
-Dříve bylo styly je nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
+Dříve bylo styly nejjednodušší dělat přes generátor. Pro všechny styly bez ActionBaru se dá použít Android Holo Colors Generator, jen pro ActionBar - Android Action Bar Style Generator.
 * [Holo Colors](http://android-holo-colors.com/)
 * [ActionBar style generator](http://jgilfelt.github.io/android-actionbarstylegenerator/)
 
@@ -227,7 +227,7 @@ Dnes už se nepoužívá. Vše směřuje k material designu. Původní přístup
 
 
 ## Material
-Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika základních barev upravit základní UI prvky.
+Pokud použijeme *Theme.AppCompat*, můžeme jednoduše definicí několika barev upravit základní UI prvky.
 
 ```xml
 <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
