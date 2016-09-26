@@ -149,7 +149,7 @@ Dědit lze 2 způsoby. Klíčovým slovem parent nebo tečkovou notací.
 <style name="Parent.Child"/>
 ```
 
-Systémové styly jde dědit jen přes atribut parent. Pokud dědíme z vlastních stylů, můžeme použít jen tečkovou notaci. V příkladu *ButtonTheme.Big* má stejné atributy jako ButtonTheme, jen navíc mění velikost písma. Seznam všech [atributů](http://developer.android.com/reference/android/R.attr.html).
+Systémové styly jde dědit jen přes atribut parent. Pokud dědíme z vlastních stylů, můžeme použít jen tečkovou notaci. V příkladu *ButtonStyle.Big* má stejné atributy jako ButtonStyle, jen navíc mění velikost písma. Seznam všech [atributů](http://developer.android.com/reference/android/R.attr.html).
 
 ### Použití explicitní a implicitní dědičnosti zaráz
 ```xml
