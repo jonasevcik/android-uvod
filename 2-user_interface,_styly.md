@@ -9,7 +9,7 @@
 FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
 
 <div style="text-align: center;">
-    <img src="./img/2-coordinator-layout.png" alt="CoordinatorLayout" style="width: 200px" />
+    <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 200px" />
 </div>
 
 # Drawables
@@ -550,6 +550,7 @@ dependencies {
 
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
+* [Mastering CoordinatorLayout](http://saulmm.github.io/mastering-coordinator)
 * mDevCamp 2013 [Optimalizace UI](https://www.youtube.com/watch?v=X_TJOSNzNug)
 * [Nanodegree na Udacity](https://www.udacity.com/course/android-developer-nanodegree--nd801) - oficiální online kurz Androidu
 * [Using styles and themes without going crazy](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1)
