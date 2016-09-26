@@ -9,7 +9,7 @@
 FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
 
 <div style="text-align: center;">
-    <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 200px" />
+    <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 300px" />
 </div>
 
 # Drawables
