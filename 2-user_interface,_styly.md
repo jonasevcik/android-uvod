@@ -5,6 +5,13 @@
 
 [Prezentace](https://docs.google.com/presentation/d/1Kuz_lo9TQp9H8U0hpqHlnvX4Qr4ruc-rnmo4hoLGIoU/edit?usp=sharing)
 
+### CoordinatorLayout
+FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
+
+<div style="text-align: center;">
+    <img src="./img/2-coordinator-layout.png" alt="CoordinatorLayout" style="width: 200px" />
+</div>
+
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
 
