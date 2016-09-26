@@ -526,6 +526,8 @@ Pokud v Aktivitě voláme *findViewById()*, voláme tuto metodu od kořenového 
 V případu 2 je to jen:
 > inner_group->inner_leaf
 
+### Constraint Layout
+
 
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
