@@ -527,7 +527,18 @@ V případu 2 je to jen:
 > inner_group->inner_leaf
 
 ### Constraint Layout
+Novinka v Android Studiu od verze 2.2. Umožňuje vztváření ploché hierarchie views. Respektive dokáže nahradit složitý vnořený layout použitím jediného view - ConstraintLayoutu.
+Byl vytvořen pro nahrazení RelativeLayoutu, případně LinearLayoutu s použitím atributu weight, které jsou výpočetně náročné na fázi onMeasure. ConstraintLayout využívá matematických předpisů pro přesnou definici pozice a rozměrů jednotlivých svých potomků. Tím je umožňěno výpočetně rychlejší konstruování layoutu. Zároveň s ConstraintLayoutem přišel i nový editor, který umožňuje vytváření vzhledu pomocí wysiwyg nástroje. ConstraintLayout je navíc samostatná knihovna, takže může být použit v libovolné verzi Androidu.
 
+```java
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+}
+```
+
+<div style="text-align: center;">
+    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 200px; box-shadow: none;" />
+</div>
 
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
