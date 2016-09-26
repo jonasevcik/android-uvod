@@ -106,24 +106,24 @@ Best practice je udržovat si definice ve 2 souborech. theme.xml pro souhrn defi
 theme.xml
 ```xml
 <style name="Theme" parent="android:Theme.Holo.Light">
-   <item name="android:buttonStyle">@style/ButtonTheme</item>
-   <item name="android:seekBarStyle">@style/SeekBarTheme</item>
+   <item name="android:buttonStyle">@style/ButtonStyle</item>
+   <item name="android:seekBarStyle">@style/SeekBarStyle</item>
 </style>
 ```
 
 styles.xml
 ```xml
-<style name="ButtonTheme" parent="android:Widget.Holo.Light.Button">
+<style name="ButtonStyle" parent="android:Widget.Holo.Light.Button">
    <item name="android:background">@drawable/theme_btn_default_holo_light</item>
    <item name="android:textColor">@color/white</item>
    <item name="android:textSize">@dimen/button_text</item>
  </style>
  
- <style name="ButtonTheme.Big">
+ <style name="ButtonStyle.Big">
    <item name="android:textSize">@dimen/button_text_big</item>
  </style>
  
- <style name="SeekBarTheme" parent="android:Widget.Holo.Light.SeekBar">
+ <style name="SeekBarStyle" parent="android:Widget.Holo.Light.SeekBar">
    <item name="android:progressDrawable">@drawable/theme_scrubber_progress_horizontal_holo_light</item>
    <item name="android:indeterminateDrawable">@drawable/theme_scrubber_progress_horizontal_holo_light</item>
    <item name="android:thumb">@drawable/theme_scrubber_control_selector_holo_light</item>
