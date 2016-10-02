@@ -1,2 +1,0 @@
-# Životní cyklus
-
