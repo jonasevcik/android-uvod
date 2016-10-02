@@ -4,7 +4,7 @@
 * [Toto je Android!](1-toto-je-android.md)
 * [User Interface, styly](2-user_interface,_styly.md)
 * [Životní cyklus](3-zivotni_cyklus.md)
-* [Seznamy](3-seznamy.md)
+* [Seznamy](4-seznamy.md)
 * [Buildovací systém](5-buildovaci_system.md)
 * [Networking, vlákna](6-networking,_vlakna.md)
 * [Služby, notifikace, BroadcastReceiver](7-sluzby,_notifikace,_broadcastreceiver.md)
