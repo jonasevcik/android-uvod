@@ -1,4 +1,11 @@
-# Životní cyklus
+## Aktivita
+De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace.
+## Fragment
+Logiký celek, výseč uživatelského rozhraní, část aktivity. Fragmenty vznikly v Androidu 3.0 jako reakce na příchod podpory pro tablety. Na 10" displeji už nevypadá hezky, když se použije stejný layout jako pro typicky 5" obrazovku mobilu. Především prvky s nastavením rozměrů na fill_parent/match_parent se roztahovaly na celou obrazovku a vytvářely obludné UI. Fragmenty umožnily uložení výseče UI do společného celku a následné tvoření jejich kombinací. Typicky se jedná o tzv. master/detail flow. Kde na mobilu by seznam položek a detail položky tvořily 2 aktivity. Na tabletu je vhodnější použít pro 1 obrazovku oboje zaráz.
+
+
+
+## Životní cyklus
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-QzlZN3BaWU9BWWc/view?usp=sharing)
 
