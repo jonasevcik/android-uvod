@@ -1,5 +1,5 @@
 ## Aktivita
-De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace. Je potřeba ji přidat do manifetstu, jinak o ní systém neví a nemůže ji spustit. častá chyba, když člověk zadefinuje Aktivitu jen jako java soubor.
+De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace. Je potřeba ji přidat do manifetstu, jinak o ní systém neví a nemůže ji spustit. Častá chyba, když člověk zadefinuje Aktivitu jen jako java soubor.
 
 ```xml
 <activity android:name=".Name"
@@ -12,9 +12,9 @@ De facto "obrazovka", a taktéž základní stavební prvek pro vizuální čás
 ```
 
 ## Fragment
-Logiký celek, výseč uživatelského rozhraní, část aktivity. Fragmenty vznikly v Androidu 3.0 jako reakce na příchod podpory pro tablety. Na 10" displeji už nevypadá hezky, když se použije stejný layout jako pro typicky 5" obrazovku mobilu. Především prvky s nastavením rozměrů na fill_parent/match_parent se roztahovaly na celou obrazovku a vytvářely obludné UI. Fragmenty umožnily uložení výseče UI do společného celku a následné tvoření jejich kombinací. Typicky se jedná o tzv. master/detail flow. Kde na mobilu by seznam položek a detail položky tvořily 2 aktivity. Na tabletu je vhodnější použít pro 1 obrazovku oboje zaráz.
+Logiký celek, výseč uživatelského rozhraní, část aktivity. Fragmenty vznikly v Androidu 3.0 jako reakce na příchod podpory pro tablety. Na 10" displeji už nevypadá hezky, když se použije stejný layout jako pro typicky 5" obrazovku mobilu. Především prvky s nastavením rozměrů na fill_parent/match_parent se roztahovaly na celou obrazovku a vytvářely obludné UI. Fragmenty umožnily uložení výseče UI do společného celku a následné tvoření jejich kombinací, případně znovupoužití určité stejné logiky na více místech aplikace. Typické použití je při tzv. master/detail flow. Kde na mobilu by seznam položek a detail položky tvořily 2 aktivity. Na tabletu je vhodnější použít pro 1 obrazovku oboje zaráz.
 
-[Ukázka implementace pro Master/Detail](https://github.com/jonasevcik/MasterDetailDemo)
+[Ukázka kódu implementace pro Master/Detail](https://github.com/jonasevcik/MasterDetailDemo)
 
 <div style="text-align: center;">
     <img src="./img/4-master_detail.png" alt="Master/Detail Flow" style="max-width: 550px;" />
