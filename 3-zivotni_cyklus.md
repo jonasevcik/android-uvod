@@ -22,6 +22,8 @@ Logiký celek, výseč uživatelského rozhraní, část aktivity. Fragmenty vzn
 
 ### Dynamický fragment
 
+**Pozor**, používejte výhradně Fragment ze support library a s tím i související FragmentManager. Vzájemné kombinace nativní a compat verze můžou způsobit zvláštní chování. Taktéž compat verze zaručí nové API i na staré verzi Androidu, případně obsahuje opravy nějakých bugů.
+
 ## Životní cyklus
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-QzlZN3BaWU9BWWc/view?usp=sharing)
