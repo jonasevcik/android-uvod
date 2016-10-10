@@ -122,6 +122,26 @@ public class MainActivity extends FragmentActivity
 
 **Pozor**, používejte výhradně Fragment ze support library a s tím i související FragmentManager. Vzájemné kombinace nativní a compat verze můžou způsobit zvláštní chování. Taktéž compat verze zaručí nové API i na staré verzi Androidu, případně obsahuje opravy nějakých bugů.
 
+### newInstance
+Fragmenty musí být vždy vytvořitelné pomocí XML a proto musí mít bezparametrický konstruktor. Tvorba parametrizované verze se řeší přes factory metodu, typicky s názvem *newInstance*.
+
+```java
+public static FragmentWithArguments newInstance(Arg1 arg1, Arg2 arg2) {
+    Bundle args = new Bundle(); 
+    //TODO put arguments into args
+    FragmentWithArguments fragment = new FragmentWithArguments(); 
+    fragment.setArguments(args); 
+    return fragment; 
+}
+
+public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+            Bundle savedInstanceState) {
+            Bundle args = getArguments();
+            //TODO retrieve arguments
+        ...
+}
+```
+
 ## Životní cyklus
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-QzlZN3BaWU9BWWc/view?usp=sharing)
