@@ -214,7 +214,7 @@ public class PlayerService extends Service {
   private void stopPlaying() {
     if (isPlaying) {
       isPlaying = false;
-      stopForeground(true); //stahne service z popredi
+      stopForeground(true); //stahne service z popredi; true -> zmiznout notifikaci
     }
   }
 }
