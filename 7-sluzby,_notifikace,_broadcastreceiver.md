@@ -55,7 +55,7 @@ Na základě konstanty, kterou vracíme v onStartCommand() je nakládáno s rest
 Service můžeme zastavit voláním *stopService()*. Tento krok vede k jejímu skončení. Service je možno skončit i zevnitř voláním *stopSelf()*, typicky po skončení prováděné práce.
  
 ```java
-public class MyService extends Service {
+public class PlayerService extends Service {
  
     private static final String ACTION_PLAY = "com.example.action.PLAY";
     private static final String ACTION_PAUSE = "com.example.action.PAUSE";
@@ -181,6 +181,45 @@ Service jsou spouštěny s větší prioritou, než Aktivity, protože by ze sv�
     <img src="./img/7-survival.png" alt="Životnost" style="box-shadow: none; max-width: 520px" />
 </div>
 
+#### Foreground Service
+```java
+public class PlayerService extends Service {
+
+  public int onStartCommand(Intent intent, int flags, int startId) {
+        ...
+        String action = intent.getAction();
+        if (action.equals(ACTION_PLAY)) {
+            play();
+        } else if (action.equals(ACTION_STOP)) {
+            stopPlaying();
+        }
+        ...
+    }
+
+  private void play() {
+    if (!isPlaying) {
+      isPlaying = true;
+
+      Intent intent = new Intent(this, NotificationReceiver.class);
+      PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+      Notification n  = new Notification.Builder(this)
+       .setContentTitle("Hraje hudba")
+       .setSmallIcon(R.drawable.icon)
+       .setContentIntent(pIntent).build();
+
+      startForeground(0, n); //udela ze servicy foreground service
+  }
+  
+  private void stopPlaying() {
+    if (isPlaying) {
+      isPlaying = false;
+      stopForeground(true); //stahne service z popredi
+    }
+  }
+}
+```
+
 ## Notifikace
 Notifikace se získávají jako systémová služba – [NotificationManager](http://developer.android.com/reference/android/app/NotificationManager.html). Umožňuje publikování notifikací. Pro aplikaci můžete mít zobrazenu notifikaci, která obsahuje následující:
 
@@ -261,7 +300,7 @@ Je aktivován, ikdyž není aplikace spuštěna. Spustí se nadefinovaný [Broad
 ```
 
 ### Lokální
-Jen v rámci běžící zobrazené Aktivity. Je vhodný jen pro broadcasty, které dávají smysl jen za běhu aplikace. Např. když vypadne internet a naše aplikace neběží, tak je nám to jedno.
+Jen v rámci běžící zobrazené Aktivity. Je vhodný pro broadcasty, které dávají smysl jen za běhu aplikace. Např. když vypadne internet a naše aplikace neběží, tak je nám to jedno.
 
 ```java
 public class BroadcastActivity extends AppCompatActivity {
