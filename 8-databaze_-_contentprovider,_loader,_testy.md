@@ -77,6 +77,7 @@ Někdy je potřeba pro ověření stavu záznamů, možnost je přímo procháze
 
 
 # Ukázka implementace
+[WorkTime sample project](https://github.com/jonasevcik/WorkTime)
 
 ## package data
 * datum se do databáze ukládá jako řetězec
