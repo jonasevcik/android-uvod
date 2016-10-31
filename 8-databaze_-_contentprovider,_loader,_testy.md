@@ -73,6 +73,7 @@ Někdy je potřeba pro ověření stavu záznamů, možnost je přímo procháze
 * [Understanding the LoaderManager](http://www.androiddesignpatterns.com/2012/07/understanding-loadermanager.html)
 * [Implementing Loaders](http://www.androiddesignpatterns.com/2012/08/implementing-loaders.html)
 * [Android SQLite database and content provider - Tutorial](http://www.vogella.com/tutorials/AndroidSQLite/article.html)
+* [SQLBrite](https://github.com/square/sqlbrite)
 
 
 # Ukázka implementace
@@ -340,7 +341,7 @@ public class WorkTimeProvider extends ContentProvider {
 }
 ```
 
-* pokud přistupujete k metodám ContentProvideru a nepotřebujete přímo pracovat s Cursorem, který vrací, je dobré si udělat Manager třídu, která bude wrapper nad ContentProviderem a usnadní snazší přístup k jeho metodám a získávání dat v podobě objektů
+* pokud přistupujete k metodám ContentProvideru a nepotřebujete přímo pracovat s Cursorem, který vrací, je dobré si udělat Manager třídu, která bude wrapper nad ContentProviderem a usnadní přístup k jeho metodám a získávání dat v podobě objektů
 * Manager obstará jak přípravu dat do ContentValues, tak jejich validaci před vlkládáním
 * Cursor je nutné po ukončení práce s ním uzavřít
 * pro ochranu před SQL injections nepoužívejte raw query. Jednotlivé příkazy na databázi jsou rozloženy na část selection, kde na místo hodnot, které bychom dosazovali, definujeme pouze znak ?. Konkrétní hodnoty jsou pak do výrazu dosazeny ze selectionArgs, což je pole, které tyto hodnoty obsahuje. Tyto hodnoty nejsou vnímány jako SQL příkaz a tak je zabráněno možnému útoku.
