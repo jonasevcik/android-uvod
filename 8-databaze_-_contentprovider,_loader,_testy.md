@@ -68,6 +68,7 @@ src/androidTest/java/<package>/
 Někdy je potřeba pro ověření stavu záznamů, možnost je přímo procházet v živé databázi. Ideální je pro debug takovýchto situtuací použít knihovnu [Stetho](http://facebook.github.io/stetho/). Ta umožňuje po připojení k ADB procházet stav databáze pomocí debug nástrojů Chromu.
 
 # Kam dál?
+* [Ian Lake - Loaders](https://medium.com/google-developers/making-loading-data-on-android-lifecycle-aware-897e12760832)
 * [Loaders](http://developer.android.com/guide/components/loaders.html)
 * [Content Providers & Content Resolvers](http://www.androiddesignpatterns.com/2012/06/content-resolvers-and-content-providers.html)
 * [Understanding the LoaderManager](http://www.androiddesignpatterns.com/2012/07/understanding-loadermanager.html)
