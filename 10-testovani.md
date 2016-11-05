@@ -1,7 +1,11 @@
 # Testování
 <div style="text-align: center;">
-    <img src="./img/10-structure.png" alt="Anonymní třída" style="max-width: 400px;" />
+    <img src="./img/10-structure.png" alt="Anonymní třída" style="max-width: 300px;" />
 </div>
+
+* test - jednotkové testy. Využívají jen Java SDK a jsou tedy spustitelné i na PC s JVM. 
+* androidTest - zpřístupňují Context a umožňují testování tříd s návazností na Android.
+
 
 ## Unit/jednotkové testy
 * jUnit – knihovna známá z klasické Javy, využívající asserty.
