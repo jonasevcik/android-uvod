@@ -4,7 +4,7 @@
 </div>
 
 * test - jednotkové testy. Využívají jen Java SDK a jsou tedy spustitelné i na PC s JVM. 
-* androidTest - zpřístupňují Context a umožňují testování tříd s návazností na Android.
+* androidTest - zpřístupňují Context a umožňují testování tříd s návazností na Android. Pro spuštění vyžadují emulátor nebo zařízení s Androidem.
 
 
 ## Unit/jednotkové testy
