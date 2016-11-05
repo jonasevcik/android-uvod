@@ -1,6 +1,6 @@
 # Testování
 <div style="text-align: center;">
-    <img src="./img/10-structure.png" alt="Anonymní třída" style="max-width: 600px;" />
+    <img src="./img/10-structure.png" alt="Anonymní třída" style="max-width: 400px;" />
 </div>
 
 ## Unit/jednotkové testy
