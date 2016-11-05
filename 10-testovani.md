@@ -9,3 +9,5 @@
 * PowerMock – podobné jako Mockito. Hodí se např. pro mokování statických tříd a androidího prostředí.
 
 ## UI testy
+* Espresso - Je View viditelný? Má TextView nasetovanou správnou hlášku?
+* UIAutomator - testování interakce v aplikaci. Zmáčkni button, odscrolluj...
