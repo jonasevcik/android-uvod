@@ -16,4 +16,11 @@
 * Espresso - Je View viditelný? Má TextView nasetovanou správnou hlášku?
 * UIAutomator - testování interakce v aplikaci. Zmáčkni button, odscrolluj...
 
+## Model View Presenter
+<div style="text-align: center;">
+    <img src="./img/10-mvp.png" alt="MVP" style="max-width: 150px;" />
+</div>
+
+
+
 [Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
