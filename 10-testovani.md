@@ -23,7 +23,6 @@ testCompile 'org.mockito:mockito-all:1.10.19'
 
 ```groovy
 android {
-
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner" //nutne pro spousteni testu
     }
