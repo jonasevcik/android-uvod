@@ -12,9 +12,26 @@
 * Mockito – mokovací nástroj pro vytváření falešných objektů, které potřebujeme pro test, ale nejsou důležité pro vyhodnocení výsledku testu.
 * PowerMock – podobné jako Mockito. Hodí se např. pro mokování statických tříd a androidího prostředí.
 
+```groovy
+testCompile 'junit:junit:4.12'
+testCompile 'org.mockito:mockito-all:1.10.19'
+```
+
 ## UI testy
 * Espresso - Je View viditelný? Má TextView nasetovanou správnou hlášku?
 * UIAutomator - testování interakce v aplikaci. Zmáčkni button, odscrolluj...
+
+```groovy
+androidTestCompile ('com.android.support.test:runner:0.5') {
+    exclude group: 'com.android.support' //knihovna v sobe sama pouziva support library, ktera muze byt v konfliktu s verzi support library vaseho projektu, proto ji odstranime
+}
+androidTestCompile ('com.android.support.test:rules:0.5') {
+    exclude group: 'com.android.support'
+}
+androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
+    exclude group: 'com.android.support'
+}
+```
 
 ## Model View Presenter
 <div style="text-align: center;">
