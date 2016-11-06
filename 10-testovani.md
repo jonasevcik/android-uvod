@@ -15,3 +15,5 @@
 ## UI testy
 * Espresso - Je View viditelný? Má TextView nasetovanou správnou hlášku?
 * UIAutomator - testování interakce v aplikaci. Zmáčkni button, odscrolluj...
+
+[Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
