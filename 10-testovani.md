@@ -22,6 +22,13 @@ testCompile 'org.mockito:mockito-all:1.10.19'
 * UIAutomator - testování interakce v aplikaci. Zmáčkni button, odscrolluj...
 
 ```groovy
+android {
+
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner" //nutne pro spousteni testu
+    }
+}
+
 androidTestCompile ('com.android.support.test:runner:0.5') {
     exclude group: 'com.android.support' //knihovna v sobe sama pouziva support library, ktera muze byt v konfliktu s verzi support library vaseho projektu, proto ji odstranime
 }
