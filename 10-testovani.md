@@ -28,6 +28,10 @@ Schránka/reprezentace pro data. Neobsahuje žádnou aplikační logiku.
 Pasivní komponenta, která umí vykreslovat a reprezentovat data (model). Uživatelské interakce jsou delegovány na prezenter. V aplikaci to budou nejčastěji Fragmenty a Activity.
 
 ### Presenter
-
+Prostředník mezi View a Modelem. Stará se o synchronizaci dat a UI.
 
 [Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
+
+Kam dál?
+* [Android Testing](https://codelabs.developers.google.com/codelabs/android-testing/)
+
