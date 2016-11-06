@@ -40,6 +40,8 @@ androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
 ```
 
 ## Model View Presenter
+Vzor, který umožňuje rozdělení architektury aplikace do 3 logických celků. Výsledný kód je pak čitelnější a snadněji testovatelný, protože každá část má na starost jen 1 věc.
+
 <div style="text-align: center;">
     <img src="./img/10-mvp.png" alt="MVP" style="max-width: 150px; box-shadow: none;" />
 </div>
