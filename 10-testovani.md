@@ -21,6 +21,13 @@
     <img src="./img/10-mvp.png" alt="MVP" style="max-width: 150px;" />
 </div>
 
+### Model
+Schránka/reprezentace pro data. Neobsahuje žádnou aplikační logiku.
+
+### View
+Pasivní komponenta, která umí vykreslovat a reprezentovat data (model). Uživatelské interakce jsou delegovány na prezenter. V aplikaci to budou nejčastěji Fragmenty a Activity.
+
+### Presenter
 
 
 [Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
