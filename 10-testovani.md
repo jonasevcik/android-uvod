@@ -41,7 +41,7 @@ androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
 
 ## Model View Presenter
 <div style="text-align: center;">
-    <img src="./img/10-mvp.png" alt="MVP" style="max-width: 150px;" />
+    <img src="./img/10-mvp.png" alt="MVP" style="max-width: 150px; box-shadow: none;" />
 </div>
 
 ### Model
