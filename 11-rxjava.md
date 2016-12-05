@@ -142,4 +142,15 @@ myObservableServices.retrieveImage(url)
 ```
 
 
+## Subscription
+Spojení mezi Observable a Subscriberem. Slouží k držení reference na stream a jeho případné ukončení. Nejčastěji se používá s CompositeSubscription.
+
+
+### Užitečné pro Android:
+* [RxBindings](https://github.com/JakeWharton/RxBinding)
+* [RetroLambda](https://github.com/evant/gradle-retrolambda)
+* [SQLBrite](https://github.com/square/sqlbrite)
+
+
+
 
