@@ -11,4 +11,5 @@
 * [Databáze - ContentProvider, Loader, Testy](8-databaze_-_contentprovider,_loader,_testy.md)
 * [Synchronizace dat](9-synchronizace_dat.md)
 * [Testování](10-testovani.md)
+* RxJava
 
