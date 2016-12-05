@@ -7,4 +7,63 @@ Rozšíření umožňující deklarativní reaktivní programování v Javě. Ce
 ## Vše je Observable
 Reaktivní programování znamená vytvářet proudy událostí. Observable vytváří události - na požádání, při splnění určitých podmínek, nebo třeba vůbec. Protipólem je Subscriber - konzument - který se váže k Observable a odebírá její události. Každý Subscriber obsahuje trojici metod *onNext*, *onComplete* a *onError*. Metoda *onNext* může být zavolána alespoň 0x a je následována právě 1 voláním *onComplete* nebo *onError*. Tím život streamu končí.
 
+```Java
+Observable<String> myObservable = Observable.create(
+    new Observable.OnSubscribe<String>() {
+        @Override
+        public void call(Subscriber<? super String> sub) {
+            sub.onNext("Hello, world!");
+            sub.onCompleted();
+        }
+    }
+);
+```
 
+Tento kód předá Subscriberovi po subscribnutí řetězec "Hello, world!" a skončí. Vytvoříme Subscribera, který bude umět řetězec zpracovat:
+
+```Java
+Subscriber<String> mySubscriber = new Subscriber<String>() {
+    @Override
+    public void onNext(String s) { System.out.println(s); }
+
+    @Override
+    public void onCompleted() { }
+
+    @Override
+    public void onError(Throwable e) { }
+};
+```
+
+Vše spojíme:
+
+```Java
+myObservable.subscribe(mySubscriber);
+```
+
+Pro vztváření Observable axistuje řada factory metod. Nejsnažší k použití je.
+
+```Java
+Observable<String> myObservable =
+    Observable.just("Hello, world!");
+```
+
+Subscriber je tvořen 3 akcemi - ekvivalenty k onNext, onComplete, onError. Toho se dá využít a zadefinovat každou akci zvlášť:
+
+```Java
+myObservable.subscribe(onNextAction, onErrorAction, onCompleteAction);
+```
+
+Nebo použít jen tu, co se nám hodí:
+
+```Java
+Action1<String> onNextAction = new Action1<String>() {
+    @Override
+    public void call(String s) {
+        System.out.println(s);
+    }
+};
+
+myObservable.subscribe(onNextAction);
+```
+
+V praxi je ale vždy nutné reagovat na onError, byť bychom měli na daném místě použít jen log. Když cokoli selže stream se routuje do onError metody, tak když není implementována, skončí program s výjimkou.
