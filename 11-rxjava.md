@@ -132,7 +132,14 @@ A zase můžeme na stream aplikovat některé z [operátorů](https://github.com
 ```
 
 ## Scheduler
-Plánovače představují mechanizmus pro určení typu vlákna, které bude náš stream obsluhovat.
+Plánovače představují mechanizmus pro určení typu vlákna, které bude stream obsluhovat.
+
+```Java
+myObservableServices.retrieveImage(url)
+    .subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(bitmap -> myImageView.setImageBitmap(bitmap));
+```
 
 
 
