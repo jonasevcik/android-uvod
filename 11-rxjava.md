@@ -87,5 +87,52 @@ Observable.just("Hello, world!")
     .subscribe(s -> System.out.println(s));
 ```
 
+Tady vše teprve začíná. Streamy jdou pomocí různých operátorů modifikovat a kombinovat.
+
+```Java
+Observable.just("Hello")
+    .map(s -> s + ", world!")
+    .subscribe(s -> System.out.println(s));
+```
+```Java
+Observable.just("Hello")
+    .map(s -> s + ", ")
+    .map(s -> s + "world!")
+    .subscribe(s -> System.out.println(s));
+```
+```Java
+Observable.just("Hello, world!")
+    .map(s -> s.hashCode())
+    .subscribe(i -> System.out.println(Integer.toString(i)));
+```
+
+Další způsob jak vytvořit Observable:
+
+```Java
+Observable.from("url1", "url2", "url3")
+    .subscribe(url -> System.out.println(url)); //Co vypíše tento kód?
+```
+
+Observable se dají kombinovat:
+```Java
+Observable.from("url1", "url2", "url3")
+    .flatMap(url -> getTitle(url)) //getTitle je dalsi Observable vracejici titulek Url
+    .subscribe(title -> System.out.println(title));
+```
+
+A zase můžeme na stream aplikovat některé z [operátorů](https://github.com/ReactiveX/RxJava/wiki/Alphabetical-List-of-Observable-Operators).
+
+```Java
+    Observable.from("url1", "url2", "url3")
+    .flatMap(url -> getTitle(url))
+    .filter(title -> title != null)
+    .take(5)
+    .doOnNext(title -> saveTitle(title))
+    .subscribe(title -> System.out.println(title));
+```
+
+## Scheduler
+Plánovače představují mechanizmus pro určení typu vlákna, které bude náš stream obsluhovat.
+
 
 
