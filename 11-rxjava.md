@@ -66,4 +66,26 @@ Action1<String> onNextAction = new Action1<String>() {
 myObservable.subscribe(onNextAction);
 ```
 
-V praxi je ale vždy nutné reagovat na onError, byť bychom měli na daném místě použít jen log. Když cokoli selže stream se routuje do onError metody, tak když není implementována, skončí program s výjimkou.
+> V praxi je ale vždy nutné reagovat na onError, byť bychom měli na daném místě použít jen log. Když cokoli selže stream se routuje do onError metody, tak když není implementována, skončí program s výjimkou.
+
+Když zrušíme proměnné, jde daný kód zjednodušit následovně:
+
+```Java
+Observable.just("Hello, world!")
+    .subscribe(new Action1<String>() {
+        @Override
+        public void call(String s) {
+              System.out.println(s);
+        }
+    });
+```
+
+A to vše jde pomocí lambda výrazu zkrátit na:
+
+```Java
+Observable.just("Hello, world!")
+    .subscribe(s -> System.out.println(s));
+```
+
+
+
