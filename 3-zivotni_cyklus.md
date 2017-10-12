@@ -330,7 +330,7 @@ Reakce Googlu (2017!) na absenci oficiálního frameworku, případně tutoriál
     <img src="./img/4-viewmodel.png" alt="HW klávesnice" style="max-width: 300px; box-shadow: none;" />
 </div>
 
-
+ViewModel existuje od doby, kdy jej vytvoříte, až do doby, kdy Activita přestane existovat, tzn. přežije i rotace displeje. Cílem je tedy všechna důležitá data držet v třídě rozšiřující ViewModel.
 
 
 ## Kam dál?
