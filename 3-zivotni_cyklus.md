@@ -326,6 +326,12 @@ Nemilosrdně vraždí aktivity při odchodu z nich. U high-end zařízení takov
 
 ###ViewModel
 Reakce Googlu (2017!) na absenci oficiálního frameworku, případně tutoriálu, jak řešit přežití v životním cyklu, především v závislosti na změnách konfigurace a rotace displaye. ViewModel řeší jak životní cyklus jak Aktivity, tak Fragmentu.
+<div style="text-align: center;">
+    <img src="./img/4-viewmodel.png" alt="HW klávesnice" style="max-width: 300px; box-shadow: none;" />
+</div>
+
+
+
 
 ## Kam dál?
 * [Context, What Context?](https://possiblemobile.com/2013/06/context/)
