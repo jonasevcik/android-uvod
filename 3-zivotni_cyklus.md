@@ -324,7 +324,11 @@ Nemilosrdně vraždí aktivity při odchodu z nich. U high-end zařízení takov
 * [Mortar](https://github.com/square/mortar)
 * [AndroidViewModel](https://github.com/inloop/AndroidViewModel)
 
+###ViewModel
+Reakce Googlu (2017!) na absenci oficiálního frameworku, případně tutoriálu, jak řešit přežití v životním cyklu, především v závislosti na změnách konfigurace a rotace displaye. ViewModel řeší jak životní cyklus jak Aktivity, tak Fragmentu.
+
 ## Kam dál?
 * [Context, What Context?](https://possiblemobile.com/2013/06/context/)
 * [Deep dive into Android state restoration](http://cyrilmottier.com/2014/09/25/deep-dive-into-android-state-restoration/)
 * [Fragment state saving: Best practices](http://inthecheesefactory.com/blog/fragment-state-saving-best-practices/en)
+* [ViewModels: A simple example](https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e)
