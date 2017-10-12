@@ -325,13 +325,24 @@ Nemilosrdně vraždí aktivity při odchodu z nich. U high-end zařízení takov
 * [AndroidViewModel](https://github.com/inloop/AndroidViewModel)
 
 ###ViewModel
-Reakce Googlu (2017!) na absenci oficiálního frameworku, případně tutoriálu, jak řešit přežití v životním cyklu, především v závislosti na změnách konfigurace a rotace displaye. ViewModel řeší jak životní cyklus jak Aktivity, tak Fragmentu.
+Reakce Googlu (2017!) na absenci oficiálního frameworku, případně tutoriálu, jak řešit přežití v životním cyklu, především v závislosti na změnách konfigurace a rotace displaye. [ViewModel](https://developer.android.com/reference/android/arch/lifecycle/ViewModel.html) řeší jak životní cyklus jak Aktivity, tak Fragmentu.
 <div style="text-align: center;">
     <img src="./img/4-viewmodel.png" alt="HW klávesnice" style="max-width: 300px; box-shadow: none;" />
 </div>
 
 ViewModel existuje od doby, kdy jej vytvoříte, až do doby, kdy Activita přestane existovat, tzn. přežije i rotace displeje. Cílem je tedy všechna důležitá data držet v třídě rozšiřující ViewModel.
 
+**Pozor**, instance Activity se po čas jejího života mění, proto není dobré držet referenci na ni ve ViewModelu. Držel by referenci na instanci, která už může být mrtvá. Pokud potřebujete Context, použijte ten aplikační. Na to je i speciální druh ViewModelu, [AndroidViewModel](https://developer.android.com/reference/android/arch/lifecycle/AndroidViewModel.html).
+
+Jak zajistit přístup ke stejné instanci ViewModelu:
+```java
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
+   mViewModel = ViewModelProviders.of(this).get(MyViewModel.class);
+   // ...
+}
+```
 
 ## Kam dál?
 * [Context, What Context?](https://possiblemobile.com/2013/06/context/)
