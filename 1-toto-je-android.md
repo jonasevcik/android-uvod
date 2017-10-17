@@ -93,7 +93,13 @@ public class App extends Application {
     }
 }
 ```
+**Pozor!** Stejně jako je potřeba definovat Activity v Manifestu, tak i třídu Application je potřeba definovat. Ta může být přo celou aplikaci definována nejvýše jedna. Pokud ji nezadefinujete, systém o ní neví a nespustí ji.
 
+```xml
+<application
+        android:name=".App"
+
+```
 
 ## Kontejnery
 Klasické Javovské kolekce nejsou výkonostně ani paměťově optimalizované pro použití na přenosných zařízeních. Proto je potřeba je používat s rozvahou. Držet se pravidel:
