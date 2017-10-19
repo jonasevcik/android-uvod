@@ -56,6 +56,10 @@ Pasivní komponenta, která umí vykreslovat a reprezentovat data (model). Uživ
 Prostředník mezi View a Modelem. Stará se o synchronizaci dat a UI.
 
 * [Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
+ * [balast](https://github.com/jonasevcik/AndroidTestingDemo/tree/no_patterns_no_tests)
+ * [unit testy](https://github.com/jonasevcik/AndroidTestingDemo/tree/unit_tests)
+ * [instrumentační testy](https://github.com/jonasevcik/AndroidTestingDemo/tree/instrumentation_tests)
+ * [final refactor](https://github.com/jonasevcik/AndroidTestingDemo/tree/MVP)
 * [Profi verze ukázkového projektu](https://github.com/jonasevcik/AndroidMVP)
 
 Kam dál?
