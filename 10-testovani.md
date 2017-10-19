@@ -55,7 +55,8 @@ Pasivní komponenta, která umí vykreslovat a reprezentovat data (model). Uživ
 ### Presenter
 Prostředník mezi View a Modelem. Stará se o synchronizaci dat a UI.
 
-[Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
+* [Ukázkový projekt](https://github.com/jonasevcik/AndroidTestingDemo)
+* [Profi verze ukázkového projektu](https://github.com/jonasevcik/AndroidMVP)
 
 Kam dál?
 * [Android Testing](https://codelabs.developers.google.com/codelabs/android-testing/)
