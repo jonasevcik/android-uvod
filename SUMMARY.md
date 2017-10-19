@@ -4,7 +4,7 @@
 * [Toto je Android!](1-toto-je-android.md)
 * [User Interface, styly](2-user_interface,_styly.md)
 * [Životní cyklus](3-zivotni_cyklus.md)
-* [Testování](10-testovani.md)
+* [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)
 * [Buildovací systém](5-buildovaci_system.md)
 * [Networking, vlákna](6-networking,_vlakna.md)
