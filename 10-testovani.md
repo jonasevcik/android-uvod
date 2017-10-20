@@ -1,4 +1,4 @@
-# Testování
+![](/assets/10-annotations.png)# Testování
 <div style="text-align: center;">
     <img src="./img/10-structure.png" alt="Anonymní třída" style="max-width: 300px;" />
 </div>
