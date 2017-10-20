@@ -62,6 +62,11 @@ Prostředník mezi View a Modelem. Stará se o synchronizaci dat a UI.
  * [instrumentační testy](https://github.com/jonasevcik/AndroidTestingDemo/tree/instrumentation_tests)
 * [MVP knihovna + Profi verze ukázkového projektu](https://github.com/jonasevcik/AndroidMVP)
 
-Kam dál?
+** @SmallTest, @MediumTest, @LargeTest anotace **
+<div style="text-align: center;">
+    <img src="./img/10-annotations.png" alt="Test Annotations" style="max-width: 200px; box-shadow: none;" />
+</div>
+
+**Kam dál?**
 * [Android Testing](https://codelabs.developers.google.com/codelabs/android-testing/)
 
