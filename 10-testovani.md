@@ -64,7 +64,7 @@ Prostředník mezi View a Modelem. Stará se o synchronizaci dat a UI.
 
 ** @SmallTest, @MediumTest, @LargeTest anotace **
 <div style="text-align: center;">
-    <img src="./img/10-annotations.png" alt="Test Annotations" style="max-width: 200px; box-shadow: none;" />
+    <img src="./img/10-annotations.png" alt="Test Annotations" style="max-width: 400px; box-shadow: none;" />
 </div>
 
 **Kam dál?**
