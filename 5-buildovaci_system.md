@@ -264,7 +264,7 @@ RELEASE_KEY_PASSWORD=key_password
 ```
 **Proč ukládat heslo ke klíčence a klíči do *gradle.properties*, když i tam jsou viditelné v plaintextu?**
 
-#### Použití proměnných
+#### Použití proměnných v project.ext
 _Hlavní build.gradle_
 
 ```groovy
