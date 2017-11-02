@@ -177,6 +177,24 @@ dependencies { //project.dependencies
 * [Project.apply(Map<String, ?> options)](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply(java.util.Map))
 * [DependencyHandler](https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html)
 
+#### Verze
+
+**compileSdkVersion**
+Verze Android SDK, která se má použít pro kompilaci kódu. Velmi silně se doporučuje používat vždy poslední verzi. Díky kompilaci vůči nejnovější verzi zdrojového kódu Androidu můžete dostat warningy o deprecated metodách, můžou být použity nové anotace pro Lint...
+Major verze se musí shodovat s verzí build tools a support library, kterou používáte.
+
+**minSdkVersion**
+Omezuje SDK level, který můžete používat. Při použití novějších api v kódu dostanete varování Lintu. Novější api se dají používat, ale užití je potřeba ošetřit ifem.
+Jaké volit minSdk? [Zastoupení verzí](https://developer.android.com/about/dashboards/index.html)
+
+**targetSdkVersion**
+Určuje se kterým posledním levelem SDK reálně pracujete (Byť compileSdkVersion můžete mít vyšší). Tímto se zachovává funkčnost starých aplikací na nových verzích systému. Např. Android 6 (API 23) přidal podporu tzv. runtime permissions. Které by de facto rozbily všechny staré aplikace. Proto se jejich ošetření vyžadovalo jen u aplikací s targetSdkVersion >= 23.
+
+Ideálně byste měli cílit na následující stav:
+```
+minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)
+```
+
 #### Lepší build.gradle
  
 ```groovy
