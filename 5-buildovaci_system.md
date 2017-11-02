@@ -264,6 +264,52 @@ RELEASE_KEY_PASSWORD=key_password
 ```
 **Proč ukládat heslo ke klíčence a klíči do *gradle.properties*, když i tam jsou viditelné v plaintextu?**
 
+#### Použití proměnných
+_Hlavní build.gradle_
+
+```groovy
+allprojects {
+    ...
+    project.ext {
+        compileSdkVersion = 26
+        buildToolsVersion = '26.0.2'
+        minSdkVersion = 9
+        targetSdkVersion = 26
+        supportLibraryVersion = '26.1.0'
+    }
+}
+```
+
+_build.gradle z podprojektu_
+
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "cz.droidboy.androidmvp.sample"
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(":library")
+    compile "com.android.support:appcompat-v7:${project.ext.supportLibraryVersion}"
+}
+```
+
 ### Java 8
 Android interně pracuje s bytecodem Javy 6 + součástí Android SDK není plné Java SDK 8. Část API z Javy 8 je v Androidu až od verze 24. Syntaxi z Javy 8 je možné přenést do bytecodu Javy 8 "speciálním" kompilátorem, a použít v libovolné verzi Androidu.
 
