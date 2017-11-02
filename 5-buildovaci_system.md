@@ -264,6 +264,59 @@ RELEASE_KEY_PASSWORD=key_password
 ```
 **Proč ukládat heslo ke klíčence a klíči do *gradle.properties*, když i tam jsou viditelné v plaintextu?**
 
+### Java 8
+Android interně pracuje s bytecodem Javy 6 + součástí Android SDK není plné Java SDK 8. Část API z Javy 8 je v Androidu až od verze 24. Syntaxi z Javy 8 je možné přenést do bytecodu Javy 8 "speciálním" kompilátorem, a použít v libovolné verzi Androidu.
+
+#### Retrolambda
+
+```groovy
+buildscript {
+   repositories {
+      mavenCentral()
+   }
+
+   dependencies {
+      classpath 'me.tatarka:gradle-retrolambda:3.7.0'
+   }
+}
+
+// Required because retrolambda is on maven central
+repositories {
+   mavenCentral()
+}
+
+apply plugin: 'com.android.application' //or apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
+```
+
+#### Jack
+
+```groovy
+defaultConfig {
+        ...
+        jackOptions {
+            enabled true
+        }
+}
+```
+Oficiální compiler od Googlu. Deprecated. Problémy při použití s knihovnami, které používají jiné compilery.
+
+#### Android Studio 3
+Přidává oficiání podporu syntaxe Javy 8. Stačí pouye specifikovat, že chcete používat Javu 8. Umí automaticky detekovat, že používáte Retrolambdu nebo Jack a nebude se snažit kompilovat kód do Javy 8 samo.
+
+```groovy
+android {
+  ...
+  // Configure only for each module that uses Java 8
+  // language features (either in its source code or
+  // through dependencies).
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+```
+
 ### Flavors a build typy
 Flavors umožňují udržovat společnou codebase pro více variant jedné aplikace, abychom nemuseli udržovat duplicitní kód. Např. lite a placená plná verze. Buď se můžeme v kódu ifem rozhodovat podle toho v jaké jsme flavor, nebo přímo nahradit celé třídy jinými implementacemi. Java soubory jsou nahrazovány celé. XML resource soubory jsou slučovány.
  
@@ -321,3 +374,4 @@ Soubory resp. Složky jsou slučovány postupně. Uvažujme situaci, kdy máme s
 * [Introduction to Groovy and Gradle](https://www.youtube.com/watch?v=fHhf1xG0pIA)
 * [Gradle, please](http://gradleplease.appspot.com/) - vyhledávání knihoven podle názvu
 * [Smaller APK](https://medium.com/google-developers/smallerapk-part-1-anatomy-of-an-apk-da83c25e7003#.i7rrjbuce)
+* [Java 8](https://developer.android.com/studio/write/java8-support.html)
