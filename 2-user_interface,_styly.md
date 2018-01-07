@@ -275,6 +275,7 @@ UI není jen ploché (flat). Jednotlivé prvky jsou skládány a seskupovány po
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
 * [Material Palette](http://www.materialpalette.com/) - Generování barev aplikace na základě výběru primární a doplňkové barvy
 * [Material mixer](http://www.sankk.in/material-mixer/) - Vyběr palety barev
+* [Color Tool](https://material.io/color)
 
 <div style="text-align: center;">
     <img src="./img/2-complementary-colors.png" alt="Doplňkové barvy" style="max-width: 380px; box-shadow: none;" />
