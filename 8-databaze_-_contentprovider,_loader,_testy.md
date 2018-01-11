@@ -354,7 +354,52 @@ public class WorkTimeProvider extends ContentProvider {
 }
 ```
 
-* pokud přistupujete k metodám ContentProvideru a nepotřebujete přímo pracovat s Cursorem, který vrací, je dobré si udělat Manager třídu, která bude wrapper nad ContentProviderem a usnadní přístup k jeho metodám a získávání dat v podobě objektů
+Lepší ContentProvider
+
+* statické objekty jsou vytvářeny při spouštění aplikace
+* pokud je objekt složitý, jeho vytváření zpomaluje start aplikace
+* statický objekt UriMatcher content provideru navíc nemusí být vůbec za života aplikace použit
+
+```java
+public abstract class LazyGetter<T> {  
+   private final AtomicReference<Optional<T>> mCachedValue = new AtomicReference<>(Optional.<T>empty());  
+   
+   public final T get() {  
+      Optional<T> value = mCachedValue.get();         
+      if (!value.isPresent()) {             
+         synchronized (mCachedValue) {                 
+            value = mCachedValue.get();                 
+            if (!value.isPresent()) {                     
+               mCachedValue.set(Optional.ofNullable(initialValue()));                 
+            }             
+         }         
+      }         
+      return mCachedValue.get().get();     
+   }      
+   
+   protected abstract T initialValue();
+}
+```
+
+```java
+public class LazyProvider extends ContentProvider {      
+   private static final int MODEL = 101;     
+   private static final int MODEL_ID = 102;      
+   private static final LazyGetter<UriMatcher> URI_MATCHER = new LazyGetter<UriMatcher>() {         
+      @Override         
+      protected UriMatcher initialValue() {             
+         final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);             
+         uriMatcher.addURI(LazyContract.AUTHORITY, "/model", MODEL);             
+         uriMatcher.addURI(LazyContract.AUTHORITY, "/model/#", MODEL_ID);             
+         // ...             
+         return uriMatcher;         
+      }     
+   };
+     // ... 
+}
+```
+
+* pokud přistupujete k metodám ContentProvideru a nepotřebujete přímo pracovat s Cursorem, který vrací, je dobré si udělat např. Manager třídu, která bude wrapper nad ContentProviderem a usnadní přístup k jeho metodám a získávání dat v podobě objektů
 * Manager obstará jak přípravu dat do ContentValues, tak jejich validaci před vkládáním
 * Cursor je nutné po ukončení práce s ním uzavřít
 * pro ochranu před SQL injections nepoužívejte raw query. Jednotlivé příkazy na databázi jsou rozloženy na část selection, kde na místo hodnot, které bychom dosazovali, definujeme pouze znak ?. Konkrétní hodnoty jsou pak do výrazu dosazeny ze selectionArgs, což je pole, které tyto hodnoty obsahuje. Tyto hodnoty nejsou vnímány jako SQL příkaz a tak je zabráněno možnému útoku.
