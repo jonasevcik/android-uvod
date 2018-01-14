@@ -1,5 +1,7 @@
 ## Aktivita
-De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace. Je potřeba ji přidat do manifetstu, jinak o ní systém neví a nemůže ji spustit. Častá chyba, když člověk zadefinuje Aktivitu jen jako java soubor.
+De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace. Z aplikace můžeme zpouštět jak aktivity patřící dané aplikaci, tak i aktivity jiných aplikací.
+Pokaždé, když je spuštěna nová aktivita, je ta stará zastavena a vložena do tzv. "back stacku". Když pak uživatel novou aktivitu opustí zmáčknutím tlačítka zpět, je tato zrušena a dojde k obnovení původní aktivity.
+Aktivity jsou spoštěny tzv. intenty. Aktivitu je potřeba přidat do manifetstu, jinak o ní systém neví a nemůže ji spustit. Častá chyba, když člověk zadefinuje Aktivitu jen jako java soubor.
 
 ```xml
 <activity android:name=".Name"
@@ -9,6 +11,28 @@ De facto "obrazovka", a taktéž základní stavební prvek pro vizuální čás
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
 </activity>
+```
+## Intent
+Aktivity nevytváříme pomocí jejich konstruktoru. Jejich vytvoření a i následný životní cyklus řídí systém. Systém ale aktivity netvoří náhodně, ale na základě podnětu ze strany aplikace - Intentu. Např. spuštění vaší aplikace, potažmo její hlavní aktivity z launcheru je vyvoláno na základě intentu s akcí MAIN. Intent může vyvolávat spuštění i jiných aplikačních komponent. Také může v sobě přenášet data - zprávy pro svého příjemce.
+### Explicitní Intent
+Uvádí přesný název Aktivity (nebo jiné komponenty), kterou chtějí spustit.
+
+```java
+Intent intent = new Intent(this, OtherActivity.class);
+startActivity(intent);
+```
+
+### Implicitní Intent
+Neuvádí přesný název Aktivity, kterou chtějí spustit, ale uvádí pouze obecnou akci.
+
+```java
+Intent intent = new Intent(Intent.ACTION_SENDTO);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_EMAIL, "emailaddress@emailaddress.com");
+intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+
+startActivity(Intent.createChooser(intent, "Send Email"));
 ```
 
 ## Fragment
