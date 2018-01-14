@@ -286,7 +286,7 @@ notificationManager.notify(notificationId, twoPageNotification)
 
 V rámci celého systému můžeme globálně (i lokálně) zasílat broadcasty pomocí *sendBroadcast(Intent i)*. Přijímání broadcastu se děje na základě filtru jména, které je specifikováno v Intentu. Takto se dá např. komunikovat s cizími aplikacemi.
 
-### Globální
+### Statický
 Je aktivován, ikdyž není aplikace spuštěna. Spustí se nadefinovaný [BroadcastReceiver](http://developer.android.com/reference/android/content/BroadcastReceiver.html), který má broadcast obsloužit.
 
 ```xml
@@ -299,8 +299,8 @@ Je aktivován, ikdyž není aplikace spuštěna. Spustí se nadefinovaný [Broad
 </receiver>
 ```
 
-### Lokální
-Jen v rámci běžící zobrazené Aktivity. Je vhodný pro broadcasty, které dávají smysl jen za běhu aplikace. Např. když vypadne internet a naše aplikace neběží, tak je nám to jedno.
+### Dynamický
+Např. jen v rámci běžící zobrazené Aktivity. Je vhodný pro broadcasty, které dávají smysl jen za běhu aplikace - když vypadne internet a naše aplikace neběží, je nám to jedno.
 
 ```java
 public class BroadcastActivity extends AppCompatActivity {
@@ -341,11 +341,21 @@ public class BroadcastActivity extends AppCompatActivity {
 }
 ```
 
-### V rámci 1 aplikace
-Broadcasty můžeme vytvářet jen s omezenou působností - pouze na naši aplikaci. Je to bezpečnější - neinformujeme zároveň ostatní aplikace.
+### Lokální (v rámci 1 aplikace)
+Broadcasty můžeme vytvářet jen s omezenou působností - pouze na naši aplikaci. Je to bezpečnější - neinformujeme zároveň ostatní aplikace. Tento typ broadcastu jde definovat pouze dynamicky.
 
+Poslání:
+```java
+LocalBroadcastManager.getInstance(this).sendBroadcast(customBroadcastIntent);
+```
+Registrace:
 ```java
 LocalBroadcastManager.getInstance(this).registerReceiver(receiver,intentFilter);
+```
+Odregistrování:
+```java
+
+LocalBroadcastManager.getInstance(this).unregisterReceiver(mReceiver);
 ```
 
 ### S WakeLockem
