@@ -245,7 +245,7 @@ Při překrývání metod tříd s životním cyklem, je dobré metody překrýv
 ## Jak se vyhnout memory leakům Aktivit?
 * Hlídejte si, kam dovolíte předat referenci na Context/Aktivitu.
 * Obzvlášť hlídejte nová vlákna - Thread, AsyncTask, Handler
-* U Handleru pozor u postDelayed, může se vykonat až, když Aktivita není ve viditelném lifecyclu
+* U Handleru pozor u postDelayed, může se vykonat až, když Aktivita není ve viditelném lifecyclu. [How to Leak a Context](https://www.androiddesignpatterns.com/2013/01/inner-class-handler-memory-leak.html)
 * Do callbacků přidávejte logy - může na vás vyskočit v situaci, kdy nečekáte, že by mohl nastat a odhalíte leak
 * Pozor na listenery, zvlášť pokud je jím Aktivita
 * U Fragmentů se zaměřte na *onAttach* a *onDetach*, kde probíhá jeho napojení/odpojení na/od Aktivitu/y
