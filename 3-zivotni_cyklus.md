@@ -144,7 +144,7 @@ public class MainActivity extends FragmentActivity
 }
 ```
 
-**Pozor**, používejte výhradně Fragment ze support library a s tím i související FragmentManager. Vzájemné kombinace nativní a compat verze můžou způsobit zvláštní chování. Taktéž compat verze zaručí nové API i na staré verzi Androidu, případně obsahuje opravy nějakých bugů.
+**Pozor**, používejte výhradně Fragment ze support library a s tím i související FragmentManager. Vzájemné kombinace nativní a compat verze můžou způsobit zvláštní chování. Taktéž compat verze zaručí nové API i na staré verzi Androidu, případně obsahuje opravy mnohých bugů.
 
 ### newInstance
 Fragmenty musí být vždy vytvořitelné pomocí XML a proto musí mít bezparametrický konstruktor. Tvorba parametrizované verze se řeší přes factory metodu, typicky s názvem *newInstance*.
@@ -163,6 +163,55 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             Bundle args = getArguments();
             //TODO retrieve arguments
         ...
+}
+```
+### Komunikace s nadřazenou Aktivitou
+Reference na nadřazenou Aktivitu je Fragmentu předávána vždy v [onAttach()](https://developer.android.com/reference/android/app/Fragment.html). Pro větší čistotu kódu a lepší testovatelnost je vhodné si chování spojené s komunikací fragmentu s aktivitou extrahovat do rozhraní, které pak aktivita implementuje.
+
+```java
+public class HostActivity extends AppCompatActivity implements MyFragment.OnFragmentInteractionListener{
+
+    //...
+
+    @Override
+    public void onFragmentInteraction() {
+        //...
+    }
+}
+```
+
+```java
+public class MyFragment extends Fragment {
+
+    private OnFragmentInteractionListener mListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new ClassCastException(context.toString()
+                + " must implement OnFragmentInteractionListener");
+        }
+    }
+    
+    private void someInteractingMethod() {
+        //...
+        if (mListener != null) {
+            mListener.onFragmentInteraction();
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null; //don't hold on to the host Activity -> prevent leaks
+    }
+
+    interface OnFragmentInteractionListener {
+        void onFragmentInteraction();
+    }
 }
 ```
 
