@@ -60,7 +60,7 @@ Pro naučení efektivní práce v IDE se nechte otravovat následujícím [plugi
 
 
 ## Používejte StrictMode
-Je to mechanismus pro detekci určitých činností, na které umí nastavit penalizace. Např. dělám na UI vlákně dlouhotrvající operaci nad souborem -> zabij aplikaci. Donutí vás psát tyto operace správně. Ideální je se nechat penalizovat za všechny prohřešky:
+[StrictMode](https://developer.android.com/reference/android/os/StrictMode.html) je mechanismus pro detekci určitých činností, na které umí nastavit penalizace. Např. dělám na UI vlákně dlouhotrvající operaci nad souborem -> zabij aplikaci. Donutí vás psát tyto operace správně. Ideální je se nechat penalizovat za všechny prohřešky:
 
 ```java
 public class App extends Application {
