@@ -246,5 +246,6 @@ Ne vždy je vše v SDK zdokumentované tak, že pochopíte, jaké máte očekáv
 
 ## Kam dál?
 * [Developing for Android: Introduction](https://medium.com/google-developers/developing-for-android-introduction-5345b451567c)
+* [Eliminating Code Overhead](https://speakerdeck.com/jakewharton/eliminating-code-overhead-square-hq-2015)
 * [Android Developer Fundamentals](https://developers.google.com/training/courses/android-fundamentals)
 * [Advanced Android Development](https://developers.google.com/training/courses/android-advanced?utm_source=Android+Weekly&utm_campaign=c8a5272b53-androidweekly-289&utm_medium=email&utm_term=0_4eb677ad19-c8a5272b53-338066885)
