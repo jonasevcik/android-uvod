@@ -6,7 +6,7 @@
 * [Aktivita, Intent, Fragment a životní cyklus](3-zivotni_cyklus.md)
 * [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)
-* [Buildovací systém](5-buildovaci_system.md)
+* [build.gradle](5-buildovaci_system.md)
 * [Networking, vlákna](6-networking,_vlakna.md)
 * [Služby, notifikace, BroadcastReceiver](7-sluzby,_notifikace,_broadcastreceiver.md)
 * [Databáze - ContentProvider, Loader, Testy](8-databaze_-_contentprovider,_loader,_testy.md)
