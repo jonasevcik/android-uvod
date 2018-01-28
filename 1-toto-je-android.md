@@ -243,7 +243,6 @@ Další velmi často používané anotace jsou *@Nullable* a *@NonNull* pro ozna
 Ne vždy je vše v SDK zdokumentované tak, že pochopíte, jaké máte očekávat chování. Velkou výhodou Androidu je jeho otevřený kód. Proto se můžete přímo podívat na implementaci a nemuset spekulovat.
 * [Zdrojové kódy Androidu podle verzí](http://grepcode.com/project/repository.grepcode.com/java/ext/com.google.android/android/)
 
-
 ## Kam dál?
 * [Developing for Android: Introduction](https://medium.com/google-developers/developing-for-android-introduction-5345b451567c)
 * [Eliminating Code Overhead](https://speakerdeck.com/jakewharton/eliminating-code-overhead-square-hq-2015)
