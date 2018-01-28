@@ -5,7 +5,7 @@
 
 Android běží na zařízeních s mnohdy slabým CPU a málo RAM, proto pro něj nemusí platit best practices, které znáte z Javy. I zvyklosti v pojmenovávání jsou jiné.
 
-## Pojmenování
+## Pojmenování - _Hungarian notation_
 Privátní atributy mají prefix *m*. Statické atributy mají prefix *s*. Statické finální atributy jsou *CELE_KAPITALKAMI*. Ostatní jsou standardní *camelCase*.
 
 ```java
@@ -25,8 +25,7 @@ public class Something {
 }
 ```
 
-
-## Android Studio
+### Nastavení pojmenování v Android Studiu
 Pro snažší práci s pojmenováváním a generováním getterů/setterů si nastavte:
 > File -> Settings -> Editor -> Code Style -> Java -> Code Generation -> Name prefix
 
@@ -56,7 +55,7 @@ Vyzkoušejte, jak vám vyhovují nastavení jiných:
 
 
 ## Naučte se používat zkratky
-Pro naučení efektivní práce v IDE se nechte otravovat následujícím [pluginem](https://plugins.jetbrains.com/plugin/4455).
+Pro naučení efektivní práce v IDE se nechte otravovat následujícím [Key promoter](https://plugins.jetbrains.com/plugin/4455) pluginem.
 
 
 ## Používejte StrictMode
@@ -212,7 +211,7 @@ Google představil Support Annotations, pro větší kontrolu nad kódem.
 
 ```groovy
 dependencies {
-    compile 'com.android.support:support-annotations:22.2.0'
+    compile 'com.android.support:support-annotations:24.2.0'
 }
 ```
 
@@ -241,7 +240,7 @@ Další velmi často používané anotace jsou *@Nullable* a *@NonNull* pro ozna
 
 ## Když si nevím rady, jak něco funguje
 Ne vždy je vše v SDK zdokumentované tak, že pochopíte, jaké máte očekávat chování. Velkou výhodou Androidu je jeho otevřený kód. Proto se můžete přímo podívat na implementaci a nemuset spekulovat.
-* [Zdrojové kódy Androidu podle verzí](http://grepcode.com/project/repository.grepcode.com/java/ext/com.google.android/android/)
+* Zdrojové kódy Androidu podle verzí - [Grepcode.com](http://grepcode.com/project/repository.grepcode.com/java/ext/com.google.android/android/)
 
 ## Kam dál?
 * [Developing for Android: Introduction](https://medium.com/google-developers/developing-for-android-introduction-5345b451567c)
