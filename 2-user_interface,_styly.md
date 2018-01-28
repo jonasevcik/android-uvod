@@ -12,6 +12,20 @@ FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliv
     <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 300px" />
 </div>
 
+### Constraint Layout
+Novinka v Android Studiu od verze 2.2. Umožňuje vztváření ploché hierarchie views. Respektive dokáže nahradit složitý vnořený layout použitím jediného view - ConstraintLayoutu.
+Byl vytvořen pro nahrazení RelativeLayoutu, případně LinearLayoutu s použitím atributu weight, které jsou výpočetně náročné na fázi onMeasure. ConstraintLayout využívá matematických předpisů pro přesnou definici pozice a rozměrů jednotlivých svých potomků. Tím je umožňěno výpočetně rychlejší konstruování layoutu. Zároveň s ConstraintLayoutem přišel i nový editor, který umožňuje vytváření vzhledu pomocí wysiwyg nástroje. ConstraintLayout je navíc samostatná knihovna, takže může být použit v libovolné verzi Androidu.
+
+```java
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+}
+```
+
+<div style="text-align: center;">
+    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
+</div>
+
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
 
@@ -517,38 +531,26 @@ Uvažujme layout:
 
 **Rozdíl?**
 
-1)
+A)
 ```java
 ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
 View v = findViewById(R.id.inner_leaf);
 ```
-2)
+B)
 ```java
 ViewGroup vg = (ViewGroup)findViewById(R.id.inner_group);
 View v = vg.findViewById(R.id.inner_leaf);
 ```
 
-Pokud v Aktivitě voláme *findViewById()*, voláme tuto metodu od kořenového View postupně na všechny jeho ChildViews, dokud dané ID nenajdeme, nebo neprojdeme celou hierarchii. V případu 1 je postup prohledávání pro View v následovný:
-> root->leaf  
-> root->inner_group  
-> inner_group->inner_leaf
+Pokud v Aktivitě voláme *findViewById()*, voláme tuto metodu od kořenového View postupně na všechny jeho ChildViews, dokud dané ID nenajdeme, nebo neprojdeme celou hierarchii. V případu A je postup prohledávání pro View v následovný:
 
-V případu 2 je to jen:
-> inner_group->inner_leaf
+1. root->leaf  
+2. root->inner_group  
+3. inner_group->inner_leaf
 
-### Constraint Layout
-Novinka v Android Studiu od verze 2.2. Umožňuje vztváření ploché hierarchie views. Respektive dokáže nahradit složitý vnořený layout použitím jediného view - ConstraintLayoutu.
-Byl vytvořen pro nahrazení RelativeLayoutu, případně LinearLayoutu s použitím atributu weight, které jsou výpočetně náročné na fázi onMeasure. ConstraintLayout využívá matematických předpisů pro přesnou definici pozice a rozměrů jednotlivých svých potomků. Tím je umožňěno výpočetně rychlejší konstruování layoutu. Zároveň s ConstraintLayoutem přišel i nový editor, který umožňuje vytváření vzhledu pomocí wysiwyg nástroje. ConstraintLayout je navíc samostatná knihovna, takže může být použit v libovolné verzi Androidu.
+V případu B je to jen:
 
-```java
-dependencies {
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
-}
-```
-
-<div style="text-align: center;">
-    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
-</div>
+1. inner_group->inner_leaf
 
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
