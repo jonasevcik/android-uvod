@@ -7,7 +7,7 @@ Současné Android Studio využívá pro buildování systém [Gradle](https://d
 ## Gradle vs Gradle Wrapper
 Standalone instalaci Gradlu zřejmě při vývoji nepotkáme. Pro vývoj není potřeba, vystačíme si s Gradle Wrapperem. Plná instalace gradlu obsahuje navíc ukázkové skripty, dokumentaci a knihovny aj, které nemusíme využít.
 
-###Čistý projekt – Gradle Wrapper
+### Čistý projekt – Gradle Wrapper
 Obsahuje následující soubory. Je to minimální konfigurace, se kterou je gradle schopný fungovat. Před spuštěním nemusí být dokonce ani nainstalovaný.
 * gradle-wrapper.jar
 * properties soubor gradle-wrapper.properties
@@ -366,7 +366,7 @@ defaultConfig {
 Oficiální compiler od Googlu. Deprecated. Problémy při použití s knihovnami, které používají jiné compilery.
 
 #### Android Studio 3
-Přidává oficiání podporu syntaxe Javy 8. Stačí pouye specifikovat, že chcete používat Javu 8. Umí automaticky detekovat, že používáte Retrolambdu nebo Jack a nebude se snažit kompilovat kód do Javy 8 samo.
+Přidává oficiání podporu syntaxe Javy 8. Stačí pouze specifikovat, že chcete používat Javu 8. Umí automaticky detekovat, že používáte Retrolambdu nebo Jack a nebude se snažit kompilovat kód do Javy 8 samo.
 
 ```groovy
 android {
@@ -432,6 +432,22 @@ Při definování buildTypes jako debug a release a flavors jako free a paid obd
  paidRelease
 ```
 Soubory resp. Složky jsou slučovány postupně. Uvažujme situaci, kdy máme soubor MyClass.java v main, free a freeDebug složce. Nejdříve se provede merge main + free, pak se k výsledku operace připojí obsah z freeDebug. Výsledný použitý soubor tedy bude z freeDebug.
+
+## Dalvik
+Programy jsou pro Android psány v Javě nebo Kotlinu. Následně jsou přeloženy do bytekódu kompatibilního s JVM. Tento kód je dále přeložen do bytekódu Dalviku a uložen jako .dex (Dalvik EXecutable). Vzniklý kód je pak spouštěn na Dalvik VM.
+
+### JVM x Dalvik VM
+Dalvik používá architekturu založenou na registrech. Ta vyžaduje méně instrukcí, ale ty jsou zase více komplexní. To oproti JVM, která je založena na zásobníkovém stroji, umožňuje rychlejší chod na procesorech typu [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer).
+
+## ART
+Android Runtime od Androidu 5 nahradil Dalvik. S Dalvikem kvůli zpětné kompatibilitě sdílí formát bytekódu používaný v .dex souborech. Na rozdíl od Dalviku, který provádí interpretaci instrukcí (od verze 2.2 zefektivněnou o JIT), ART provádí AOT (ahead of time) kompilaci kódu. Kdy při instalaci aplikace je celý kód přeložen do nativních instrukcí daného stroje.
+
+### Multidex
+Formát dex pro adresaci v indexu metod používá jen [16 bitů](https://source.android.com/devices/tech/dalvik/dalvik-bytecode). Tím, je možné adresovat "jen" 2^16 = 65 536 metod v aplikaci.
+Se zvětšováním se zejména Support knihoven, není problém na tento limit narazit i pokud samotná aplikace je "malá". Při překročení kompilátor odmítne aplikaci zkompilovat. Naštěstí je možné aplikaci rozdělit do několika dex souborů a tím se limitu vyhnout:
+* [Enable Multidex](https://developer.android.com/studio/build/multidex.html)
+
+> Pozn. podobné omezení má např. i počet objektů typu String, který je indexovaný 16 bitovým integerem. Jde ovšem rozšířit na 32 bitový integer, při zapnutí _jumboMode_ v gradlu.
 
 ## Kam dál?
 * [How to distribute your own Android library through jCenter and Maven Central from Android Studio](http://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en)
