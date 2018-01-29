@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Toto je Android!](1-toto-je-android.md)
-* [User Interface, styly](2-user_interface,_styly.md)
+* [UI, layout, styly](2-user_interface,_styly.md)
 * [Aktivita, Intent, Fragment a životní cyklus](3-zivotni_cyklus.md)
 * [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)
