@@ -552,6 +552,31 @@ V případu B je to jen:
 
 1. inner_group->inner_leaf
 
+### Minimalizace překreslování
+U layoutů, kde dochází k překrývání jednotlivých vrstev (často např. FrameLayout) jsou části obrazovky několikrát překresleny, než dojde k vykreslení její finální podoby.
+
+Všimněte si zejména přechodu posteru. Nejdříve je vykresleno pozadí aktivity, pak pozadí toolbaru, následně obrázek pozadí a přes něj až samotný poster. Pixely v dané oblasti jsou tedy překresleny až 4x!
+
+<div style="text-align: center;">
+    <img src="./img/2-overdraw1.png" alt="Overdraw example" style="width: 200px; box-shadow: none;" />
+</div>
+
+Překreslování stejných pixelů samozřejmě zpomaluje celkové vykreslení - zpracovává se informace, která je stejně následně zahozena.
+
+_Aktivujte si detekci překreslování v Developer options:_
+
+<div style="text-align: center;">
+    <img src="./img/2-overdraw0.png" alt="Activate overdraw debugging" style="width: 200px; box-shadow: none;" />
+</div>
+
+Pokud si nedáváme pozor, můžeme jej do aplikace dostat např. jen pouhým používáním pozadí.
+
+_Scéna se zbytečně aktivovaným pozadím VS Scéna s odstraněným pozadím_
+<div style="text-align: center;">
+    <img src="./img/2-overdraw2.png" alt="Overdraw example 2" style="width: 200px; box-shadow: none;" />
+    <img src="./img/2-overdraw3.png" alt="Overdraw example 3" style="width: 200px; box-shadow: none;" />
+</div>
+
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
 * [Mastering CoordinatorLayout](http://saulmm.github.io/mastering-coordinator)
@@ -559,3 +584,4 @@ V případu B je to jen:
 * [Nanodegree na Udacity](https://www.udacity.com/course/android-developer-nanodegree--nd801) - oficiální online kurz Androidu
 * [Using styles and themes without going crazy](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1)
 * [ConstraintLayout codelab](https://codelabs.developers.google.com/codelabs/constraint-layout/index.html)
+* [Reducing Overdraw](https://developer.android.com/topic/performance/rendering/overdraw.html)
