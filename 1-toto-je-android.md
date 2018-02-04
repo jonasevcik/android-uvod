@@ -5,7 +5,7 @@
 
 Android běží na zařízeních s mnohdy slabým CPU a málo RAM, proto pro něj nemusí platit best practices, které znáte z Javy. I zvyklosti v pojmenovávání jsou jiné.
 
-## Pojmenování - _Hungarian notation_
+## Pojmenování atributů - _Hungarian notation_
 Privátní atributy mají prefix *m*. Statické atributy mají prefix *s*. Statické finální atributy jsou *CELE_KAPITALKAMI*. Ostatní jsou standardní *camelCase*.
 
 ```java
