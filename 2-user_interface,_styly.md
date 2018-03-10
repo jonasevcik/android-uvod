@@ -65,8 +65,7 @@
 
 ### Zpět
 * zpátky, kde jsem byl předtím
-* ![](/assets/2-back-up-1.png)na NavigationBaru (dole)
-
+* na NavigationBaru (dole)
 
 <div style="text-align: center;">
     <img src="./img/2-back-up-1.png" alt="Back, Up" style="width: 300px;" />
@@ -74,6 +73,24 @@
 <div style="text-align: center;">
     <img src="./img/2-back-up-2.png" alt="Back, Up" style="width: 300px;" />
 </div>
+
+## Toast
+* Rychlé oznámení
+* Neblokuje
+
+<div style="text-align: center;">
+    <img src="./img/2-toast.png" alt="Toast" style="width: 300px;" />
+</div>
+
+## SnackBar
+* Informace jako toast
+* Možno spojit s akcí
+
+<div style="text-align: center;">
+    <img src="./img/2-snackbar.png" alt="SnackBar" style="width: 300px;" />
+</div>
+
+## NavigationView / NavigationDrawer
 
 ## CoordinatorLayout
 FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
