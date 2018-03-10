@@ -5,27 +5,6 @@
 
 [Prezentace](https://docs.google.com/presentation/d/1Kuz_lo9TQp9H8U0hpqHlnvX4Qr4ruc-rnmo4hoLGIoU/edit?usp=sharing)
 
-### CoordinatorLayout
-FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
-
-<div style="text-align: center;">
-    <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 300px" />
-</div>
-
-### Constraint Layout
-Novinka v Android Studiu od verze 2.2. Umožňuje vztváření ploché hierarchie views. Respektive dokáže nahradit složitý vnořený layout použitím jediného view - ConstraintLayoutu.
-Byl vytvořen pro nahrazení RelativeLayoutu, případně LinearLayoutu s použitím atributu weight, které jsou výpočetně náročné na fázi onMeasure. ConstraintLayout využívá matematických předpisů pro přesnou definici pozice a rozměrů jednotlivých svých potomků. Tím je umožňěno výpočetně rychlejší konstruování layoutu. Zároveň s ConstraintLayoutem přišel i nový editor, který umožňuje vytváření vzhledu pomocí wysiwyg nástroje. ConstraintLayout je navíc samostatná knihovna, takže může být použit v libovolné verzi Androidu.
-
-```java
-dependencies {
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
-}
-```
-
-<div style="text-align: center;">
-    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
-</div>
-
 ## Hustota pixelů
 
 <div style="text-align: center;">
@@ -61,11 +40,60 @@ dependencies {
 
 ## Floating Action Button (FAB)
 <div style="text-align: center;">
-    <img src="./img/2-fab.png" alt="FAB" style="width: 150px;" />
+    <img src="./img/2-fab.png" alt="FAB" style="width: 250px;" />
 </div>
 
 <div style="text-align: center;">
-    <img src="./img/2-accessibility.png" alt="Touch Accessibility" style="width: 300px;" />
+    <img src="./img/2-accessibility.png" alt="Touch Accessibility" style="width: 500px;" />
+</div>
+
+## Taby
+
+* Dělení na sekce
+* Optimálně 3 taby max
+* Text / ikona / text + ikona
+
+<div style="text-align: center;">
+    <img src="./img/2-tabs.png" alt="Taby" style="width: 300px;" />
+</div>
+
+## Nahoru VS Zpět
+
+### Nahoru
+* nadřazená sekce
+* na ActionBaru (nahoře)
+
+### Zpět
+* zpátky, kde jsem byl předtím
+* ![](/assets/2-back-up-1.png)na NavigationBaru (dole)
+
+
+<div style="text-align: center;">
+    <img src="./img/2-back-up-1.png" alt="Back, Up" style="width: 300px;" />
+</div>
+<div style="text-align: center;">
+    <img src="./img/2-back-up-2.png" alt="Back, Up" style="width: 300px;" />
+</div>
+
+## CoordinatorLayout
+FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
+
+<div style="text-align: center;">
+    <img src="./img/2-coordinator-layout.gif" alt="CoordinatorLayout" style="width: 300px" />
+</div>
+
+## Constraint Layout
+Novinka v Android Studiu od verze 2.2. Umožňuje vztváření ploché hierarchie views. Respektive dokáže nahradit složitý vnořený layout použitím jediného view - ConstraintLayoutu.
+Byl vytvořen pro nahrazení RelativeLayoutu, případně LinearLayoutu s použitím atributu weight, které jsou výpočetně náročné na fázi onMeasure. ConstraintLayout využívá matematických předpisů pro přesnou definici pozice a rozměrů jednotlivých svých potomků. Tím je umožňěno výpočetně rychlejší konstruování layoutu. Zároveň s ConstraintLayoutem přišel i nový editor, který umožňuje vytváření vzhledu pomocí wysiwyg nástroje. ConstraintLayout je navíc samostatná knihovna, takže může být použit v libovolné verzi Androidu.
+
+```java
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+}
+```
+
+<div style="text-align: center;">
+    <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
 </div>
 
 # Drawables
