@@ -1,9 +1,6 @@
-![](/assets/2-themes.png)
 # Základní stavební prvky
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-bGtyYml1bjJxZkU/view?usp=sharing)
-
-[Prezentace](https://docs.google.com/presentation/d/1Kuz_lo9TQp9H8U0hpqHlnvX4Qr4ruc-rnmo4hoLGIoU/edit?usp=sharing)
 
 ## Hustota pixelů
 
