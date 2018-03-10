@@ -1,4 +1,4 @@
-
+![](/assets/2-themes.png)
 # Základní stavební prvky
 
 * [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-bGtyYml1bjJxZkU/view?usp=sharing)
@@ -24,6 +24,39 @@ dependencies {
 
 <div style="text-align: center;">
     <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
+</div>
+
+## Hustota pixelů
+
+<div style="text-align: center;">
+    <img src="./img/2-density-1.png" alt="Density" style="width: 500px;" />
+</div>
+<div style="text-align: center;">
+    <img src="./img/2-density-2.png" alt="Density" style="width: 500px;" />
+</div>
+<div style="text-align: center;">
+    <img src="./img/2-density-3.png" alt="Density" style="width: 500px;" />
+</div>
+
+## ActionBar, Toolbar
+* Hlavní branding
+* Rychlý přístup k akcím
+
+<div style="text-align: center;">
+    <img src="./img/2-actionbar-1.png" alt="ActionBar" style="width: 300px;" />
+</div>
+<div style="text-align: center;">
+    <img src="./img/2-actionbar-2.png" alt="ActionBar" style="width: 300px;" />
+</div>
+<div style="text-align: center;">
+    <img src="./img/2-toolbar.png" alt="Toolbar" style="width: 300px;" />
+</div>
+
+## Contextual ActionBar
+* Selekce, hromadné akce
+
+<div style="text-align: center;">
+    <img src="./img/2-contextualactionbar.png" alt="ContextualActionBar" style="width: 300px;" />
 </div>
 
 # Drawables
@@ -230,6 +263,11 @@ TextAppearance atributy:
 <li>fontFeatureSettings</li>
 </ul>
 <div style="clear: both;"></div>
+</div>
+
+## Theme
+<div style="text-align: center;">
+    <img src="./img/2-themes.png" alt="Témata" style="width: 300px;" />
 </div>
 
 ## Holo
@@ -585,6 +623,7 @@ _Scéna se zbytečně aktivovaným pozadím VS Scéna s odstraněným pozadím_
 <hr/>
 
 # Kam dál?
+* [Android Design Principles](https://developer.android.com/design/get-started/principles.html)
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
 * [Mastering CoordinatorLayout](http://saulmm.github.io/mastering-coordinator)
 * mDevCamp 2013 [Optimalizace UI](https://www.youtube.com/watch?v=X_TJOSNzNug)
