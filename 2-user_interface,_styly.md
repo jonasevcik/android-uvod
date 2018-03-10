@@ -68,8 +68,6 @@ dependencies {
     <img src="./img/2-accessibility.png" alt="Touch Accessibility" style="width: 300px;" />
 </div>
 
-![](/assets/2-fab.png)
-
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
 
@@ -636,6 +634,7 @@ _Scéna se zbytečně aktivovaným pozadím VS Scéna s odstraněným pozadím_
 # Kam dál?
 * [Android Design Principles](https://developer.android.com/design/get-started/principles.html)
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
+* [Materialdoc](https://materialdoc.com/)
 * [Mastering CoordinatorLayout](http://saulmm.github.io/mastering-coordinator)
 * mDevCamp 2013 [Optimalizace UI](https://www.youtube.com/watch?v=X_TJOSNzNug)
 * [Nanodegree na Udacity](https://www.udacity.com/course/android-developer-nanodegree--nd801) - oficiální online kurz Androidu
