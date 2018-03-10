@@ -59,6 +59,17 @@ dependencies {
     <img src="./img/2-contextualactionbar.png" alt="ContextualActionBar" style="width: 300px;" />
 </div>
 
+## Floating Action Button (FAB)
+<div style="text-align: center;">
+    <img src="./img/2-fab.png" alt="FAB" style="width: 150px;" />
+</div>
+
+<div style="text-align: center;">
+    <img src="./img/2-accessibility.png" alt="Touch Accessibility" style="width: 300px;" />
+</div>
+
+![](/assets/2-fab.png)
+
 # Drawables
 Drawable je klasický PNG obrázek, ale klidně i XML definice vektorového obrázku.
 
