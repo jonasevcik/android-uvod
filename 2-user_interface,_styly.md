@@ -91,6 +91,13 @@
 </div>
 
 ## NavigationView / NavigationDrawer
+* Kategorizace
+* Subkategorie
+* Netlačit na sílu
+
+<div style="text-align: center;">
+    <img src="./img/2-navigationdrawer.png" alt="NavigationDrawer" style="width: 300px;" />
+</div>
 
 ## CoordinatorLayout
 FrameLayout na steroidech. Umožňuje vytváření UI s animacemi, kdy jednotliví potomci jsou na základě definovaných chování (behaviors) spoečně animováni ze stavu A do stavu B. Jedná se o jeden ze stěžejních prvků Material designu.
@@ -111,6 +118,12 @@ dependencies {
 
 <div style="text-align: center;">
     <img src="./img/2-constraint-layout.png" alt="Constraint layout" style="width: 550px;" />
+</div>
+
+## Design Apple VS Android
+
+<div style="text-align: center;">
+    <img src="./img/2-apple-vs-android.png" alt="Apple VS Android" style="width: 500px;" />
 </div>
 
 # Drawables
