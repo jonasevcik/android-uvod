@@ -577,6 +577,13 @@ _Scéna se zbytečně aktivovaným pozadím VS Scéna s odstraněným pozadím_
     <img src="./img/2-overdraw3.png" alt="Overdraw example 3" style="width: 200px; box-shadow: none;" />
 </div>
 
+<hr/>
+> “Dobří umělci kopírují, skvělí kradou.”
+>
+> &mdash; <cite>Pablo Picasso</cite>
+
+<hr/>
+
 # Kam dál?
 * [oficiální Google materiály](http://developer.android.com/training/index.html)
 * [Mastering CoordinatorLayout](http://saulmm.github.io/mastering-coordinator)
