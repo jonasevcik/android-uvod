@@ -71,7 +71,7 @@
     <img src="./img/2-back-up-1.png" alt="Back, Up" style="width: 300px;" />
 </div>
 <div style="text-align: center;">
-    <img src="./img/2-back-up-2.png" alt="Back, Up" style="width: 300px;" />
+    <img src="./img/2-back-up2.png" alt="Back, Up" style="width: 300px;" />
 </div>
 
 ## Toast
