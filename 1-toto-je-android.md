@@ -53,6 +53,8 @@ Vyzkoušejte, jak vám vyhovují nastavení jiných:
 * [Square](https://github.com/square/java-code-styles)
 * [Avast](https://github.com/avast/android-styled-dialogs/blob/master/code-formatting-config.xml)
 
+## Kotlin Style Guide
+* [Android Kotlin Guides](https://android.github.io/kotlin-guides/style.html)
 
 ## Naučte se používat zkratky
 Pro naučení efektivní práce v IDE se nechte otravovat následujícím [Key promoter](https://plugins.jetbrains.com/plugin/4455) pluginem.
