@@ -593,12 +593,6 @@ UI není jen ploché (flat). Jednotlivé prvky jsou skládány a seskupovány po
       </div>
 </div>
 
-* Theme editor - jednoduchá definice barev
-
-<div style="text-align: center;">
-    <img src="./img/2-theme-editor.png" alt="Theme editor" style="max-width: 400px;" />
-</div>
-
 * Extrakce stylu z View
 
 <div style="text-align: center;">
