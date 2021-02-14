@@ -1,63 +1,75 @@
+# Synchronizace
+
 ## Synchronizace dat - SyncAdapter
 
-* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-eTl5a1BYZG1TbVk/view?usp=sharing)
+* [Záznam z přednášky \(mp3\)](https://drive.google.com/file/d/0B2ZerSqwiAA-eTl5a1BYZG1TbVk/view?usp=sharing)
 
 [SyncAdapter](https://developer.android.com/reference/android/content/AbstractThreadedSyncAdapter.html) slouží ke zpracování operací na pozadí. Typicky synchronizace dat mezi zařízením a serverem. Registruje se u SyncManageru, který je společný pro celý systém a stará se o spouštění synchronizace - pokud je explicitně vyžádána nebo naplánována.
 
 Proč používat SyncAdapter, když toto obstará i Service?
+
 * **Optimální plánování** - Synchronizace jsou plánovány centrálně, takže jsou slučovány požadavky od více aplikací do dávek a ty jsou prováděny zaráz.
-    * [Efficient Data Transfers - Understanding the Cell Radio](https://www.youtube.com/watch?v=cSIB2pDvH3E)
+  * [Efficient Data Transfers - Understanding the Cell Radio](https://www.youtube.com/watch?v=cSIB2pDvH3E)
 * **Synchronizace jen při změnách** - SyncAdapter může sledovat změny provedené ContentProviderem a synchronizovat jen v případě, že ke změně dojde
-* **Automatické opakování požadavků** - pokud aktualizace selže (není internet, nedostupný server), provede se časem znovu, případně, až bude připojení k internetu
+* **Automatické opakování požadavků** - pokud aktualizace selže \(není internet, nedostupný server\), provede se časem znovu, případně, až bude připojení k internetu
 * **Součást systémového nastavení** - uživatel může ovlivnit, zda bude synchronizace probíhat
 
 ### Automatická synchronizace
-*ContentResolver.setSyncAutomatically()* slouží pro vyvolání automatické synchronizace, když obdrží "network tickle" - typicky push notifikaci GCM.
 
-#### Google Cloud Messaging ([GCM](https://developers.google.com/cloud-messaging/))
+_ContentResolver.setSyncAutomatically\(\)_ slouží pro vyvolání automatické synchronizace, když obdrží "network tickle" - typicky push notifikaci GCM.
+
+#### Google Cloud Messaging \([GCM](https://developers.google.com/cloud-messaging/)\)
+
 Abychom se nemuseli neustále doptávat serveru, jestli se něco změnilo, je lepší použít push notifikace a nechat se informovat ze strany serveru a pak až aktualizovat data.
 
 ### Pravidelná synchronizace
-Pro pravidelnou synchronizaci je nutné mít zapnutou automatickou synchronizaci, jinak nefunguje. *ContentResolver.addPeriodicSync()* - umožňuje naplánovat pravidelné aktualizace v uvedeném intervalu. Tyto aktualizace jsou ale provedeny jen pokud je dostupný internet. Taktéž nemusí být vyvolány přesně po uplynutí uvedeného intervalu, ale později, až bude synchronizovat více aplikací.
+
+Pro pravidelnou synchronizaci je nutné mít zapnutou automatickou synchronizaci, jinak nefunguje. _ContentResolver.addPeriodicSync\(\)_ - umožňuje naplánovat pravidelné aktualizace v uvedeném intervalu. Tyto aktualizace jsou ale provedeny jen pokud je dostupný internet. Taktéž nemusí být vyvolány přesně po uplynutí uvedeného intervalu, ale později, až bude synchronizovat více aplikací.
 
 ### Manuální synchronizace
-*ContentResolver.requestSync()* slouží k vyvolání synchronizace ve chvíli, kdy ji potřebujeme. Jeden z parametrů je Bundle. Do Bundlu je potřeba specifikovat parametry synchronizace:
-* SYNC_EXTRAS_MANUAL – vynutí synchronizaci, ikdyž je vypnuté automatické synchronizování
-* SYNC_EXTRAS_EXPEDITED - vynutí synchronizaci ihned, bez čekání na optimální okamžik
+
+_ContentResolver.requestSync\(\)_ slouží k vyvolání synchronizace ve chvíli, kdy ji potřebujeme. Jeden z parametrů je Bundle. Do Bundlu je potřeba specifikovat parametry synchronizace:
+
+* SYNC\_EXTRAS\_MANUAL – vynutí synchronizaci, ikdyž je vypnuté automatické synchronizování
+* SYNC\_EXTRAS\_EXPEDITED - vynutí synchronizaci ihned, bez čekání na optimální okamžik
 
 ### Synchronizace při změně lokálních dat
-Pro synchronizaci při změně lokálních dat potřebujeme vytvořit třídu rozšiřující [ContentObserver](http://developer.android.com/reference/android/database/ContentObserver.html). Ta by v metodě *onChange()* měla volat *requestSync()*. Použití ContentObserveru je směřováno tomto případě na viditelný cyklus aplikace - tam je přímá interakce od uživatele, který mění data. ContentObserver je třeba registrovat *ContentResolver.registerContentObserver()* na URI. Pokud na této URI provedena změna, je ContentObserver notifikován.
+
+Pro synchronizaci při změně lokálních dat potřebujeme vytvořit třídu rozšiřující [ContentObserver](http://developer.android.com/reference/android/database/ContentObserver.html). Ta by v metodě _onChange\(\)_ měla volat _requestSync\(\)_. Použití ContentObserveru je směřováno tomto případě na viditelný cyklus aplikace - tam je přímá interakce od uživatele, který mění data. ContentObserver je třeba registrovat _ContentResolver.registerContentObserver\(\)_ na URI. Pokud na této URI provedena změna, je ContentObserver notifikován.
 
 ### Rušení synchronizace
-*ContentResolver.cancelSync()* slouží ke zrušení už naplánované synchronizace, pokud ještě nebyla spuštěna.
+
+_ContentResolver.cancelSync\(\)_ slouží ke zrušení už naplánované synchronizace, pokud ještě nebyla spuštěna.
 
 ## Implementace synchronizace
+
 1. Vytvoření account authenticatoru - bude použit pro autentifikaci v SyncAdapteru
 2. Vytvoření SyncAdapteru - rozhraní pro veškeré synchronizace včetně jejich aplikační logiky
 3. Vytvoření SyncService - Service, které bude spouštět SyncAdapter a poskytovat mu Context
 4. Propojení všech částí
 
 ### 1. AccountAuthenticator
+
 [AccountAuthenticator](http://developer.android.com/reference/android/accounts/AbstractAccountAuthenticator.html) je komponenta, která má na starosti autentizaci uživatelů jejich přihlašovacími údaji oproti serveru. Po úspěšném ověření si uloží autorizační token, který se dále používá a uživatel se nemusí neustále znovu logovat. Zalogování je vyžadováno jen po vypršení platnosti tokenu nebo změně hesla
 
-SyncAdapter ve své definici očekává, že budete mít vytvořený AccountAuthenticator, protože synchronizace jsou asociovány vždy s určitým typem účtu (např. Google) a případně ještě uživatelem toho účtu (např. user@google.com). Taktéž očekává uvedenou authority (ContentProvider).
+SyncAdapter ve své definici očekává, že budete mít vytvořený AccountAuthenticator, protože synchronizace jsou asociovány vždy s určitým typem účtu \(např. Google\) a případně ještě uživatelem toho účtu \(např. user@google.com\). Taktéž očekává uvedenou authority \(ContentProvider\).
 
 Pokud nechcete používat při synchronizaci ContentProvider - nemusíte. Authority je jen String, takže stačí uvést libovolný. Pokud v aplikaci nemáte uživatelské účty, je potřeba vytvořit fake AccountAuthenticator s prázdným účtem. Ten bude sloužit k asociaci synchronizací s naší aplikací - systémový ContentResolver musí vědět, kdo synchronizaci žádá, aby požadavek vyřídil.
 
 ```java
 public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
- 
+
     public UpdaterAuthenticator(Context context) {
         super(context);
     }
- 
+
     // No properties to edit.
     @Override
     public Bundle editProperties(
             AccountAuthenticatorResponse r, String s) {
         throw new UnsupportedOperationException();
     }
- 
+
     // Because we're not actually adding an account to the device, just return null.
     @Override
     public Bundle addAccount(
@@ -68,7 +80,7 @@ public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
             Bundle bundle) throws NetworkErrorException {
         return null;
     }
- 
+
     // Ignore attempts to confirm credentials
     @Override
     public Bundle confirmCredentials(
@@ -77,7 +89,7 @@ public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
             Bundle bundle) throws NetworkErrorException {
         return null;
     }
- 
+
     // Getting an authentication token is not supported
     @Override
     public Bundle getAuthToken(
@@ -87,13 +99,13 @@ public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
             Bundle bundle) throws NetworkErrorException {
         throw new UnsupportedOperationException();
     }
- 
+
     // Getting a label for the auth token is not supported
     @Override
     public String getAuthTokenLabel(String s) {
         throw new UnsupportedOperationException();
     }
- 
+
     // Updating user credentials is not supported
     @Override
     public Bundle updateCredentials(
@@ -102,7 +114,7 @@ public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
             String s, Bundle bundle) throws NetworkErrorException {
         throw new UnsupportedOperationException();
     }
- 
+
     // Checking features for the account is not supported
     @Override
     public Bundle hasFeatures(
@@ -120,13 +132,13 @@ public class UpdaterAuthenticator extends AbstractAccountAuthenticator {
 public class UpdaterAuthenticatorService extends Service {
     // Instance field that stores the authenticator object
     private UpdaterAuthenticator mAuthenticator;
- 
+
     @Override
     public void onCreate() {
         // Create a new authenticator object
         mAuthenticator = new UpdaterAuthenticator(this);
     }
- 
+
     /*
      * When the system binds to this Service to make the RPC call
      * return the authenticator's IBinder.
@@ -139,21 +151,22 @@ public class UpdaterAuthenticatorService extends Service {
 ```
 
 ### 2. SyncAdapter
-Tvoří se jako rozšíření třídy [AbstractThreadedSyncAdapter](http://developer.android.com/reference/android/content/AbstractThreadedSyncAdapter.html), kde se implementuje metoda *onPerformSync()*. Tělo této metody je vykonáváno v 2. vlákně.
 
-SyncAdapter je vždy asociován s 1 typem účtu. S tímto typem účtu však na 1 zařízení může být přihlášeno několik uživatelů, proto *onPerformSync()* dostává v paramatru o který účet (uživatele) se jedná.
+Tvoří se jako rozšíření třídy [AbstractThreadedSyncAdapter](http://developer.android.com/reference/android/content/AbstractThreadedSyncAdapter.html), kde se implementuje metoda _onPerformSync\(\)_. Tělo této metody je vykonáváno v 2. vlákně.
+
+SyncAdapter je vždy asociován s 1 typem účtu. S tímto typem účtu však na 1 zařízení může být přihlášeno několik uživatelů, proto _onPerformSync\(\)_ dostává v paramatru o který účet \(uživatele\) se jedná.
 
 ```java
 public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
- 
+
     // Interval at which to sync with the server, in seconds.
     public static final int SYNC_INTERVAL = 60 * 60 * 24; //day
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
- 
+
     public UpdaterSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
     }
- 
+
     /**
      * Helper method to schedule the sync adapter periodic execution
      */
@@ -172,7 +185,7 @@ public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
             ContentResolver.addPeriodicSync(account, authority, Bundle.EMPTY, syncInterval);
         }
     }
- 
+
     /**
      * Helper method to have the sync adapter sync immediately
      *
@@ -184,11 +197,11 @@ public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
         ContentResolver.requestSync(getSyncAccount(context), context.getString(R.string.content_authority), bundle);
     }
- 
+
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
     }
- 
+
     /**
      * Helper method to get the fake account to be used with SyncAdapter, or make a new one if the
      * fake account doesn't exist yet.  If we make a new account, we call the onAccountCreated
@@ -200,13 +213,13 @@ public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
     public static Account getSyncAccount(Context context) {
         // Get an instance of the Android account manager
         AccountManager accountManager = (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
- 
+
         // Create the account type and default account
         Account newAccount = new Account(context.getString(R.string.app_name), context.getString(R.string.sync_account_type));
- 
+
         // If the password doesn't exist, the account doesn't exist
         if (null == accountManager.getPassword(newAccount)) {
- 
+
         /*
          * Add the account and account type, no password or user data
          * If successful, return the Account object, otherwise report an error.
@@ -220,29 +233,29 @@ public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
              * then call ContentResolver.setIsSyncable(account, AUTHORITY, 1)
              * here.
              */
- 
+
             onAccountCreated(newAccount, context);
         }
         return newAccount;
     }
- 
+
     private static void onAccountCreated(Account newAccount, Context context) {
         /*
          * Since we've created an account
          */
         UpdaterSyncAdapter.configurePeriodicSync(context, SYNC_INTERVAL, SYNC_FLEXTIME);
- 
+
         /*
          * Without calling setSyncAutomatically, our periodic sync will not be enabled.
          */
         ContentResolver.setSyncAutomatically(newAccount, context.getString(R.string.content_authority), true);
- 
+
         /*
          * Finally, let's do a sync to get things started
          */
         syncImmediately(context);
     }
- 
+
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
         //TODO update
@@ -251,6 +264,7 @@ public class UpdaterSyncAdapter extends AbstractThreadedSyncAdapter {
 ```
 
 ### 3. SyncService
+
 SyncAdapter potřebuje ke svému spuštění Service pocházející z naší aplikace. Pokud by nebyl spuštěn z naší aplikace, neměl by práva na přístup ke zdrojům této aplikace, jako je třeba Account, nebo ContentProvider.
 
 To souvisí se sandboxováním aplikací. Každá aplikace je spuštěna ve vlastním procesu s unikátním user id. Zdroje patřící dané aplikaci má práva využívat pouze stejné UID.
@@ -260,10 +274,10 @@ To souvisí se sandboxováním aplikací. Každá aplikace je spuštěna ve vlas
 
 ```java
 public class UpdaterSyncService extends Service {
- 
+
     private static final Object LOCK = new Object();
     private static UpdaterSyncAdapter sUpdaterSyncAdapter = null;
- 
+
     @Override
     public void onCreate() {
         synchronized (LOCK) {
@@ -272,7 +286,7 @@ public class UpdaterSyncService extends Service {
             }
         }
     }
- 
+
     @Override
     public IBinder onBind(Intent intent) {
         return sUpdaterSyncAdapter.getSyncAdapterBinder();
@@ -281,32 +295,35 @@ public class UpdaterSyncService extends Service {
 ```
 
 ### 4. Propojení všech částí
-*MainActivity.onCreate:*
+
+_MainActivity.onCreate:_
+
 ```java
 UpdaterSyncAdapter.initializeSyncAdapter(this);
 ```
 
-*Manifest.xml*
-```xml
+_Manifest.xml_
+
+```markup
 <manifest>
     <!-- Permissions required by the sync adapter -->
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
- 
+
     <application>
- 
+
         <!-- SyncAdapter's dummy authentication service -->
         <service android:name=".sync.UpdaterAuthenticatorService" >
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
- 
+
             <meta-data
                     android:name="android.accounts.AccountAuthenticator"
                     android:resource="@xml/authenticator" />
         </service>
- 
+
         <!-- The SyncAdapter service -->
         <service
                 android:name=".sync.UpdaterSyncService"
@@ -314,19 +331,20 @@ UpdaterSyncAdapter.initializeSyncAdapter(this);
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
             </intent-filter>
- 
+
             <meta-data
                     android:name="android.content.SyncAdapter"
                     android:resource="@xml/syncadapter" />
         </service>
- 
+
     </application>
- 
+
 </manifest>
 ```
 
-*res/xml/authenticator.xml*
-```xml
+_res/xml/authenticator.xml_
+
+```markup
 <?xml version="1.0" encoding="utf-8"?>
 <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
                        android:accountType="@string/sync_account_type"
@@ -335,8 +353,9 @@ UpdaterSyncAdapter.initializeSyncAdapter(this);
                        android:smallIcon="@drawable/ic_account_small" />
 ```
 
-*res/xml/syncadapter.xml*
-```xml
+_res/xml/syncadapter.xml_
+
+```markup
 <?xml version="1.0" encoding="utf-8"?>
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:contentAuthority="@string/content_authority"
@@ -352,11 +371,13 @@ UpdaterSyncAdapter.initializeSyncAdapter(this);
 * **userVisible** - je viditelné v systémových settings
 * **allowParallelSyncs** - umožňuje synchronizovat zaráz několik uživatelských účtů
 * **isAlwaysSyncable** - umožňuje vyvolání synchronizace
-* **supportsUploading** - umožňuje reagování na změny v ContentProvideru. Pokud v něm dojde ke změně, a je aktivováno * supportsUploading, pak SyncAdapter obdrží v *onPerformSync()* v Bundlu příznak ContentResolver.SYNC_EXTRAS_UPLOAD, identifikující, že jde o změnu, která by se měla zpropagovat na server. Hlášení těchto změn ovlivňuje ContentProvider voláním *ContentResolver.notifyChange()* a nastavením 3 argumentu na true - pokud chceme dostat zprávu o této synchronizaci pro upload, false, pokud ji chceme ignorovat.
+* **supportsUploading** - umožňuje reagování na změny v ContentProvideru. Pokud v něm dojde ke změně, a je aktivováno  _supportsUploading, pak SyncAdapter obdrží v_ onPerformSync\(\) _v Bundlu příznak ContentResolver.SYNC\_EXTRAS\_UPLOAD, identifikující, že jde o změnu, která by se měla zpropagovat na server. Hlášení těchto změn ovlivňuje ContentProvider voláním_ ContentResolver.notifyChange\(\)\* a nastavením 3 argumentu na true - pokud chceme dostat zprávu o této synchronizaci pro upload, false, pokud ji chceme ignorovat.
 
 ## Kam dál?
+
 * [Write your own Android Sync Adapter](http://blog.udinic.com/2013/07/24/write-your-own-android-sync-adapter/)
 * [Transferring Data Using Sync Adapters](https://developer.android.com/training/sync-adapters/index.html)
 * [Creating a Sync Adapter](https://developer.android.com/training/sync-adapters/index.html)
 * [Creating a Stub Authenticator](https://developer.android.com/training/sync-adapters/creating-authenticator.html)
 * [Running a Sync Adapter](https://developer.android.com/training/sync-adapters/running-sync-adapter.html)
+

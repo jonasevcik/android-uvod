@@ -1,60 +1,64 @@
+# Seznamy
+
 ## ListView, GridView
 
-* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-QWFRUEZXcWFQMVE/view?usp=sharing)
+* [Záznam z přednášky \(mp3\)](https://drive.google.com/file/d/0B2ZerSqwiAA-QWFRUEZXcWFQMVE/view?usp=sharing)
 
-(Co je zde psáno o [ListView](http://developer.android.com/reference/android/widget/ListView.html), platí stejně pro [GridView](http://developer.android.com/reference/android/widget/GridView.html), který se chová identicky, jen zobrazuje data ve více sloupcích.) Pro zobrazení dat na telefonu jsou velmi vhodné seznamy nebo mřížka – přirozený způsob reprezentace dat. Je to speciální druh ViewGroup, který neprovádí své kompletní vykreslování po inflatování. O to se stará tzv. Adaptér. Důvodem je, že ListView může obsahovat rozsáhlé kolekce dat a generování layoutu by způsobovalo lag v UI, jelikož veškeré operace nad Views se provádí v hlavním vlákně. Adaptér se stará o uchování dat a zprostředkování vykreslení layoutu jen těch položek, které jsou aktuálně na displeji viditelné (+ nějaké Views do rezervy pro snížení odezvy). Obstarává též operace nad kolekcí zdrojových dat, aktualizaci vzhledu asociovaného listview, filtrování dat…
-
+\(Co je zde psáno o [ListView](http://developer.android.com/reference/android/widget/ListView.html), platí stejně pro [GridView](http://developer.android.com/reference/android/widget/GridView.html), který se chová identicky, jen zobrazuje data ve více sloupcích.\) Pro zobrazení dat na telefonu jsou velmi vhodné seznamy nebo mřížka – přirozený způsob reprezentace dat. Je to speciální druh ViewGroup, který neprovádí své kompletní vykreslování po inflatování. O to se stará tzv. Adaptér. Důvodem je, že ListView může obsahovat rozsáhlé kolekce dat a generování layoutu by způsobovalo lag v UI, jelikož veškeré operace nad Views se provádí v hlavním vlákně. Adaptér se stará o uchování dat a zprostředkování vykreslení layoutu jen těch položek, které jsou aktuálně na displeji viditelné \(+ nějaké Views do rezervy pro snížení odezvy\). Obstarává též operace nad kolekcí zdrojových dat, aktualizaci vzhledu asociovaného listview, filtrování dat…
 
 ## Adapter
-Implementace rozhraní Adapter. Pro použití do ListView můžete vytvořit vlastní implementaci, ale je vhodnější si vybrat buď nějakou hotovou, nebo si takovou implementaci vhodně rozšířit. Např. pro základní použití je vhodný ArrayAdapter, který jako zdroj dat využívá pole. Pro získání vlastního vzhledu stačí překrýt metodu getView(int position, View convertView, ViewGroup parent). Při použití BaseAdapteru je potřeba implementovat:
-* *getItem()*
-* *getCount()* – zde vracet počet prvků zdrojové kolekce dat
-* *hasStableIds()* – false pokud měníme za chodu prvky (mažeme, přidáváme)
-* *getItemId()* – nevracet jako id pozici. Na základě id ListView pozná o jaký prvek se jedná a pokud bychom např. z prostředku listu odmazali jednu položku, tak by neaktualizoval správně vzhled. Je lepší vracet např. hash dané položky.
-* *getViewTypeCount()* – zde vracet konstantu, podle toho kolik máme druhů položek. (Ve většině případů to bude 1)
 
+Implementace rozhraní Adapter. Pro použití do ListView můžete vytvořit vlastní implementaci, ale je vhodnější si vybrat buď nějakou hotovou, nebo si takovou implementaci vhodně rozšířit. Např. pro základní použití je vhodný ArrayAdapter, který jako zdroj dat využívá pole. Pro získání vlastního vzhledu stačí překrýt metodu getView\(int position, View convertView, ViewGroup parent\). Při použití BaseAdapteru je potřeba implementovat:
+
+* _getItem\(\)_
+* _getCount\(\)_ – zde vracet počet prvků zdrojové kolekce dat
+* _hasStableIds\(\)_ – false pokud měníme za chodu prvky \(mažeme, přidáváme\)
+* _getItemId\(\)_ – nevracet jako id pozici. Na základě id ListView pozná o jaký prvek se jedná a pokud bychom např. z prostředku listu odmazali jednu položku, tak by neaktualizoval správně vzhled. Je lepší vracet např. hash dané položky.
+* _getViewTypeCount\(\)_ – zde vracet konstantu, podle toho kolik máme druhů položek. \(Ve většině případů to bude 1\)
 
 ## Best Practices
+
 Pro zrychlení responzivity dochází k recyklování jednotlivých Views položek. Protože tvorba layoutu je výpočetně náročná – layout se rekurzivně vyměřuje a následně vykresluje na Canvas. Musíme ale recyklaci správně naimplementovat. Ve verzích do 5.0 Android jen podává prostředky k recyklaci, dělat ji ale musíme sami. Layout tedy inflatujeme jen 1x a dále používáme layout z convertView a jen setujeme jiné hodnoty.
 
-###ViewHolder
+### ViewHolder
+
 Pomocná třída, která si pamatuje referenci na Views se kterými u getView pracujeme. Hledání view pomocí ID chvíli trvá, proto je vhodné jej dělat jen 1x a dále cachovat pomocí ViewHolderu.
 
 ```java
 public class FooAdapter extends BaseAdapter {
- 
+
     private Context mContext;
     private List<Bar> mData;
- 
+
     public FooAdapter(Context context, List<Bar> data) {
         mContext = context;
         mData = data;
     }
- 
+
     @Override
     public int getCount() {
         return mData.size();
     }
- 
+
     @Override
     public Object getItem(int i) {
         return mData.get(i);
     }
- 
+
     @Override
     public long getItemId(int i) {
         return mData.get(i).getNumber();
     }
- 
+
     @Override
     public int getViewTypeCount() {
         return 1;
     }
- 
+
     private static class ViewHolder {
         TextView view;
     }
- 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -71,10 +75,11 @@ public class FooAdapter extends BaseAdapter {
  }
 ```
 
-###Fixní rozměry položky
+### Fixní rozměry položky
+
 Abychom nebrzdili Listview přepočítáváním layoutu, je vhodné využít fixní rozměry položek. U listview stačí fixní výška, u gridview i šířka. Pokud se nám to hodí, můžeme použít přímo atribut **?android:attr/listPreferredItemHeight**
 
-```xml
+```markup
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight" 
@@ -95,18 +100,17 @@ Abychom nebrzdili Listview přepočítáváním layoutu, je vhodné využít fix
 </LinearLayout>
 ```
 
-###Správné inflatování
+### Správné inflatování
+
 Pro inflatování nepoužívejte
 
 ```java
 convertView = inflate(R.layout.item_row, null);
 ```
 
-Veškeré parametry *android:layout_*+ kořenového view inflatovaného layoutu jsou posuzovány ve vztahu k nadřazenému parent view. Pokud tedy nadřazený layout neuvedete, budou zahozeny a nahrazeny defaultními hodnotami. Což můžou být zrovna ty, co jste definovali, takže na první pohled nic nepoznáte.
+Veškeré parametry _android:layout\__+ kořenového view inflatovaného layoutu jsou posuzovány ve vztahu k nadřazenému parent view. Pokud tedy nadřazený layout neuvedete, budou zahozeny a nahrazeny defaultními hodnotami. Což můžou být zrovna ty, co jste definovali, takže na první pohled nic nepoznáte.
 
-<div style="text-align: center;">
-    <img src="./img/3-list-wrong.png" alt="Seznam špatně" style="width: 300px;" />
-</div>
+![Seznam &#x161;patn&#x11B;](.gitbook/assets/3-list-wrong.png)
 
 Pokud naopak provedete inflate správně, tzn. použijete druhou metodu
 
@@ -116,21 +120,17 @@ convertView = inflater.inflate(R.layout.item_row, parent, false);
 
 pak uvádíte parent view, jen se nepoužije pro vložení nainflatovaného layoutu - a to je kýžený výsledek.
 
-<div style="text-align: center;">
-    <img src="./img/3-list-right.png" alt="Seznam správně" style="width: 300px;" />
-</div>
+![Seznam spr&#xE1;vn&#x11B;](.gitbook/assets/3-list-right.png)
 
 ## Žádná data
 
 Pokud list neobsahuje žádná data, není dobré jej nechat jen tak prázdný. Uživatel neví, jestli je to chyba, nebo úmysl. Je tedy dobré zobrazit minimálně text vysvětlující důvod prázdného seznamu, případně ideogram se stejným sdělením, nebo obojí.
 
-<div style="text-align: center;">
-    <img src="./img/3-list-no-data.png" alt="Prázdný seznam" style="width: 300px;" />
-</div>
+![Pr&#xE1;zdn&#xFD; seznam](.gitbook/assets/3-list-no-data.png)
 
-ListView s touto situací počítá a má k dispozici emptyView. Pokud používáte [ListActivity](http://developer.android.com/reference/android/app/ListActivity.html) nebo [ListFragment](http://developer.android.com/reference/android/app/ListFragment.html), stačí když ListView označíte *@android:id/list* a View který se má zobrazit, když je seznam prázdný *@android:id/empty*. ListView podle své velikosti dat ovládá visibility u emptyView. Pokud nepracujete v ListActivity ani ListFragmentu, stačí na ListView zavolat *setEmptyView()* a emptyView mu nastavit.
+ListView s touto situací počítá a má k dispozici emptyView. Pokud používáte [ListActivity](http://developer.android.com/reference/android/app/ListActivity.html) nebo [ListFragment](http://developer.android.com/reference/android/app/ListFragment.html), stačí když ListView označíte _@android:id/list_ a View který se má zobrazit, když je seznam prázdný _@android:id/empty_. ListView podle své velikosti dat ovládá visibility u emptyView. Pokud nepracujete v ListActivity ani ListFragmentu, stačí na ListView zavolat _setEmptyView\(\)_ a emptyView mu nastavit.
 
-```xml
+```markup
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
@@ -151,57 +151,57 @@ ListView s touto situací počítá a má k dispozici emptyView. Pokud použív�
 
 * [ViewStub](http://developer.android.com/reference/android/view/ViewStub.html) je použit proto, že jeho layout se inflatuje až v situaci, když je jeho visibility nastavena na VISIBLE.
 
-##Více druhů dat/položek
+## Více druhů dat/položek
 
 Pokud pracujeme s adaptérem, který vykresluje více než 1 druh položky, tak také recyklování probíhá odlišně. Je nutné rozlišovat aktuální typ dat a podle toho použít vhodný tag pro viewholder. Tagy se od sebe odliší pomocí id použitého layoutu pro daný item.
 
 ```java
 public class DoubleFooAdapter extends BaseAdapter {
- 
+
     private static final int TYPE_BAR = 0;
     private static final int TYPE_BARBAR = 1;
- 
+
     private Context mContext;
     private List<Object> mData;
- 
+
     public DoubleFooAdapter(Context context, List<Object> data) {
         mContext = context;
         mData = data;
     }
- 
+
     @Override
     public int getCount() {
         return mData.size();
     }
- 
+
     @Override
     public Object getItem(int i) {
         return mData.get(i);
     }
- 
+
     @Override
     public long getItemId(int i) {
         return i;
     }
- 
+
     @Override
     public int getViewTypeCount() {
         return 2;
     }
- 
+
     @Override
     public int getItemViewType(int position) {
         return mData.get(position) instanceof Bar ? TYPE_BAR : TYPE_BARBAR;
     }
- 
+
     private static class BarHolder {
         TextView view;
     }
- 
+
     private static class BarBarHolder {
         TextView view;
     }
- 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         int rowType = getItemViewType(position);
@@ -234,12 +234,13 @@ public class DoubleFooAdapter extends BaseAdapter {
         }
         return convertView;
     }
- 
+
  }
 ```
+
 ```java
 public class MainActivity extends ListActivity {
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -249,47 +250,47 @@ public class MainActivity extends ListActivity {
         }
         setListAdapter(new FooAdapter(this, data));
     }
- 
+
  }
 ```
 
-
 ## RecyclerView
+
 Android 5.0 a Support library v7 představuje [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html) zřejmě jako reakci na to, že programátoři špatně, případně vůbec neimplementovali recyklaci Views v adaptéru. RecyclerView programátora přímo nutí k tomu využívat ViewHolder a recyklovat Views.
 
 ```java
 public class FooRecyclerAdapter extends RecyclerView.Adapter<FooRecyclerAdapter.ViewHolder> {
- 
+
     private Context mContext;
     private List<Bar> mData;
- 
+
     public FooRecyclerAdapter(Context context, List<Bar> data) {
         mContext = context;
         mData = data;
     }
- 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.foo_row, parent, false);
         return new ViewHolder(view);
     }
- 
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Bar item = mData.get(position);
         holder.text.setText(item.toString());
         holder.itemView.setTag(item);
     }
- 
+
     @Override
     public int getItemCount() {
         return mData.size();
     }
- 
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView text;
- 
+
         public ViewHolder(View itemView) {
             super(itemView);
             text = (TextView) itemView.findViewById(R.id.foo_text);
@@ -297,14 +298,15 @@ public class FooRecyclerAdapter extends RecyclerView.Adapter<FooRecyclerAdapter.
     }
  }
 ```
+
 ```java
 public class RecycleActivity extends Activity {
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
- 
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.setHasFixedSize(true);
         List<Bar> data = new ArrayList<Bar>(20);
@@ -316,6 +318,7 @@ public class RecycleActivity extends Activity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
- 
+
  }
 ```
+
