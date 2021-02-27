@@ -5,7 +5,7 @@
   * [Restricted Environment](warmup/restricted-environment.md)
   * [Android Studio](warmup/android-studio.md)
 * [UI, layout, styles](ui-layout-styles/README.md)
-  * [Layout And Views](ui-layout-styles/layout-and-views.md)
+  * [Layout and Views](ui-layout-styles/layout-and-views.md)
 * [Aktivita, Intent, Fragment a životní cyklus](3-zivotni_cyklus.md)
 * [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)

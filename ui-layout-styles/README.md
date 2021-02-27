@@ -2,10 +2,6 @@
 
 ## Fundamental Design Elements
 
-### Pixel Density
-
- ![Density](../.gitbook/assets/2-density-1.png) ![Density](../.gitbook/assets/2-density-2.png) ![Density](../.gitbook/assets/2-density-3.png)
-
 ### ActionBar, Toolbar
 
 * Main branding
@@ -69,17 +65,31 @@
 
 ![NavigationDrawer](../.gitbook/assets/2-navigationdrawer.png)
 
-### CoordinatorLayout
+## Pixel Density
 
-Enhanced FrameLayout. It allows for creation of UI with animations. CoordinatorLayout's child views can be animated together based on defined behaviors from state A to state B. It's one of the fundamental parts of the Material Design language.
+Pixel density means how many physical pixels can you fit into a 2D space with given dimensions. Display density is usually measured in dot per inch \(DPI\), where the dot can be considered a pixel.
 
-![CoordinatorLayout](../.gitbook/assets/2-coordinator-layout.gif)
+   ![Density](../.gitbook/assets/2-density-3.png)
 
-### ConstraintLayout
+### Density-independent Pixels \(DP\) 
 
-Available since Android Studio v 2.2. It allows creation of flat view hierarchy, which can improve view rendering latencies. It was created to replace RelativeLayout or LinearLayout using wight attributes. These both group layouts have computationally expensive onMeasure phase, which can be simplified by mathematical expressions in ConstraintLayout. This way the dimensions can be computed with constant complexity. It's being shipped as independent support library, so it can be used regardless the version on OS.
+When taking physical screen dimensions into account, you usually intend for the same layout, no matter the resolutions. To achieve this, you need a unit which translates to physical pixels differently, based on your screen density. _Dips_ or _DPs_ were introduced to avoid positioning and scaling based on pixels. 
 
-![Constraint layout](../.gitbook/assets/2-constraint-layout.png)
+![Layout with Pixel Spacing/Dimensions](../.gitbook/assets/2-density-1.png)
+
+![Density Independent Layout](../.gitbook/assets/2-density-2.png)
+
+### Scalable Pixels \(SP\)
+
+The _sp_ unit is the same size as _dp_, by default, but it resizes based on the user's preferred text size. That can be done on the system level, and is not used exclusively by visually impaired.
+
+{% hint style="warning" %}
+Always use this unit for text, never for layouts.
+{% endhint %}
+
+#### Read More:
+
+* [Support different pixel densities](https://developer.android.com/training/multiscreen/screendensities)
 
 ## Drawables
 
