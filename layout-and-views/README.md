@@ -12,7 +12,7 @@ Widget is a special type of a View, which main purpose is not only to display in
 
 ### ViewGroup
 
-ViewGroup is a subclass, that is the base class for _layouts_, which are invisible containers that hold other Views \(or other ViewGroups\) and define their layout properties. Views inside a ViewGroup are called Child Views.
+ViewGroup is a subclass, that is the base class for _layouts_, which are invisible containers that hold other Views \(or other ViewGroups\) and define their layout properties. Views inside a ViewGroup are called child views.
 
 ## Layout Types
 
@@ -120,6 +120,32 @@ Child views are drawn in a stack, with the most recently added child on top.
 Available since Android Studio v 2.2. It allows creation of flat view hierarchy, which can improve view rendering latencies. It was created to replace RelativeLayout or LinearLayout using wight attributes. These both group layouts have computationally expensive onMeasure phase, which can be simplified by mathematical expressions in ConstraintLayout. This way the dimensions can be computed with constant complexity. It's being shipped as independent support library, so it can be used regardless the version on OS.
 
 ![Constraint layout](../.gitbook/assets/2-constraint-layout.png)
+
+{% tabs %}
+{% tab title="Code" %}
+```markup
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+{% endtab %}
+
+{% tab title="Visual" %}
+![](../.gitbook/assets/framelayout.png)
+{% endtab %}
+{% endtabs %}
 
 ### CoordinatorLayout
 

@@ -1,4 +1,4 @@
-# UI, layout, styles
+# UI, Resources, Styles
 
 ## Fundamental Design Elements
 
