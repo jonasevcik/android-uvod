@@ -6,7 +6,7 @@
   * [Android Studio](warmup/android-studio.md)
 * [Layout and Views](layout-and-views/README.md)
   * [UI, Styles](layout-and-views/ui-layout-styles.md)
-* [Aktivita, Intent, Fragment a životní cyklus](3-zivotni_cyklus.md)
+* [Activity, Fragment, and Lifecycle](3-zivotni_cyklus.md)
 * [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)
 * [build.gradle](build-system.md)

@@ -1,8 +1,10 @@
-# Aktivita, Intent, Fragment a životní cyklus
+# Activity, Fragment, and Lifecycle
 
-## Aktivita
+## Activity
 
-De facto "obrazovka", a taktéž základní stavební prvek pro vizuální část aplikace. Z aplikace můžeme zpouštět jak aktivity patřící dané aplikaci, tak i aktivity jiných aplikací. Pokaždé, když je spuštěna nová aktivita, je ta stará zastavena a vložena do tzv. "back stacku". Když pak uživatel novou aktivitu opustí zmáčknutím tlačítka zpět, je tato zrušena a dojde k obnovení původní aktivity. Aktivity jsou spoštěny tzv. intenty. Aktivitu je potřeba přidat do manifetstu, jinak o ní systém neví a nemůže ji spustit. Častá chyba, když člověk zadefinuje Aktivitu jen jako java soubor.
+`Activity` can be perceived as an application screen \(in a single window mode\). Application can start Activities belonging to it and even external ones. In terms of 1 application, invoking a new activity suspends the old one and places it in the _back stack_. Pressing the back button restores the last activity on the stack.
+
+Activities are invoked using `Intents`, because only the system can create new instances of Activity objects. To expose the activity to the system, one must declare it in `AndroidManifest.xml`. Common beginner's mistake is to define an Activity only as a class, but not declaring it in the `AndroidManifest.xml`.
 
 ```markup
 <activity android:name=".Name"
@@ -14,44 +16,79 @@ De facto "obrazovka", a taktéž základní stavební prvek pro vizuální čás
 </activity>
 ```
 
-## Intent
+Note that activity declaration can contain intent-filter to restrict its invocation usage.
 
-Aktivity nevytváříme pomocí jejich konstruktoru. Jejich vytvoření a i následný životní cyklus řídí systém. Systém ale aktivity netvoří náhodně, ale na základě podnětu ze strany aplikace - Intentu. Např. spuštění vaší aplikace, potažmo její hlavní aktivity z launcheru je vyvoláno na základě intentu s akcí MAIN. Intent může vyvolávat spuštění i jiných aplikačních komponent. Také může v sobě přenášet data - zprávy pro svého příjemce.
+### Intent
 
-### Explicitní Intent
+As stated above, Activities are created by the system as a reaction to `Intent`. For instance, launcher application can launch other applications using an `Intent`, which is targeting their main `Activity`. `Intent` can invoke launching other components than `Activities`, and can transfer data too. Data and flags can serve as messages for the targeting component.
 
-Uvádí přesný název Aktivity \(nebo jiné komponenty\), kterou chtějí spustit.
+#### Explicit Intent
 
+Explicit Intent invokes specific Activity class.
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+val intent = Intent(this, OtherActivity::class.java)
+startActivity(intent)
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 Intent intent = new Intent(this, OtherActivity.class);
 startActivity(intent);
 ```
+{% endtab %}
+{% endtabs %}
 
-### Implicitní Intent
+#### Implicit Intent
 
-Neuvádí přesný název Aktivity, kterou chtějí spustit, ale uvádí pouze obecnou akci.
+Implicit Intent doesn't require specific Activity to run. Instead, it asks system to find suitable candidate to perform desired type of action.
 
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+val intent = Intent(Intent.ACTION_SENDTO)
+intent.type = "text/plain"
+intent.putExtra(Intent.EXTRA_EMAIL, "address@example.com")
+intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
+intent.putExtra(Intent.EXTRA_TEXT, "I'm e-mail body.")
+
+startActivity(Intent.createChooser(intent, "Send E-mail"))
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 Intent intent = new Intent(Intent.ACTION_SENDTO);
 intent.setType("text/plain");
-intent.putExtra(Intent.EXTRA_EMAIL, "emailaddress@emailaddress.com");
+intent.putExtra(Intent.EXTRA_EMAIL, "address@example.com");
 intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+intent.putExtra(Intent.EXTRA_TEXT, "I'm e-mail body.");
 
-startActivity(Intent.createChooser(intent, "Send Email"));
+startActivity(Intent.createChooser(intent, "Send E-mail"));
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Fragment
 
-Logiký celek, výseč uživatelského rozhraní, část aktivity. Fragmenty vznikly v Androidu 3.0 jako reakce na příchod podpory pro tablety. Na 10" displeji už nevypadá hezky, když se použije stejný layout jako pro typicky 5" obrazovku mobilu. Především prvky s nastavením rozměrů na fill\_parent/match\_parent se roztahovaly na celou obrazovku a vytvářely obludné UI. Fragmenty umožnily uložení výseče UI do společného celku a následné tvoření jejich kombinací, případně znovupoužití určité stejné logiky na více místech aplikace. Typické použití je při tzv. master/detail flow. Kde na mobilu by seznam položek a detail položky tvořily 2 aktivity. Na tabletu je vhodnější použít pro 1 obrazovku oboje zaráz.
+`Fragment` represents a logical part of the screen. Introduced in Android 3.0, Fragments became the main building block for modular UI. Android 3.0 introduced support for tablets for the first time. With large screens it wasn't possible \(or at least visually appealing\) to use the same layout both for mobile and tablet. Especially UI elements using `match_parent` for their dimensions were stretched to fill the entire screen, making terribly looking layout.
+
+Fragments allowed for taking portion of the UI elements and wrapping them as one logical piece. This pieces can be reused in multiple layouts across the application. Typical use case is so called master/detail flow, where for a list of items and their detail, you would have 2 Activities on a mobile, whereas on tablet, you can fit both into one screen.
 
 [Ukázka kódu implementace pro Master/Detail](https://github.com/jonasevcik/MasterDetailDemo)
 
 ![Master/Detail Flow](.gitbook/assets/4-master_detail.png)
 
-### Statický fragment
+#### Fragment Manager
 
-Definuje se v xml s layoutem. Je reálně vytvořen v okamžiku zavolání metody _setContentView_ v Aktivitě.
+`FragmentManager` is a system component handling Fragment's lifecycle. It's responsible for maintaining all fragments inside application and associated back stack behavior.
+
+### Static fragment
+
+Static fragment is defined in layout xml file. It is created when calling the _setContentView_ function in Activity.
 
 ```markup
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -74,110 +111,79 @@ Definuje se v xml s layoutem. Je reálně vytvořen v okamžiku zavolání metod
 </LinearLayout>
 ```
 
-Fragment může být označen pomocí ID nebo tagu, na základě čehož je poté dohledatelný FragmentManagerem. **Pozor**, fragmenty bez označení nejsou dohledatelné a nemůžou být tedy ani systémem recyklovány.
+`Fragment` should be marked with ID or a tag, based in which it can be identified by `FragmentManager`. 
 
-### Dynamický fragment
+{% hint style="warning" %}
+Fragments without ID cannot be identified by the system, thus cannot be recycled.
+{% endhint %}
 
-Je vytvářen z kódu za běhu programu. Můžeme toho využít pro změny v UI jako reakci na stav např. internetového připojení. Využívá se také pro línou inicializaci ViewPageru apod.
+### Dynamic fragment
 
-[Ukázka práce s Fragmenty](https://developer.android.com/training/basics/fragments/fragment-ui.html):
+Dynamic fragment is created programatically during the runtime. This can be used for changing the UI to reflect no Internet connectivity for instance. In system components it's used in lazy initialisation in `ViewPager` etc.
 
-```java
-public class MainActivity extends FragmentActivity 
-        implements HeadlinesFragment.OnHeadlineSelectedListener {
+```kotlin
+class SomeActivity : AppCompatActivity() {
 
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_articles);
-
-        // Check whether the activity is using the layout version with
-        // the fragment_container FrameLayout. If so, we must add the first fragment
-        if (findViewById(R.id.fragment_container) != null) {
-
-            // However, if we're being restored from a previous state,
-            // then we don't need to do anything and should return or else
-            // we could end up with overlapping fragments.
-            if (savedInstanceState != null) {
-                return;
-            }
-
-            // Create an instance of ExampleFragment
-            HeadlinesFragment firstFragment = new HeadlinesFragment();
-
-            // In case this activity was started with special instructions from an Intent,
-            // pass the Intent's extras to the fragment as arguments
-            firstFragment.setArguments(getIntent().getExtras());
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, firstFragment).commit();
-        }
-    }
-
-    public void onArticleSelected(int position) {
-        // The user selected the headline of an article from the HeadlinesFragment
-
-        // Capture the article fragment from the activity layout
-        ArticleFragment articleFrag = (ArticleFragment)
-                getSupportFragmentManager().findFragmentById(R.id.article_fragment);
-
-        if (articleFrag != null) {
-            // If article frag is available, we're in two-pane layout...
-
-            // Call a method in the ArticleFragment to update its content
-            articleFrag.updateArticleView(position);
-
-        } else {
-            // If the frag is not available, we're in the one-pane layout and must swap frags...
-
-            // Create fragment and give it an argument for the selected article
-            ArticleFragment newFragment = new ArticleFragment();
-            Bundle args = new Bundle();
-            args.putInt(ArticleFragment.ARG_POSITION, position);
-            newFragment.setArguments(args);
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+        
+        // When the Activity is being created for the 1st time
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, MainFragment.newInstance())
+                    .commitNow()
         }
     }
 }
 ```
 
-**Pozor**, používejte výhradně Fragment ze support library a s tím i související FragmentManager. Vzájemné kombinace nativní a compat verze můžou způsobit zvláštní chování. Taktéž compat verze zaručí nové API i na staré verzi Androidu, případně obsahuje opravy mnohých bugů.
+{% hint style="warning" %}
+**Use Fragment implementation from the support library** \(Appcompat\) and its SupportFragmentManager. This ensures you have the latest implementation, no matter the SDK version. Also, never mix implementation from the platform with support version.
+{% endhint %}
 
 ### newInstance
 
-Fragmenty musí být vždy vytvořitelné pomocí XML a proto musí mít bezparametrický konstruktor. Tvorba parametrizované verze se řeší přes factory metodu, typicky s názvem _newInstance_.
+`FragmentManager` must be always able to recreate a `Fragment`, therefore the only permissible constructor is without any arguments. If you need to create a `Fragment` and pass it some arguments, use the following _newInstance_ pattern:
 
-```java
-public static FragmentWithArguments newInstance(Arg1 arg1, Arg2 arg2) {
-    Bundle args = new Bundle(); 
-    //TODO put arguments into args
-    FragmentWithArguments fragment = new FragmentWithArguments(); 
-    fragment.setArguments(args); 
-    return fragment; 
-}
+```kotlin
+class FragmentWithArguments : Fragment() {
+    companion object {
+        private const val MY_BOOLEAN = "my_boolean"
+        private const val MY_INT = "my_int"
 
-public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            Bundle savedInstanceState) {
-            Bundle args = getArguments();
-            //TODO retrieve arguments
-        ...
+        fun newInstance(booleanArg: Boolean, intArg: Int) = FragmentWithArguments().apply {
+            arguments = bundleOf(
+                    MY_BOOLEAN to booleanArg,
+                    MY_INT to intArg)
+        }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val myBoolean = arguments.getBoolean(MY_BOOLEAN)
+        val myInt = arguments.getInt(MY_INT)
+        // ...
+    }
 }
 ```
 
-### Komunikace s nadřazenou Aktivitou
+### Communication with parent Activity
 
-Reference na nadřazenou Aktivitu je Fragmentu předávána vždy v [onAttach\(\)](https://developer.android.com/reference/android/app/Fragment.html). Pro větší čistotu kódu a lepší testovatelnost je vhodné si chování spojené s komunikací fragmentu s aktivitou extrahovat do rozhraní, které pak aktivita implementuje.
+Reference to parent `Activity` is passed to fragment in [`onAttach()`](https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onAttach%28android.content.Context%29) function. It's a good practice to extract the communication behavior into interface, which then the parent `Activity` implements.
 
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+class HostActivity : AppCompatActivity(), MyFragment.OnFragmentInteractionListener {
+    //...
+    fun onFragmentInteraction() {
+        //...
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 public class HostActivity extends AppCompatActivity implements MyFragment.OnFragmentInteractionListener{
 
@@ -189,17 +195,51 @@ public class HostActivity extends AppCompatActivity implements MyFragment.OnFrag
     }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+class MyFragment : Fragment() {
+    private var fragmentInteractionListener: OnFragmentInteractionListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentInteractionListener = if (context is OnFragmentInteractionListener) {
+            context
+        } else {
+            throw ClassCastException("$context must implement OnFragmentInteractionListener")
+        }
+    }
+
+    private fun someInteractingMethod() {
+        // ...
+        fragmentInteractionListener?.onFragmentInteraction()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        fragmentInteractionListener = null // don't hold on to the host Activity -> prevent leaks
+    }
+
+    internal interface OnFragmentInteractionListener {
+        fun onFragmentInteraction()
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Java" %}
 ```java
 public class MyFragment extends Fragment {
-
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener fragmentInteractionListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            fragmentInteractionListener = (OnFragmentInteractionListener) context;
         } else {
             throw new ClassCastException(context.toString()
                 + " must implement OnFragmentInteractionListener");
@@ -207,16 +247,16 @@ public class MyFragment extends Fragment {
     }
 
     private void someInteractingMethod() {
-        //...
-        if (mListener != null) {
-            mListener.onFragmentInteraction();
+        // ...
+        if (fragmentInteractionListener != null) {
+            fragmentInteractionListener.onFragmentInteraction();
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null; //don't hold on to the host Activity -> prevent leaks
+        fragmentInteractionListener = null; // don't hold on to the host Activity -> prevent leaks
     }
 
     interface OnFragmentInteractionListener {
@@ -224,25 +264,29 @@ public class MyFragment extends Fragment {
     }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-## Životní cyklus
+## Lifecycle
 
-* [Záznam z přednášky \(mp3\)](https://drive.google.com/file/d/0B2ZerSqwiAA-QzlZN3BaWU9BWWc/view?usp=sharing)
+Android application is not a linearly running program, nor it's behaving the same as a PC application. In order to save resources \(CPU, power, memory\), android applications are a subject to lifecycle. This lifecycle is run by application's state.
 
-Aplikace v Androidu není lineárně běžící program, ani nemá stavy, jak je můžeme znát z aplikací u PC. Aby bylo možné šetřit prostředky \(CPU, baterie, paměť...\), podléhá androidí aplikace životnímu cyklu. Ten je řízen systémem na základě jeho stavu.
+* [Complete Android Fragment & Activity Lifecycle](https://github.com/xxv/android-lifecycle)
 
-* [Úplný životní cyklus](https://github.com/xxv/android-lifecycle)
+`Activities` aren't the only components with lifecycle, `Fragments`, `Views`, and `Services` have it too.
 
-Lifecycle nemají jen Aktivity a Fragmenty, ale také Views, Services...
+{% hint style="info" %}
+One `Activity` class can have multiple instances created at the same time.
+{% endhint %}
 
-**Pozor**, 1 Aktivita nemusí mít při běhu aplikace vytvořenu jen 1 instanci. Uvažujme průchod aplikací:
+Creating multiple instances of one Activity is easy as doing this:
 
-> Aktivita A --Intent--&gt; Aktivita B  
-> Aktivita B --Intent--&gt; Aktivita A
+1. Activity A --Intent--&gt; Activity B
+2. Activity B --Intent--&gt; Activity A
 
-Pak máme na stacku 2 různé Aktivity A. Pokud chcete mít jen 1 instanci Aktivity A, musíte toto chování specifikovat v manifestu _android:launchMode="singleInstance"_. Spouštění Aktivit je ovlivněno nejen nastavením v manifestu, ale i intentem, který je vyvolává. Více [zde](http://developer.android.com/guide/components/tasks-and-back-stack.html).
+This way you get 2 different instances of Activity A. If you need for some reason to keep just one instance at all times, this behavior must be specified in `AndroidManifest.xml` by `android:launchMode="singleInstance"`. Launching `Activities` is influenced by the settings in `AndroidManifest.xml`, but also by the `Intent`, launching the `Activity`. For more info, see [here](https://developer.android.com/guide/components/activities/tasks-and-back-stack).
 
-## Viditelný životní cyklus
+### Visible lifecycle
 
 Od _onStart_ po _onStop_ probíhá tzv. viditelný životní cyklus, během kterého uživatel vidí obsah Aktivity. Ostatní část životního cyklu se odehrává na pozadí. Toho se dá využít např. pro refresh zobrazených dat, po opětovném příchodu do aplikace.
 

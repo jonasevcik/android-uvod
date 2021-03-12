@@ -1,4 +1,4 @@
-# UI, Styles
+# UI, Resources, Styles
 
 ## Fundamental Design Elements
 
@@ -64,6 +64,114 @@
 * Use wisely, you can adopt different means of navigation in your app, based on its complexity
 
 ![NavigationDrawer](../.gitbook/assets/2-navigationdrawer.png)
+
+## Pixel Density
+
+Pixel density means how many physical pixels can you fit into a 2D space with given dimensions. Display density is usually measured in dot per inch \(DPI\), where the dot can be considered a pixel.
+
+   ![Density](../.gitbook/assets/2-density-3.png)
+
+### Density-independent Pixels \(DP\) 
+
+When taking physical screen dimensions into account, you usually intend for the same layout, no matter the resolutions. To achieve this, you need a unit which translates to physical pixels differently, based on your screen density. _Dips_ or _DPs_ were introduced to avoid positioning and scaling based on pixels. 
+
+![Layout with Pixel Spacing/Dimensions](../.gitbook/assets/2-density-1.png)
+
+![Density Independent Layout](../.gitbook/assets/2-density-2.png)
+
+### Scalable Pixels \(SP\)
+
+The _sp_ unit is the same size as _dp_, by default, but it resizes based on the user's preferred text size. That can be done on the system level, and is not used exclusively by visually impaired.
+
+{% hint style="warning" %}
+Always use this unit for text, never for layouts.
+{% endhint %}
+
+#### Read More:
+
+* [Support different pixel densities](https://developer.android.com/training/multiscreen/screendensities)
+
+## Drawables
+
+Drawables can have a form of a PNG file or it can be a XML definition of a vector image.
+
+### Shape Drawables
+
+Drawable definition in XML is great for its smaller size, and on-device rendering. The final output is compiled out of graphical primitives, colors and gradients.
+
+Blue rectangle with round edges:
+
+```markup
+<shape android:shape="rectangle">
+    <solid android:color="@android:color/blue_dark" />
+    <corners android:bottomLeftRadius="8dp"
+        android:bottomRightRadius="8dp" />
+</shape>
+```
+
+Drawables can have multiple layers, constructing complex shapes:
+
+```markup
+<layer-list>
+    <item>
+        <shape>
+            <solid android:color="@color/gray" />
+            <corners android:bottomRightRadius="4dp"
+                android:bottomLeftRadius="4dp"
+                android:topRightRadius="4dp"
+                android:topLeftRadius="4dp" />
+        </shape>
+    </item>
+    <item android:bottom="4dp">
+        <shape>
+            <solid android:color="@color/black" />
+            <corners android:bottomRightRadius="4dp"
+                android:bottomLeftRadius="4dp"
+                android:topRightRadius="4dp"
+                android:topLeftRadius="4dp" />
+        </shape>
+    </item>
+</layer-list>
+```
+
+### 9-patch
+
+Modified PNG image \([.9.png](http://developer.android.com/guide/topics/graphics/2d-graphics.html#nine-patch)\), where pixels at its edges describe the way it can be stretched. It got its name based on 9 sectors dividing it into patches:
+
+![Barvy](../.gitbook/assets/2-9patch.png)
+
+* **1, 3, 7, 9** - corners are static and don't stretch
+* **2, 8** - top and bottom sectors can be stretched horizontally
+* **4, 6** - left and right sides can be stretched vertically
+* **5** - the center can be stretched in both directions
+
+ ![1 oblast](../.gitbook/assets/2-9patch-1area.png) ![2 oblasti](../.gitbook/assets/2-9patch-2areas.png)
+
+Green parts are stretched in one direction. Pink parts can be stretched to both directions. There can be more than 9 stretchable areas.
+
+#### Optical bounds
+
+Optical bounds were introduced in Androidu 4.3. They mark part of the image which isn't considered as part of the image dimensions. This is used for casting shadow from the image.
+
+![Optical bounds](../.gitbook/assets/2-9patch-optical-bounds.png)
+
+#### Draw 9-patch Editor
+
+[Editor](https://developer.android.com/tools/help/draw9patch.html) is part of the Android SDK. You can use it to convert PNG files into .9.png.
+
+### Selectors
+
+Selector is a special kind of Drawable. It can change its visual state based on conditions defined inside it. Basically, it's a list of other Drawables or colors with assigned display conditions. Conditions are evaluated from top to bottom. Item without any conditions is considered to be a fallback variant.
+
+```markup
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+   <item android:state_pressed="true" android:color="@color/light_blue"/>
+   <item android:state_focused="true" android:color="@color/dark_blue"/>
+   <item android:state_selected="true" android:state_activated="true" android:color="@color/light_blue_A400"/>
+   <item android:state_selected="true" android:state_activated="false" android:color="@color/gray"/>
+   <item android:color="@color/black"/>
+</selector>
+```
 
 ## Styles and Themes
 
