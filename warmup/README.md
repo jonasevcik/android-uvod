@@ -92,7 +92,11 @@ val count = 10
 
 **Nullability**
 
-Since most of runtime crashes in Java are caused by `java.lang.NullPointerException`, furthermore, constant null checks worsen code readability and increase complexity, declarations in Kotlin are implicitly not nullable. You can, however declare a variable as nullable by using `?` symbol, mainly for compatibility reasons.
+Since most of runtime crashes in Java are caused by `java.lang.NullPointerException`.
+
+![](../.gitbook/assets/nullpointerexception.jpeg)
+
+Furthermore, constant null checks worsen code readability and increase complexity, declarations in Kotlin are implicitly not nullable. You can, however declare a variable as nullable by using `?` symbol, mainly for compatibility reasons.
 
 ```kotlin
 val count: Int? = null
