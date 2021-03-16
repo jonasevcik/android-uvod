@@ -49,9 +49,9 @@ Implicit Intent doesn't require specific Activity to run. Instead, it asks syste
 {% tabs %}
 {% tab title="Kotlin" %}
 ```kotlin
-val intent = Intent(Intent.ACTION_SENDTO)
-intent.type = "text/plain"
-intent.putExtra(Intent.EXTRA_EMAIL, "address@example.com")
+val intent = Intent(Intent.ACTION_SEND)
+intent.type = "message/rfc822"
+intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("address@example.com"))
 intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
 intent.putExtra(Intent.EXTRA_TEXT, "I'm e-mail body.")
 
@@ -61,8 +61,8 @@ startActivity(Intent.createChooser(intent, "Send E-mail"))
 
 {% tab title="Java" %}
 ```java
-Intent intent = new Intent(Intent.ACTION_SENDTO);
-intent.setType("text/plain");
+Intent intent = new Intent(Intent.ACTION_SEND);
+intent.setType("message/rfc822");
 intent.putExtra(Intent.EXTRA_EMAIL, "address@example.com");
 intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
 intent.putExtra(Intent.EXTRA_TEXT, "I'm e-mail body.");
@@ -71,6 +71,19 @@ startActivity(Intent.createChooser(intent, "Send E-mail"));
 ```
 {% endtab %}
 {% endtabs %}
+
+### Parent Activity
+
+`Activity` can be labeled as a child activity, so it can embrace navigation to the top level. Navigation is discussed in more detail [here](../layout-and-views/ui-layout-styles.md#up).
+
+```markup
+<activity
+    android:name=".ChildActivity"
+    android:label="Child Activity"
+    android:parentActivityName=".ParentActivity"/>
+```
+
+![](../.gitbook/assets/child-activity.png)
 
 ## Fragment
 
@@ -163,12 +176,12 @@ class FragmentWithArguments : Fragment() {
     private var myBoolean: Boolean? = null
     private var myInt: Int? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         arguments?.let {
             myBoolean = it.getBoolean(MY_BOOLEAN)
             myInt = it.getInt(MY_INT)
         }
-        // ...
     }
 }
 ```
