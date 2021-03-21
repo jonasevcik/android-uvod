@@ -109,13 +109,15 @@ Static fragment is defined in layout xml file. It is created when calling the _s
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment android:name="com.example.android.SomeFragment"
+    <androidx.fragment.app.FragmentContainerView
+              android:name="com.example.android.SomeFragment"
               android:id="@+id/headlines_fragment"
               android:layout_weight="1"
               android:layout_width="0dp"
               android:layout_height="match_parent" />
 
-    <fragment android:name="com.example.android.OtherFragment"
+    <androidx.fragment.app.FragmentContainerView
+              android:name="com.example.android.OtherFragment"
               android:id="@+id/article_fragment"
               android:layout_weight="2"
               android:layout_width="0dp"
@@ -135,11 +137,10 @@ Fragments without ID cannot be identified by the system, thus cannot be recycled
 Dynamic fragment is created programatically during the runtime. This can be used for changing the UI to reflect no Internet connectivity for instance. In system components it's used in lazy initialisation in `ViewPager` etc.
 
 ```kotlin
-class SomeActivity : AppCompatActivity() {
+class SomeActivity : AppCompatActivity(R.layout.main_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
         
         // When the Activity is being created for the 1st time
         if (savedInstanceState == null) {
@@ -185,6 +186,12 @@ class FragmentWithArguments : Fragment() {
     }
 }
 ```
+
+### FragmentContainerView
+
+As you might have noticed in the Static Fragment code example above, the fragment uses [`androidx.fragment.app.FragmentContainerView`](https://developer.android.com/reference/androidx/fragment/app/FragmentContainerView) for referencing a fragment implementation, previously this was handled by `fragment` tag. Second use case of this view is a replacement of `FrameLayout`, which was usually used as a container view. In fact, `FragmentContainerView` is built upon `FrameLayout` and is optimised for use with `Fragments`.
+
+FragmentContainerView is part of the `androidx.fragment:fragment` support library.
 
 ### Communication with parent Activity
 
