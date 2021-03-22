@@ -8,6 +8,7 @@
   * [UI, Styles](layout-and-views/ui-layout-styles.md)
 * [Activity, Fragment, and Lifecycle](3-zivotni_cyklus/README.md)
   * [Surviving Inside a Lifecycle](3-zivotni_cyklus/surviving-inside-a-lifecycle.md)
+  * [Lifecycle Aware Components](3-zivotni_cyklus/lifecycle-aware-components.md)
 * [Testování, MVP](10-testovani.md)
 * [Seznamy](4-seznamy.md)
 * [build.gradle](build-system.md)
