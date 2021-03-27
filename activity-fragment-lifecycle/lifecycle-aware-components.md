@@ -133,6 +133,23 @@ liveData.value = "Hello World"
 
 Note that the liveData object is usually placed inside a `ViewModel`, while observation of its state happens in Fragment/Activity.
 
+### Encapsulation of LiveData
+
+`MutableLiveData` can be modified - as stated in their name. To avoid exposing mutable instance, the data can be cast to their immutable superclass - `LiveData`.
+
+```kotlin
+class MainActivityViewModel : ViewModel() {
+
+    // mutable data are encapsulated
+    // so they can't be accidentally modified by an observing view
+    private val _data = MutableLiveData<String>()
+
+    // publicly exposed LiveData, not mutable
+    val data: LiveData<String>
+        get() = _data
+}
+```
+
 ### SingleLiveEvent
 
 When using `LiveData`, you encounter the fact that events submitted ase live data can be emitted multiple times, for instance, ofter resubscribing after `Activity` recreation. [`SingleLiveEvent`](https://github.com/android/architecture-samples/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) is a `MutableLiveData` which ensures, the event is fired only once. This is especially handy when used as a trigger for a Toast message, SnackBar etc. This solution has a drawback - only one observer will be notified of changes, which is OK, if you intend to observe this `LiveData` only on one place.
