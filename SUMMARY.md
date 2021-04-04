@@ -9,6 +9,7 @@
 * [Activity, Fragment, and Lifecycle](activity-fragment-lifecycle/README.md)
   * [Surviving Inside a Lifecycle](activity-fragment-lifecycle/surviving-inside-a-lifecycle.md)
   * [Lifecycle Aware Components](activity-fragment-lifecycle/lifecycle-aware-components.md)
+* [Testing](testing.md)
 * [View Binding, Lists](view-binding-lists.md)
 * [build.gradle](build-system.md)
 * [Networking, vlákna](6-networking-_vlakna.md)
