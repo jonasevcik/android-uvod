@@ -74,7 +74,7 @@ startActivity(Intent.createChooser(intent, "Send E-mail"));
 
 ### Parent Activity
 
-`Activity` can be labeled as a child activity, so it can embrace navigation to the top level. Navigation is discussed in more detail [here](../layout-and-views/ui-layout-styles.md#up).
+`Activity` can be labeled as a child activity, so it can embrace navigation to the top level. Navigation is discussed in more detail [here](../ui-layout-styles.md#up).
 
 ```markup
 <activity
