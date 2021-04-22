@@ -102,9 +102,7 @@ styles.xml
 
 ### Theme Inheritance
 
-You can save time redefining a style, by inheriting properties of one. For instance, you can imagine a button style with 10 attributes, and you want a new one with just 1 different attribute, so you derive your new style from the first one and change just the parameter you need
-
-Práci se styly si můžeme zjednodušit dědičností. Např. máme definovaný kompletní styl pro tlačítko \(např. 10 atributů\) a chceme vyrobit nový styl, který se liší pouze v 1 atributu. Nemusíme definovat celý nový styl ale určíme si ten původní jako rodič a definujeme jen lišící se atribut.
+You can save time redefining a style, by inheriting properties of one. For instance, you can imagine a button style with 10 attributes, and you want a new one with just 1 different attribute, so you derive your new style from the first one and change just the parameter you need.
 
 You can inherit your style using a `.` notation in style's name or using a parent attribute.
 
