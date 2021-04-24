@@ -200,7 +200,7 @@ public class WorkTimeDbHelper extends SQLiteOpenHelper {
 
 * ContentProvider přesně ověřuje Uri, které dostává, při neznámé vyhodí výjimku
 * defensivní přístup je dobrý - umožní včasné odhalení chyby - např. pokud při neúspěchu zápisu dat nevyhodíme SQLException, program může pokračovat dál a zkolabovat ve chvíli, kdy skutečná příčina bude těžko odhalitelná
-* ContentResolver vždy upozorníme _notifyChange\(\)_, že na dané URI došlo ke změně dat - tak může např. Loader vědět, že má provést aktualizaci dat. 2. argument je ContentObserver, který způsobil povedení změny - v našem případě vždy null. 3. argument syncToNetwork udává, zda se má provést synchronizace dat na server \(více v kapitole [Synchronizace dat](old/9-synchronizace_dat.md)\), pokud je neuveden, je implicitně true.
+* ContentResolver vždy upozorníme _notifyChange\(\)_, že na dané URI došlo ke změně dat - tak může např. Loader vědět, že má provést aktualizaci dat. 2. argument je ContentObserver, který způsobil povedení změny - v našem případě vždy null. 3. argument syncToNetwork udává, zda se má provést synchronizace dat na server \(více v kapitole [Synchronizace dat](9-synchronizace_dat.md)\), pokud je neuveden, je implicitně true.
 
 ```java
 package cz.droidboy.worktime.data;

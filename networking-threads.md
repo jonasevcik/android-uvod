@@ -119,7 +119,7 @@ interface ApiService {
 }
 ```
 
-## Working off the Main Thread
+## Working off of the Main Thread
 
 ### Thread, Runnable
 
