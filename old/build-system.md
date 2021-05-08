@@ -103,7 +103,7 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 * Ne každý nový update knihovny jenom opravuje staré chyby.
 * Tvůrce knihovny může změnit logiku chování některých metod.
 
-![Konkr&#xE9;tn&#xED; verze](.gitbook/assets/5-specific-version.png)
+![Konkr&#xE9;tn&#xED; verze](../.gitbook/assets/5-specific-version.png)
 
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
 
@@ -111,7 +111,7 @@ Pro detailnější analýzu závislostí vaší aplikace můžete použít pří
 gradlew androidDependencies
 ```
 
-![androidDependencies](.gitbook/assets/5-android-dependencies.png)
+![androidDependencies](../.gitbook/assets/5-android-dependencies.png)
 
 #### Možnosti
 
