@@ -13,6 +13,7 @@
 * [UI, Styles](ui-layout-styles.md)
 * [Networking, Threads](networking-threads.md)
 * [Database](database.md)
+* [Niceties](niceties.md)
 * [OLD](old/README.md)
   * [build.gradle](old/build-system.md)
   * [Služby, notifikace, BroadcastReceiver](old/7-sluzby-_notifikace-_broadcastreceiver.md)
