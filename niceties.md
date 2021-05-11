@@ -51,32 +51,9 @@ Getting familiar with your audience is a key in making great apps. Easy integrat
 
 Build robust code, but fail fast - so you know, where your failure originated from. But how to get crash data if it happens on the other side of the globe? Crashlytics help you gather your app crashes the same way, you would observe them in a LogCat. Identical crashes are grouped together, and also provide additional information about the device they originated from. You can get alerted if you app suddenly experiences wave of crashes, co you can react promptly and make your users happy again.
 
-```kotlin
-private class CrashReportingTree : Timber.Tree() {
-    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        if (priority == Log.VERBOSE || priority == Log.DEBUG) {
-            return
-        }
-
-        FirebaseCrashlytics.getInstance().apply {
-            log(tag.orEmpty() + message)
-            if (t != null) {
-                recordException(t)
-            }
-        }
-
-    }
-}
-```
-
 ### Avoiding Memory Leaks
 
-Memory leaks appeared as a topic throughout this course. To prevent them automatically, use Leak Canary for debug builds. Leak Canary watches Lifecycle components \(Activities, Fragments and ViewModels\) and hooks to the end of their lifecycle. Then it performs a heap dump, and if the watched objects weren't garbage collected, that means they are still referenced by other objects and a memory leak is detected.
+Leak Canary
 
-```groovy
-dependencies {
-  // debugImplementation because LeakCanary should only run in debug builds.
-  debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
-}
-```
+
 

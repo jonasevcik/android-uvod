@@ -13,6 +13,7 @@
 * [UI, Styles](ui-layout-styles.md)
 * [Networking, Threads](networking-threads.md)
 * [Database](database.md)
+* [Gradle](gradle.md)
 * [Niceties](niceties.md)
 * [OLD](old/README.md)
   * [build.gradle](old/build-system.md)
