@@ -104,7 +104,6 @@ class MainFragment : Fragment() {
 **More info:**
 
 * [ViewModels: A simple example](https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e)
-* [ViewModels and LiveData - Patterns and Antipatterns](https://medium.com/androiddevelopers/viewmodels-and-livedata-patterns-antipatterns-21efaef74a54)
 * [Android ViewModels: State persistence — SavedState](https://proandroiddev.com/viewmodels-state-persistence-savedstate-54d015acad82)
 
 ## LiveData
