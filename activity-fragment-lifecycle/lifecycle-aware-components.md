@@ -2,7 +2,11 @@
 
 ## Lifecycle Components
 
-Lifecycle components provide better organisation of code and action implementation over components which are influenced by a lifecycle and need to communicate with components having a lifecycle \(Activities/Fragments\).
+Lifecycle components provide better organisation of code and action implementation over components which are influenced by a lifecycle and need to communicate with components having a lifecycle (Activities/Fragments).
+
+### LifecycleOwner
+
+`LifecycleOwner` can be thought of as an abstraction over `Activity`/`Fragment`. It has an [`Lifecycle`](https://developer.android.com/reference/androidx/lifecycle/Lifecycle), which `LifecycleObservers` can be notified of.
 
 ### LifecycleObserver
 
@@ -33,25 +37,21 @@ if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
 }
 ```
 
-### LifecycleOwner
-
-`LifecycleOwner` can be thought of as an abstraction over `Activity`/`Fragment`. It has an [`Lifecycle`](https://developer.android.com/reference/androidx/lifecycle/Lifecycle), which `LifecycleObservers` can be notified of.
-
 **More info:**
 
 * [Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
 
 ## ViewModel
 
-`ViewModel` is a reaction from Google \(year 2017!\) to absence of a framework or official methodology on how to handle `Activity` state during lifecycle or configuration changes. `ViewModel` can handle state of an`Activity` or a `Fragment`.
+`ViewModel` is a reaction from Google (year 2017!) to absence of a framework or official methodology on how to handle `Activity` state during lifecycle or configuration changes. `ViewModel` can handle state of an`Activity` or a `Fragment`.
 
 ![ViewModel scope](../.gitbook/assets/4-viewmodel.png)
 
-`ViewModel` is a class that is responsible for preparing and managing the data for an `Activity` or a `Fragment`. It also handles the communication of the `Activity` / `Fragment` with the rest of the application \(e.g. calling the business logic classes\).
+`ViewModel` is a class that is responsible for preparing and managing the data for an `Activity` or a `Fragment`. It also handles the communication of the `Activity` / `Fragment` with the rest of the application (e.g. calling the business logic classes).
 
-A `ViewModel` is always created in association with a scope \(a fragment or an activity\) and will be retained as long as the scope is alive. E.g. if it is an `Activity`, until it is finished.
+A `ViewModel` is always created in association with a scope (a fragment or an activity) and will be retained as long as the scope is alive. E.g. if it is an `Activity`, until it is finished.
 
-In other words, this means that a `ViewModel` will not be destroyed if its owner is destroyed for a configuration change \(e.g. rotation\). The new owner instance just re-connects to the existing model.
+In other words, this means that a `ViewModel` will not be destroyed if its owner is destroyed for a configuration change (e.g. rotation). The new owner instance just re-connects to the existing model.
 
 The purpose of the `ViewModel` is to acquire and keep the information that is necessary for an `Activity` or a `Fragment`. The `Activity` or the `Fragment` should be able to observe changes in the `ViewModel`. `ViewModels` usually expose this information via [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData) or Android Data Binding. You can also use any observability construct from you favorite framework.
 
@@ -59,7 +59,7 @@ The purpose of the `ViewModel` is to acquire and keep the information that is ne
 
 **More info:**
 
-* [Android Jetpack: ViewModel](https://www.youtube.com/watch?v=5qlIPTDE274&ab_channel=AndroidDevelopers)
+* [Android Jetpack: ViewModel](https://www.youtube.com/watch?v=5qlIPTDE274\&ab\_channel=AndroidDevelopers)
 
 ## SavedState components
 
@@ -73,7 +73,7 @@ SavedState components are a new addition of lifecycle aware components, that dea
 
 #### SavedStateRegistry
 
-`SavedStateRegistry` manages multiple `SavedStateProviders`, each identified by a unique key. The registry is bound to Activity/Fragment's \(SavedStateRegistryOwner's\) lifecycle. All registries are saved before their Activity/Fragment is destroyed. The final bundle which is going to be saved will end up in `onSaveInstanceState()`.
+`SavedStateRegistry` manages multiple `SavedStateProviders`, each identified by a unique key. The registry is bound to Activity/Fragment's (SavedStateRegistryOwner's) lifecycle. All registries are saved before their Activity/Fragment is destroyed. The final bundle which is going to be saved will end up in `onSaveInstanceState()`.
 
 You may ask, is this any different from saving the state in `onSaveInstanceState`? No, but the concept of save registries is important. It gives us possibility to easily provide a saving mechanism to components which don't have direct access to `onSaveInstanceState`, like `ViewModel`, for instance. In fact `ViewModel's` `SavedState` handle is just a wrapper around SavedStateRegistryOwner's `SavedStateProvider`.
 
@@ -104,6 +104,7 @@ class MainFragment : Fragment() {
 **More info:**
 
 * [ViewModels: A simple example](https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e)
+* [ViewModels and LiveData - Patterns and Antipatterns](https://medium.com/androiddevelopers/viewmodels-and-livedata-patterns-antipatterns-21efaef74a54)
 * [Android ViewModels: State persistence — SavedState](https://proandroiddev.com/viewmodels-state-persistence-savedstate-54d015acad82)
 
 ## LiveData
@@ -128,7 +129,7 @@ liveData.value = "Hello World"
 ```
 
 1. Create `LiveData` object. `MutableLiveData` allow for modification of their state
-2. Subscribe to changes in liveData's values \(= observe it\)
+2. Subscribe to changes in liveData's values (= observe it)
 3. Publish changes to liveData
 
 Note that the liveData object is usually placed inside a `ViewModel`, while observation of its state happens in Fragment/Activity.
@@ -161,4 +162,3 @@ You can implement similar functionality by wrapping your `LiveData` values into 
 **More info:**
 
 * [LiveData Overview](https://developer.android.com/topic/libraries/architecture/livedata)
-
