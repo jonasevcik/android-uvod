@@ -2,15 +2,15 @@
 
 ## Lifecycle Components
 
-Lifecycle components provide better organisation of code and action implementation over components which are influenced by a lifecycle and need to communicate with components having a lifecycle (Activities/Fragments).
+Lifecycle components provide better organization of code and action implementation over components that are influenced by a lifecycle and need to communicate with components having a lifecycle (Activities/Fragments).
 
 ### LifecycleOwner
 
-`LifecycleOwner` can be thought of as an abstraction over `Activity`/`Fragment`. It has an [`Lifecycle`](https://developer.android.com/reference/androidx/lifecycle/Lifecycle), which `LifecycleObservers` can be notified of.
+`LifecycleOwner` can be thought of as an abstraction over `Activity`/`Fragment`. It has a [`Lifecycle`](https://developer.android.com/reference/androidx/lifecycle/Lifecycle), which `LifecycleObservers` can be notified of.
 
 ### LifecycleObserver
 
-`LifecycleObserver` is an interface which doesn't provide any methods, but annotations, which you can use on your methods to mark a lifecycle state event they respond to.
+`LifecycleObserver` is an interface that doesn't provide any methods, but annotations, which you can use on your methods to mark a lifecycle state event they respond to.
 
 ```kotlin
 class MyObserver : LifecycleObserver {
@@ -26,10 +26,11 @@ class MyObserver : LifecycleObserver {
     }
 }
 
+// associate observer with lifecycle owner
 myLifecycleOwner.getLifecycle().addObserver(MyObserver())
 ```
 
-In this way, you don't have to implement custom logic of notifying your classes of lifecycle state change. And from the other perspective, when communicating back to a lifecycle component - like Activity, you may want to perform certain actions only when in the right state - for instance UI operations are only permitted in the visible lifecycle.
+In this way, you don't have to implement custom logic of notifying your classes of lifecycle state change. And from the other perspective, when communicating back to a lifecycle component - like Activity, you may want to perform certain actions only when in the right state - for instance, UI operations are only permitted in the visible lifecycle.
 
 ```kotlin
 if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
@@ -43,19 +44,35 @@ if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
 
 ## ViewModel
 
-`ViewModel` is a reaction from Google (year 2017!) to absence of a framework or official methodology on how to handle `Activity` state during lifecycle or configuration changes. `ViewModel` can handle state of an`Activity` or a `Fragment`.
+`ViewModel` is a reaction from Google (year 2017!) to the absence of a framework or official methodology on how to handle `Activity` state during lifecycle or configuration changes. `ViewModel` can handle the state of an`Activity` or a `Fragment`.
 
 ![ViewModel scope](../.gitbook/assets/4-viewmodel.png)
 
 `ViewModel` is a class that is responsible for preparing and managing the data for an `Activity` or a `Fragment`. It also handles the communication of the `Activity` / `Fragment` with the rest of the application (e.g. calling the business logic classes).
 
-A `ViewModel` is always created in association with a scope (a fragment or an activity) and will be retained as long as the scope is alive. E.g. if it is an `Activity`, until it is finished.
+A `ViewModel` is always created in association with a scope (a fragment or an activity) and will be retained as long as the scope is alive. E.g. if it is an `Activity` until it is finished.
 
 In other words, this means that a `ViewModel` will not be destroyed if its owner is destroyed for a configuration change (e.g. rotation). The new owner instance just re-connects to the existing model.
 
-The purpose of the `ViewModel` is to acquire and keep the information that is necessary for an `Activity` or a `Fragment`. The `Activity` or the `Fragment` should be able to observe changes in the `ViewModel`. `ViewModels` usually expose this information via [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData) or Android Data Binding. You can also use any observability construct from you favorite framework.
+The purpose of the `ViewModel` is to acquire and keep the information that is necessary for an `Activity` or a `Fragment`. The `Activity` or the `Fragment` should be able to observe changes in the `ViewModel`. `ViewModels` usually expose this information via [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData) or Android Data Binding. You can also use any observability construct from your favorite framework.
 
 `ViewModel's` only responsibility is to manage the data for the UI. It **should never** access your view hierarchy or hold a reference back to the `Activity` or the `Fragment`.
+
+{% code title="MyActivity.kt" %}
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+// ...
+val vm: MyViewModel by viewModels() // injects existing instance of MyViewModel or creates one
+// ...
+}
+```
+{% endcode %}
+
+{% code title="build.gradle (app)" %}
+```groovy
+implementation 'androidx.fragment:fragment-ktx:1.4.1' // add Kotlin extension function helpers
+```
+{% endcode %}
 
 **More info:**
 
@@ -63,7 +80,7 @@ The purpose of the `ViewModel` is to acquire and keep the information that is ne
 
 ## SavedState components
 
-SavedState components are a new addition of lifecycle aware components, that deal with saving state and most importantly,  they help you restore it, when `Activity` or `Fragment` are recreated.
+SavedState components are a new addition of lifecycle-aware components, that deal with saving state, and most importantly,  they help you restore it when `Activity` or `Fragment` are recreated.
 
 ![SavedState components](../.gitbook/assets/save-state.png)
 
@@ -75,7 +92,7 @@ SavedState components are a new addition of lifecycle aware components, that dea
 
 `SavedStateRegistry` manages multiple `SavedStateProviders`, each identified by a unique key. The registry is bound to Activity/Fragment's (SavedStateRegistryOwner's) lifecycle. All registries are saved before their Activity/Fragment is destroyed. The final bundle which is going to be saved will end up in `onSaveInstanceState()`.
 
-You may ask, is this any different from saving the state in `onSaveInstanceState`? No, but the concept of save registries is important. It gives us possibility to easily provide a saving mechanism to components which don't have direct access to `onSaveInstanceState`, like `ViewModel`, for instance. In fact `ViewModel's` `SavedState` handle is just a wrapper around SavedStateRegistryOwner's `SavedStateProvider`.
+You may ask, is this any different from saving the state in `onSaveInstanceState`? No, but the concept of save registries is important. It gives us the possibility to easily provide a saving mechanism to components that don't have direct access to onSaveInstanceState, like ViewModel. In fact, `ViewModel's` `SavedState` handle is just a wrapper around SavedStateRegistryOwner's `SavedStateProvider`.
 
 #### SavedStateRegistryController
 
@@ -83,7 +100,7 @@ You may ask, is this any different from saving the state in `onSaveInstanceState
 
 ### Saving ViewModel's state
 
-As seen in the [figure](surviving-inside-a-lifecycle.md#viewmodel) above, using a `ViewModel` itself can solve trouble with configuration changes, like screen rotation, however `ViewModel` doesn't survive system initiated process death. This is the case where you need to use `onSaveInstanceState`, as mentioned in the preceding sections. Thankfully, you don't have to implement communication with `Activity's`/`Fragment's` `onSaveInstanceState` method yourself. There's [`SavedStateHandle`](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle), which can be passed in `ViewModel's` constructor. `SavedStateHandle` provides map like interface to save your state data.
+As seen in the [figure](surviving-inside-a-lifecycle.md#viewmodel) above, using a `ViewModel` itself can solve trouble with configuration changes, like screen rotation, however, `ViewModel` doesn't survive system-initiated process death. This is the case where you need to use `onSaveInstanceState`, as mentioned in the preceding sections. Thankfully, you don't have to implement the communication with `Activity's`/`Fragment's` `onSaveInstanceState` method yourself. There's [`SavedStateHandle`](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle), which can be passed in `ViewModel's` constructor. `SavedStateHandle` provides map-like interface to save your state data.
 
 ![](../.gitbook/assets/savestatehandle.png)
 
@@ -91,7 +108,7 @@ As seen in the [figure](surviving-inside-a-lifecycle.md#viewmodel) above, using 
 class SavedStateViewModel(private val state: SavedStateHandle) : ViewModel() { ... }
 ```
 
-Since using constructor with SavedStateHandle is recognised by ViewModels, you can obtain an instance of the ViewModel the usual way:
+Since using constructor with SavedStateHandle is recognized by ViewModels, you can obtain an instance of the ViewModel the usual way:
 
 ```kotlin
 class MainFragment : Fragment() {
@@ -136,7 +153,7 @@ Note that the liveData object is usually placed inside a `ViewModel`, while obse
 
 ### Encapsulation of LiveData
 
-`MutableLiveData` can be modified - as stated in their name. To avoid exposing mutable instance, the data can be cast to their immutable superclass - `LiveData`.
+`MutableLiveData` can be modified - as stated in their name. To avoid exposing mutable instances, the data can be cast to their immutable superclass - `LiveData`.
 
 ```kotlin
 class MainActivityViewModel : ViewModel() {
@@ -153,10 +170,10 @@ class MainActivityViewModel : ViewModel() {
 
 ### SingleLiveEvent
 
-When using `LiveData`, you encounter the fact that events submitted ase live data can be emitted multiple times, for instance, ofter resubscribing after `Activity` recreation. [`SingleLiveEvent`](https://github.com/android/architecture-samples/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) is a `MutableLiveData` which ensures, the event is fired only once. This is especially handy when used as a trigger for a Toast message, SnackBar etc. This solution has a drawback - only one observer will be notified of changes, which is OK, if you intend to observe this `LiveData` only on one place.
+When using `LiveData`, you encounter the fact that events submitted as live data can be emitted multiple times, for instance, after resubscribing after `Activity` recreation. [`SingleLiveEvent`](https://github.com/android/architecture-samples/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java) is a `MutableLiveData` which ensures, the event is fired only once. This is especially handy when used as a trigger for a Toast message, SnackBar, etc. This solution has a drawback - only one observer will be notified of changes, which is OK if you intend to observe this `LiveData` only in one place.
 
 {% hint style="info" %}
-You can implement similar functionality by wrapping your `LiveData` values into a class which provides a flag about observed state and you ensure that reading wrapped data modifies this flag, so that another observer receiving it will know it's been already read.
+You can implement similar functionality by wrapping your `LiveData` values into a class that provides a flag about the observed state and you ensure that reading wrapped data modifies this flag, so that another observer receiving it will know it's been already read.
 {% endhint %}
 
 **More info:**
