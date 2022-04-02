@@ -231,13 +231,13 @@ Originally introduced in Android 5.0, but with continual development still a val
 </style>
 ```
 
-![Barvy](.gitbook/assets/2-colors.png)
+![Colors](.gitbook/assets/2-colors.png)
 
 #### Idea of Depth
 
 The UI isn't just flat. Individual design elements are laid out or grouped in layers. Layers provide the illusion of depth.
 
-![Hloubka](https://raw.githubusercontent.com/romannurik/LayerVisualizer/master/examples.gif)
+![Depth](https://raw.githubusercontent.com/romannurik/LayerVisualizer/master/examples.gif)
 
 * [LayerVisualizer](https://github.com/romannurik/LayerVisualizer)
 
