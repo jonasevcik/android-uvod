@@ -7,7 +7,7 @@
 * Main branding
 * Quick access to actions for the screen
 
- ![ActionBar](.gitbook/assets/2-actionbar-1.png) ![ActionBar](.gitbook/assets/2-actionbar-2.png) ![Toolbar](.gitbook/assets/2-toolbar.png)
+&#x20;![ActionBar](.gitbook/assets/2-actionbar-1.png) ![ActionBar](.gitbook/assets/2-actionbar-2.png) ![Toolbar](.gitbook/assets/2-toolbar.png)
 
 ### Contextual ActionBar
 
@@ -15,7 +15,7 @@
 
 ![ContextualActionBar](.gitbook/assets/2-contextualactionbar.png)
 
-### Floating Action Button \(FAB\)
+### Floating Action Button (FAB)
 
 ![FAB](.gitbook/assets/2-fab.png)
 
@@ -27,39 +27,39 @@
 * Optimal number of tabs: 3
 * Text / icon / text + icon
 
-![Taby](.gitbook/assets/2-tabs.png)
+![Tabs](.gitbook/assets/2-tabs.png)
 
-### Up vs. Back 
+### Up vs. Back&#x20;
 
 #### Up
 
-* Go to parent section
-* Displayed at ActionBar \(top left corner\)
+* the Go to a parent section
+* Displayed at ActionBar (top left corner)
 
 #### Back
 
-* Back to the previous screen \(back in history stack\)
-* Either as a physical button, or on the NavigationBar \(bottom left corner\)
+* Back to the previous screen (back in the history stack)
+* Either as a physical button or on the NavigationBar (bottom left corner)
 
- ![Back, Up](.gitbook/assets/2-back-up-1.png) ![Back, Up](.gitbook/assets/2-back-up2.png)
+&#x20;![Back, Up](.gitbook/assets/2-back-up-1.png) ![Back, Up](.gitbook/assets/2-back-up2.png)
 
 ### Toast
 
 * Quick splash message
-* Non blocking
+* Nonblocking
 
 ![Toast](.gitbook/assets/2-toast.png)
 
 ### SnackBar
 
 * Shows information in a similar fashion to Toast
-* Can be used along with an action \(usually an undo/revert type of action\)
+* Can be used along with an action (usually an undo/revert type of action)
 
 ![SnackBar](.gitbook/assets/2-snackbar.png)
 
 ### NavigationView / NavigationDrawer
 
-* App categorisation
+* App categorization
 * Content subcategories
 * Use wisely, you can adopt different means of navigation in your app, based on its complexity
 
@@ -67,9 +67,9 @@
 
 ## Styles and Themes
 
-The purpose of styles is to separate design definitions from the code, in a similar fashion as CSS is used on the web. GUI elements can be styled directly in the layout files, but produced outcome can be hard to read and use duplicit styling definitions \(imagine your layout consist of several buttons, and you define the same style for each one of them multiple times\).
+The purpose of styles is to separate design definitions from the code, in a similar fashion as CSS is used on the web. GUI elements can be styled directly in the layout files, but produced outcome can be hard to read and use duplicate styling definitions (imagine your layout consist of several buttons, and you define the same style for each one of them multiple times).
 
-Best practice is to keep definitions inside 2 files - `theme.xml` for grouping individual element definitions, and `styles.xml`, for defining these individual element styles. If you don't need extensive styling, you can probably use just `theme.xml` and redefine basic app colors.
+The best practice is to keep definitions inside 2 files - `theme.xml` for grouping individual element definitions, and `styles.xml`, for defining these individual element styles. If you don't need extensive styling, you can probably use just `theme.xml` and redefine basic app colors.
 
 theme.xml
 
@@ -104,7 +104,7 @@ styles.xml
 
 You can save time redefining a style, by inheriting properties of one. For instance, you can imagine a button style with 10 attributes, and you want a new one with just 1 different attribute, so you derive your new style from the first one and change just the parameter you need.
 
-You can inherit your style using a `.` notation in style's name or using a parent attribute.
+You can inherit your style using a `.` notation in the style's name or using a parent attribute.
 
 Original style definition:
 
@@ -112,19 +112,18 @@ Original style definition:
 <style name="Parent"/>
 ```
 
-* Explicit inheritance
+*   Explicit inheritance
 
-  ```markup
-  <style name="Child" parent="Parent"/>
-  ```
+    ```markup
+    <style name="Child" parent="Parent"/>
+    ```
+*   Implicit inheritance
 
-* Implicit inheritance
+    ```markup
+    <style name="Parent.Child"/>
+    ```
 
-  ```markup
-  <style name="Parent.Child"/>
-  ```
-
-System styles can be inherited using parent attribute only. Inheriting a custom defined style can be done using `.` notation.
+System styles can be inherited using parent attribute only. Inheriting a custom-defined style can be done using `.` notation.
 
 #### Using Both Types of Inheritance at Once
 
@@ -135,8 +134,8 @@ System styles can be inherited using parent attribute only. Inheriting a custom 
 ```
 
 {% hint style="info" %}
-**Can** _**Implicit.Child**_ **inherit attributes from both Implicit and Explicit Styles?**  
-No, using both inheritance types results in the child inheriting attributes of the explicit parent only. Therefore prefer using 1 type of inheritance only.
+**Can **_**Implicit.Child**_** inherit attributes from both Implicit and Explicit Styles?**\
+****No, using both inheritance types results in the child inheriting attributes of the explicit parent only. Therefore prefer using 1 type of inheritance only.
 {% endhint %}
 
 ### Usage of Styles
@@ -150,13 +149,13 @@ Styles can be applied to individual GUI elements as well as to Activities or glo
 ```
 {% endtab %}
 
-{% tab title="AndroidManifest.xml \(Activity\)" %}
+{% tab title="AndroidManifest.xml (Activity)" %}
 ```markup
 <activity android:theme="@style/Theme">
 ```
 {% endtab %}
 
-{% tab title="AndroidManifest.xml \(Application\)" %}
+{% tab title="AndroidManifest.xml (Application)" %}
 ```markup
 <application android:theme="@style/Theme">
 ```
@@ -165,7 +164,7 @@ Styles can be applied to individual GUI elements as well as to Activities or glo
 
 #### Is it possible to apply multiple styles to 1 View at the same time?
 
-No, View can have only one style definition applied to it, with the exception of a TextView. TextView can be styled with the additional `textAppearance` attribute.
+No, View can have only one style definition applied to it, except a TextView. TextView can be styled with the additional `textAppearance` attribute.
 
 ```markup
 <TextView
@@ -181,7 +180,7 @@ When defining a textAppearance style, inherit your attributes from appropriate T
 </style>
 ```
 
-TextAppearance atributes:
+TextAppearance attributes:
 
 * textColor
 * textColorHighlight
@@ -210,19 +209,19 @@ Quick tip: Extract style definition from a View
 
 ### Theme
 
-Original visual style of Android. It's significant feature was, that it had no style at all.
+The original visual style of Android. Its significant feature was, that it had no style at all.
 
 ![Design Themes](.gitbook/assets/2-themes.png)
 
 ### Holo
 
-The first attempt for unified design language. It brought huge improvement to app looks in Android 3.0.
+The first attempt at a unified design language. It brought huge improvement to app looks in Android 3.0.
 
-Styles or themes used to be generated through specialised tools, like Holo Colors, or [ActionBar style generator](http://jgilfelt.github.io/android-actionbarstylegenerator/). It's deprecated now, mainly due to the design change, and also improvements in the system. Originally it wasn't possible to recolor the app just by defining its elementary colors. All visual components  had to be provided in form of drawables at the time.
+Styles or themes used to be generated through specialized tools, like Holo Colors, or [ActionBar style generator](http://jgilfelt.github.io/android-actionbarstylegenerator/). It's deprecated now, mainly due to the design change, and also improvements in the system. Originally it wasn't possible to recolor the app just by defining its elementary colors. All visual components had to be provided in form of drawables at the time.
 
 ### Material Design
 
-Originally introduced in Android 5.0, but with continual development still valid design language for Android.
+Originally introduced in Android 5.0, but with continual development still a valid design language for Android.
 
 ```markup
 <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
@@ -244,19 +243,18 @@ The UI isn't just flat. Individual design elements are laid out or grouped in la
 
 #### Using the Right Views
 
-The recommended way of working with Material design is to use [Material Components](https://github.com/material-components/material-components-android/blob/master/docs/getting-started.md) library. This way you stay up to date with their definitions, regardless the OS version.
+The recommended way of working with Material design is to use the [Material Components](https://github.com/material-components/material-components-android/blob/master/docs/getting-started.md) library. This way you stay up to date with their definitions, regardless of the OS version.
 
 #### How to Use Material Design Correctly
 
 * [Using the Material Theme](http://developer.android.com/training/material/theme.html)
-* [Material Palette](http://www.materialpalette.com/) - Color generation based on primary and accent color.
+* [Material Palette](http://www.materialpalette.com) - Color generation based on primary and accent color.
 * [Color Tool](https://material.io/color)
 
 ## Additional Materials
 
 * [Android Design Principles](https://developer.android.com/design/get-started/principles.html)
 * Official Google guidelines
-* mDevCamp 2013 [Optimizing UI](https://www.youtube.com/watch?v=X_TJOSNzNug&ab_channel=mDevCamp)
+* mDevCamp 2013 [Optimizing UI](https://www.youtube.com/watch?v=X\_TJOSNzNug\&ab\_channel=mDevCamp)
 * [Using styles and themes without going crazy](https://speakerdeck.com/dlew/using-styles-and-themes-without-going-crazy-1)
 * [ConstraintLayout codelab](https://codelabs.developers.google.com/codelabs/constraint-layout/index.html)
-
