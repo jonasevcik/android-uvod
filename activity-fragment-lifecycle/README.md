@@ -2,7 +2,7 @@
 
 ## Activity
 
-`Activity` can be perceived as an application screen \(in a single window mode\). Application can start Activities belonging to it and even external ones. In terms of 1 application, invoking a new activity suspends the old one and places it in the _back stack_. Pressing the back button restores the last activity on the stack.
+`Activity` can be perceived as an application screen (in a single window mode). Application can start Activities belonging to it and even external ones. In terms of 1 application, invoking a new activity suspends the old one and places it in the _back stack_. Pressing the back button restores the last activity on the stack.
 
 Activities are invoked using `Intents`, because only the system can create new instances of Activity objects. To expose the activity to the system, one must declare it in `AndroidManifest.xml`. Common beginner's mistake is to define an Activity only as a class, but not declaring it in the `AndroidManifest.xml`.
 
@@ -87,13 +87,13 @@ startActivity(Intent.createChooser(intent, "Send E-mail"));
 
 ## Fragment
 
-`Fragment` represents a logical part of the screen. Introduced in Android 3.0, Fragments became the main building block for modular UI. Android 3.0 introduced support for tablets for the first time. With large screens it wasn't possible \(or at least visually appealing\) to use the same layout both for mobile and tablet. Especially UI elements using `match_parent` for their dimensions were stretched to fill the entire screen, making terribly looking layout.
+`Fragment` represents a logical part of the screen. Introduced in Android 3.0, Fragments became the main building block for modular UI. Android 3.0 introduced support for tablets for the first time. With large screens it wasn't possible (or at least visually appealing) to use the same layout both for mobile and tablet. Especially UI elements using `match_parent` for their dimensions were stretched to fill the entire screen, making terribly looking layout.
 
 Fragments allowed for taking portion of the UI elements and wrapping them as one logical piece. This pieces can be reused in multiple layouts across the application. Typical use case is so called master/detail flow, where for a list of items and their detail, you would have 2 Activities on a mobile, whereas on tablet, you can fit both into one screen.
 
 [Ukázka kódu implementace pro Master/Detail](https://github.com/jonasevcik/MasterDetailDemo)
 
-![Master/Detail Flow](../.gitbook/assets/4-master_detail.png)
+![Master/Detail Flow](../.gitbook/assets/4-master\_detail.png)
 
 #### Fragment Manager
 
@@ -126,7 +126,7 @@ Static fragment is defined in layout xml file. It is created when calling the _s
 </LinearLayout>
 ```
 
-`Fragment` should be marked with ID or a tag, based in which it can be identified by `FragmentManager`. 
+`Fragment` should be marked with ID or a tag, based in which it can be identified by `FragmentManager`.&#x20;
 
 {% hint style="warning" %}
 Fragments without ID cannot be identified by the system, thus cannot be recycled.
@@ -153,7 +153,7 @@ class SomeActivity : AppCompatActivity(R.layout.main_activity) {
 ```
 
 {% hint style="warning" %}
-**Use Fragment implementation from the support library** \(Appcompat\) and its SupportFragmentManager. This ensures you have the latest implementation, no matter the SDK version. Also, never mix implementation from the platform with support version.
+**Use Fragment implementation from the support library** (Appcompat) and its SupportFragmentManager. This ensures you have the latest implementation, no matter the SDK version. Also, never mix implementation from the platform with support version.
 {% endhint %}
 
 ### newInstance
@@ -195,7 +195,7 @@ FragmentContainerView is part of the `androidx.fragment:fragment` support librar
 
 ### Communication with parent Activity
 
-Reference to parent `Activity` is passed to fragment in [`onAttach()`](https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onAttach%28android.content.Context%29) function. It's a good practice to extract the communication behavior into interface, which then the parent `Activity` implements.
+Reference to parent `Activity` is passed to fragment in [`onAttach()`](https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onAttach\(android.content.Context\)) function. It's a good practice to extract the communication behavior into interface, which then the parent `Activity` implements.
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -295,9 +295,9 @@ public class MyFragment extends Fragment {
 
 ## Lifecycle
 
-Android application is not a linearly running program, nor it's behaving the same as a PC application. In order to save resources \(CPU, power, memory\), Android applications are a subject to lifecycle. This lifecycle is run by application's state.
+Android application is not a linearly running program, nor it's behaving the same as a PC application. In order to save resources (CPU, power, memory), Android applications are a subject to lifecycle. This lifecycle is run by application's state.
 
-![Simplified Activity lifecycle](../.gitbook/assets/activity_lifecycle.png)
+![Simplified Activity lifecycle](../.gitbook/assets/activity\_lifecycle.png)
 
 * [Complete Android Fragment & Activity Lifecycle](https://github.com/xxv/android-lifecycle)
 
@@ -309,14 +309,14 @@ One `Activity` class can have multiple instances created at the same time.
 
 Creating multiple instances of one Activity is easy as doing this:
 
-1. Activity A --Intent--&gt; Activity B
-2. Activity B --Intent--&gt; Activity A
+1. Activity A --Intent--> Activity B
+2. Activity B --Intent--> Activity A
 
 This way you get 2 different instances of Activity A. If you need for some reason to keep just one instance at all times, this behavior must be specified in `AndroidManifest.xml` by `android:launchMode="singleInstance"`. Launching `Activities` is influenced by the settings in `AndroidManifest.xml`, but also by the `Intent`, launching the `Activity`. For more info, see [here](https://developer.android.com/guide/components/activities/tasks-and-back-stack).
 
 ### Visible lifecycle
 
-Visible lifecycle starts with [`onStart()`](https://developer.android.com/reference/android/app/Activity.html#onStart%28%29) callback and ends with [`onStop()`](https://developer.android.com/reference/android/app/Activity.html#onStop%28%29) callback. User can see `Activity's` content during this cycle. The rest of the lifecycle is invisible to the user.
+Visible lifecycle starts with [`onStart()`](https://developer.android.com/reference/android/app/Activity.html#onStart\(\)) callback and ends with [`onStop()`](https://developer.android.com/reference/android/app/Activity.html#onStop\(\)) callback. User can see `Activity's` content during this cycle. The rest of the lifecycle is invisible to the user.
 
 As it was mentioned [before](./#activity), activities are instantiated by the system, programmers are just given the opportunity to implement lifecycle callbacks to react on it. System can decide when to destroy your Activity, or bring it back to life, so it's up to you as a programmer to implement the callbacks correctly, so the user experience isn't influenced in a bad way.
 
@@ -343,4 +343,3 @@ It might be better readable for a programmer to implement lifecycle callbacks in
 > _"A small leak will sink a great ship."_
 >
 > Benjamin Franklin
-

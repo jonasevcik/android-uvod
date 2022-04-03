@@ -21,15 +21,7 @@
 
 ![Touch Accessibility](.gitbook/assets/2-accessibility.png)
 
-### Tabs
-
-* Division into sections
-* Optimal number of tabs: 3
-* Text / icon / text + icon
-
-![Tabs](.gitbook/assets/2-tabs.png)
-
-### Up vs. Back&#x20;
+* ### Up vs. Back&#x20;
 
 #### Up
 
@@ -42,6 +34,21 @@
 * Either as a physical button or on the NavigationBar (bottom left corner)
 
 &#x20;![Back, Up](.gitbook/assets/2-back-up-1.png) ![Back, Up](.gitbook/assets/2-back-up2.png)
+
+### Tabs
+
+* Division into sections
+* Optimal number of tabs: 3
+* Text / icon / text + icon
+
+![Tabs](.gitbook/assets/2-tabs.png)
+
+### (Bottom) Navigation Bar
+
+* Top-level destinations that need to be accessible from anywhere in the app
+* Three to five destinations
+
+![Navigation Bar](.gitbook/assets/navigation-bar.png)
 
 ### Toast
 

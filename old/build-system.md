@@ -1,8 +1,8 @@
 # build.gradle
 
-* [Záznam z přednášky \(mp3\)](https://drive.google.com/file/d/0B2ZerSqwiAA-eThUOTFYY3RWb00/view?usp=sharing)
+* [Záznam z přednášky (mp3)](https://drive.google.com/file/d/0B2ZerSqwiAA-eThUOTFYY3RWb00/view?usp=sharing)
 
-Současné Android Studio využívá pro buildování systém [Gradle](https://docs.gradle.org/current/release-notes). Ten využívá jazyka [Groovy](http://www.groovy-lang.org/), běžícího na JVM. Gradle předepisuje strukturu buildovacího skriptu pomocí DSL. Skript pak vypadá jako JSON dokument. Pro lepší porozumění je si projdětě [dokumentaci](https://docs.gradle.org/current/dsl/). Pro buildování androidích projektů se pak používá [Android plugin for Gradle](https://developer.android.com/tools/building/plugin-for-gradle.html).
+Současné Android Studio využívá pro buildování systém [Gradle](https://docs.gradle.org/current/release-notes). Ten využívá jazyka [Groovy](http://www.groovy-lang.org), běžícího na JVM. Gradle předepisuje strukturu buildovacího skriptu pomocí DSL. Skript pak vypadá jako JSON dokument. Pro lepší porozumění je si projdětě [dokumentaci](https://docs.gradle.org/current/dsl/). Pro buildování androidích projektů se pak používá [Android plugin for Gradle](https://developer.android.com/tools/building/plugin-for-gradle.html).
 
 ## Gradle vs Gradle Wrapper
 
@@ -14,13 +14,13 @@ Obsahuje následující soubory. Je to minimální konfigurace, se kterou je gra
 
 * gradle-wrapper.jar
 * properties soubor gradle-wrapper.properties
-* sh/bat skripty \(gradlew\)
+* sh/bat skripty (gradlew)
 
 Při první interakci s wrapperem se nejdřív podívá, jestli je nahraný Gradle, když ne, stáhne a nahraje jej a provede příkaz, kterým byl vyvolán. Projekt je pak buildován touto lokální verzí.
 
 Wrapper můžeme vytvořit spuštěním příkazu
 
-```text
+```
 gradle wrapper
 ```
 
@@ -38,7 +38,7 @@ wrapper {
 
 ## Struktura projektu v Android Studiu
 
-Struktura z Android Studia je víceprojektová \(víceprojektová\). Umožňuje mít zaráz několik podprojektů \(modulů\). Každý projekt má vlastní _build.gradle_ skript. Skript na nejvyšší úrovni obsahuje globální konfigurace pro všechny podprojekty \(moduly\).
+Struktura z Android Studia je víceprojektová (víceprojektová). Umožňuje mít zaráz několik podprojektů (modulů). Každý projekt má vlastní _build.gradle_ skript. Skript na nejvyšší úrovni obsahuje globální konfigurace pro všechny podprojekty (moduly).
 
 ```groovy
 buildscript {
@@ -68,12 +68,12 @@ include ':app', ':library-app'
 
 ### jCenter, Maven Central
 
-* [jCenter](http://jcenter.bintray.com/)
+* [jCenter](http://jcenter.bintray.com)
 * [Maven Central](https://oss.sonatype.org/content/repositories/releases/)
 
 Repozitáře hostující javovské a androidí knihovny. Odkaz na knihovnu se definuje jako:
 
-> GROUP\_ID:ARTIFACT\_ID:VERSION  
+> GROUP\_ID:ARTIFACT\_ID:VERSION\
 > com.squareup:otto:1.3.8
 
 ```groovy
@@ -103,11 +103,11 @@ To ovšem přidá do vašeho buildu nedeterministické chování.
 * Ne každý nový update knihovny jenom opravuje staré chyby.
 * Tvůrce knihovny může změnit logiku chování některých metod.
 
-![Konkr&#xE9;tn&#xED; verze](../.gitbook/assets/5-specific-version.png)
+![Konkrétní verze](../.gitbook/assets/5-specific-version.png)
 
 Pro detailnější analýzu závislostí vaší aplikace můžete použít příkaz:
 
-```text
+```
 gradlew androidDependencies
 ```
 
@@ -135,7 +135,7 @@ Standardní Java knihovny jsou zabaleny jako _.jar, androidí knihovny jako_ .aa
 
 Stejně jako _jar_, jedná se o obyčejný _zip_ archiv. Jar obsahuje v minimální verzi přeložené class soubory s manifestem. Pro Android ale potřebujeme specifické resources, jako je Manifest.xml, layouty, drawables... Ty ale do _jar_ archivu nemůžeme dát, proto vznikl nový typ - _AAR_. Struktura archivu je následující:
 
-```text
+```
 /AndroidManifest.xml (povinné)  
 /classes.jar (povinné)    
 /res/ (povinné)  
@@ -179,7 +179,7 @@ dependencies { //project.dependencies
 }
 ```
 
-* \[Project.apply\(Map options\)\]\([https://docs.gradle.org/current/dsl/org.gradle.api.Project.html\#org.gradle.api.Project:apply\(java.util.Map](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply%28java.util.Map)\)\)
+* \[Project.apply(Map options)]\([https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply(java.util.Map](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply\(java.util.Map)))
 * [DependencyHandler](https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html)
 
 #### Verze
@@ -188,11 +188,11 @@ dependencies { //project.dependencies
 
 **minSdkVersion** Omezuje SDK level, který můžete používat. Při použití novějších api v kódu dostanete varování Lintu. Novější api se dají používat, ale užití je potřeba ošetřit ifem. Jaké volit minSdk? [Zastoupení verzí](https://developer.android.com/about/dashboards/index.html)
 
-**targetSdkVersion** Určuje se kterým posledním levelem SDK reálně pracujete \(Byť compileSdkVersion můžete mít vyšší\). Tímto se zachovává funkčnost starých aplikací na nových verzích systému. Např. Android 6 \(API 23\) přidal podporu tzv. runtime permissions. Které by de facto rozbily všechny staré aplikace. Proto se jejich ošetření vyžadovalo jen u aplikací s targetSdkVersion &gt;= 23.
+**targetSdkVersion** Určuje se kterým posledním levelem SDK reálně pracujete (Byť compileSdkVersion můžete mít vyšší). Tímto se zachovává funkčnost starých aplikací na nových verzích systému. Např. Android 6 (API 23) přidal podporu tzv. runtime permissions. Které by de facto rozbily všechny staré aplikace. Proto se jejich ošetření vyžadovalo jen u aplikací s targetSdkVersion >= 23.
 
 Ideálně byste měli cílit na následující stav:
 
-```text
+```
 minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)
 ```
 
@@ -277,14 +277,14 @@ dependencies {}
 
 _gradle.properties:_
 
-```text
+```
 RELEASE_STORE_FILE=path_to_the_file #použijte \ na Windows, / na Linuxu/Macu
 RELEASE_STORE_PASSWORD=password
 RELEASE_KEY_ALIAS=key_alias
 RELEASE_KEY_PASSWORD=key_password
 ```
 
-**Proč ukládat heslo ke klíčence a klíči do** _**gradle.properties**_**, když i tam jsou viditelné v plaintextu?**
+**Proč ukládat heslo ke klíčence a klíči do **_**gradle.properties**_**, když i tam jsou viditelné v plaintextu?**
 
 #### Použití proměnných v project.ext
 
@@ -429,7 +429,7 @@ buildTypes {
 
 Při definování buildTypes jako debug a release a flavors jako free a paid obdržíme následující varianty, kterým zároveň odpovídají adresáře v projektu:
 
-```text
+```
 /src
  main
  free
@@ -446,15 +446,15 @@ Soubory resp. Složky jsou slučovány postupně. Uvažujme situaci, kdy máme s
 
 ## Dalvik
 
-Programy jsou pro Android psány v Javě nebo Kotlinu. Následně jsou přeloženy do bytekódu kompatibilního s JVM. Tento kód je dále přeložen do bytekódu Dalviku a uložen jako .dex \(Dalvik EXecutable\). Vzniklý kód je pak spouštěn na Dalvik VM.
+Programy jsou pro Android psány v Javě nebo Kotlinu. Následně jsou přeloženy do bytekódu kompatibilního s JVM. Tento kód je dále přeložen do bytekódu Dalviku a uložen jako .dex (Dalvik EXecutable). Vzniklý kód je pak spouštěn na Dalvik VM.
 
 ### JVM x Dalvik VM
 
-Dalvik používá architekturu založenou na registrech. Ta vyžaduje méně instrukcí, ale ty jsou zase více komplexní. To oproti JVM, která je založena na zásobníkovém stroji, umožňuje rychlejší chod na procesorech typu [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer).
+Dalvik používá architekturu založenou na registrech. Ta vyžaduje méně instrukcí, ale ty jsou zase více komplexní. To oproti JVM, která je založena na zásobníkovém stroji, umožňuje rychlejší chod na procesorech typu [RISC](https://en.wikipedia.org/wiki/Reduced\_instruction\_set\_computer).
 
 ## ART
 
-Android Runtime od Androidu 5 nahradil Dalvik. S Dalvikem kvůli zpětné kompatibilitě sdílí formát bytekódu používaný v .dex souborech. Na rozdíl od Dalviku, který provádí interpretaci instrukcí \(od verze 2.2 zefektivněnou o JIT\), ART provádí AOT \(ahead of time\) kompilaci kódu. Kdy při instalaci aplikace je celý kód přeložen do nativních instrukcí daného stroje.
+Android Runtime od Androidu 5 nahradil Dalvik. S Dalvikem kvůli zpětné kompatibilitě sdílí formát bytekódu používaný v .dex souborech. Na rozdíl od Dalviku, který provádí interpretaci instrukcí (od verze 2.2 zefektivněnou o JIT), ART provádí AOT (ahead of time) kompilaci kódu. Kdy při instalaci aplikace je celý kód přeložen do nativních instrukcí daného stroje.
 
 ### Multidex
 
@@ -468,7 +468,6 @@ Formát dex pro adresaci v indexu metod používá jen [16 bitů](https://source
 
 * [How to distribute your own Android library through jCenter and Maven Central from Android Studio](http://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en)
 * [Introduction to Groovy and Gradle](https://www.youtube.com/watch?v=fHhf1xG0pIA)
-* [Gradle, please](http://gradleplease.appspot.com/) - vyhledávání knihoven podle názvu
+* [Gradle, please](http://gradleplease.appspot.com) - vyhledávání knihoven podle názvu
 * [Smaller APK](https://medium.com/google-developers/smallerapk-part-1-anatomy-of-an-apk-da83c25e7003#.i7rrjbuce)
 * [Java 8](https://developer.android.com/studio/write/java8-support.html)
-

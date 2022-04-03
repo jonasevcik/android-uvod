@@ -22,11 +22,11 @@ android {
 }
 ```
 
-This however doesn't bring you all APIs of that Java version, just the glitter of syntactic sugar in specified version's language features. Underneath it compiles down to either Java Virtual Machine version 6 or version 7 \(Android API 26\) bytecode.
+This however doesn't bring you all APIs of that Java version, just the glitter of syntactic sugar in specified version's language features. Underneath it compiles down to either Java Virtual Machine version 6 or version 7 (Android API 26) bytecode.
 
-Program written in Java is compiled to bytecode compatible with JVM, which is translated to Dalvik bytecode. On versions prior to 5 Lollipop this code is ran by Dalvik VM. Android 4.4 Kitkat introduces experimental support for Android Runtime \(ART\).
+Program written in Java is compiled to bytecode compatible with JVM, which is translated to Dalvik bytecode. On versions prior to 5 Lollipop this code is ran by Dalvik VM. Android 4.4 Kitkat introduces experimental support for Android Runtime (ART).
 
-ART features Ahead of Time \(AOT\) compilation, which translates Dalvik bytecode to machine's native code during the time of app's installation.
+ART features Ahead of Time (AOT) compilation, which translates Dalvik bytecode to machine's native code during the time of app's installation.
 
 **Want to know more?**
 
@@ -55,13 +55,13 @@ public class Something {
 
 ### Kotlin in Android
 
-[Kotlin](https://kotlinlang.org) is a modern language developed by JetBrains. It compiles down to Java bytecode \(among others\), so it can be run on existing platforms. In 2017, Kotlin was introduced as alternative language to Java on Android. In 2019, development on Android became oriented as Kotlin-first.
+[Kotlin](https://kotlinlang.org) is a modern language developed by JetBrains. It compiles down to Java bytecode (among others), so it can be run on existing platforms. In 2017, Kotlin was introduced as alternative language to Java on Android. In 2019, development on Android became oriented as Kotlin-first.
 
 #### Kotlin Basics
 
 Kotlin's syntax is similar to Java. Since it shares the same foundations, you can use classes from Java SDK, so the transition from Java to Kotlin shouldn't be difficult. But it doesn't end there, the general interoperability between Java and Kotlin is possible, so you can mix both in one project or import Java libraries into Kotlin code and vice versa.
 
-Compilation flow is as follows. First, the Kotlin code is compiled into the bytecode for the Java. Java itself doesn't run on Android, it runs DEX \(Dalvik EXecutable\). So the code gets compiled the second time, using D8 compiler, which translates Java bytecode into DEX code. Optionally, you can run a third compiler - R8. It's used for optimizing and shrinking your application \(successor to ProGuard tool\).
+Compilation flow is as follows. First, the Kotlin code is compiled into the bytecode for the Java. Java itself doesn't run on Android, it runs DEX (Dalvik EXecutable). So the code gets compiled the second time, using D8 compiler, which translates Java bytecode into DEX code. Optionally, you can run a third compiler - R8. It's used for optimizing and shrinking your application (successor to ProGuard tool).
 
 **Objects Everywhere**
 
@@ -102,7 +102,7 @@ Furthermore, constant null checks worsen code readability and increase complexit
 val count: Int? = null
 ```
 
-If you use nullable types \(for whatever reason\), you still need to check for null values. Kotlin provides special operators to deal with null checks.
+If you use nullable types (for whatever reason), you still need to check for null values. Kotlin provides special operators to deal with null checks.
 
 _Safe Call Operator_ `?.`
 
@@ -179,7 +179,7 @@ public var count: Int = 10 // property is visible everywhere
     private set // setter is visible only from within its class
 ```
 
-Default ****visibility modifier of a property is `public`, thus can be omitted.
+Default **** visibility modifier of a property is `public`, thus can be omitted.
 
 ```kotlin
 var count = 10 // property is visible everywhere
@@ -216,6 +216,4 @@ fun double(x: Int = 10): Int {
 
 * [https://kotlinlang.org/docs/basic-syntax.html](https://kotlinlang.org/docs/basic-syntax.html)
 * [https://www.youtube.com/hashtag/kotlinvocabulary](https://www.youtube.com/hashtag/kotlinvocabulary)
-
-
 

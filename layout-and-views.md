@@ -2,19 +2,19 @@
 
 ## Pixel Density
 
-Pixel density means how many physical pixels can you fit into a 2D space with given dimensions. Display density is usually measured in dot per inch \(DPI\), where the dot can be considered a pixel.
+Pixel density means how many physical pixels can you fit into a 2D space with given dimensions. Display density is usually measured in dot per inch (DPI), where the dot can be considered a pixel.
 
-   ![Density](.gitbook/assets/2-density-3.png)
+&#x20;  ![Density](.gitbook/assets/2-density-3.png)
 
-### Density-independent Pixels \(DP\) 
+### Density-independent Pixels (DP)&#x20;
 
-When taking physical screen dimensions into account, you usually intend for the same layout, no matter the resolutions. To achieve this, you need a unit which translates to physical pixels differently, based on your screen density. _Dips_ or _DPs_ were introduced to avoid positioning and scaling based on pixels. 
+When taking physical screen dimensions into account, you usually intend for the same layout, no matter the resolutions. To achieve this, you need a unit which translates to physical pixels differently, based on your screen density. _Dips_ or _DPs_ were introduced to avoid positioning and scaling based on pixels.&#x20;
 
 ![Layout with Pixel Spacing/Dimensions](.gitbook/assets/2-density-1.png)
 
 ![Density Independent Layout](.gitbook/assets/2-density-2.png)
 
-### Scalable Pixels \(SP\)
+### Scalable Pixels (SP)
 
 The _sp_ unit is the same size as _dp_, by default, but it resizes based on the user's preferred text size. That can be done on the system level, and is not used exclusively by visually impaired.
 
@@ -71,7 +71,7 @@ Drawables can have multiple layers, constructing complex shapes:
 
 ### 9-patch
 
-Modified PNG image \([.9.png](http://developer.android.com/guide/topics/graphics/2d-graphics.html#nine-patch)\), where pixels at its edges describe the way it can be stretched. It got its name based on 9 sectors dividing it into patches:
+Modified PNG image ([.9.png](http://developer.android.com/guide/topics/graphics/2d-graphics.html#nine-patch)), where pixels at its edges describe the way it can be stretched. It got its name based on 9 sectors dividing it into patches:
 
 ![9 patch](.gitbook/assets/2-9patch.png)
 
@@ -80,7 +80,7 @@ Modified PNG image \([.9.png](http://developer.android.com/guide/topics/graphics
 * **4, 6** - left and right sides can be stretched vertically
 * **5** - the center can be stretched in both directions
 
- ![1 oblast](.gitbook/assets/2-9patch-1area.png) ![2 oblasti](.gitbook/assets/2-9patch-2areas.png)
+&#x20;![1 oblast](.gitbook/assets/2-9patch-1area.png) ![2 oblasti](.gitbook/assets/2-9patch-2areas.png)
 
 Green parts are stretched in one direction. Pink parts can be stretched to both directions. There can be more than 9 stretchable areas.
 
@@ -120,13 +120,13 @@ Widget is a special type of a View, which main purpose is not only to display in
 
 ### ViewGroup
 
-ViewGroup is a subclass, that is the base class for _layouts_, which are invisible containers that hold other Views \(or other ViewGroups\) and define their layout properties. Views inside a ViewGroup are called child views.
+ViewGroup is a subclass, that is the base class for _layouts_, which are invisible containers that hold other Views (or other ViewGroups) and define their layout properties. Views inside a ViewGroup are called child views.
 
 ## Layout Types
 
 ### RelativeLayout
 
-[`RelativeLayout`](https://developer.android.com/guide/topics/ui/layout/relative) is a view group that displays child views in relative positions. The position of each view can be specified as relative to sibling elements \(such as to the left-of or below another view\) or in positions relative to the parent [`RelativeLayout`](https://developer.android.com/reference/android/widget/RelativeLayout) area \(such as aligned to the bottom, left or center\).
+[`RelativeLayout`](https://developer.android.com/guide/topics/ui/layout/relative) is a view group that displays child views in relative positions. The position of each view can be specified as relative to sibling elements (such as to the left-of or below another view) or in positions relative to the parent [`RelativeLayout`](https://developer.android.com/reference/android/widget/RelativeLayout) area (such as aligned to the bottom, left or center).
 
 {% tabs %}
 {% tab title="Code" %}
@@ -161,7 +161,7 @@ ViewGroup is a subclass, that is the base class for _layouts_, which are invisib
 
 ### LinearLayout
 
-[`LinearLayout`](https://developer.android.com/guide/topics/ui/layout/linear) is a view group that aligns all children in a single direction, vertically or horizontally. You can specify the layout direction with the [`android:orientation`](https://developer.android.com/reference/android/widget/LinearLayout#attr_android:orientation) attribute.
+[`LinearLayout`](https://developer.android.com/guide/topics/ui/layout/linear) is a view group that aligns all children in a single direction, vertically or horizontally. You can specify the layout direction with the [`android:orientation`](https://developer.android.com/reference/android/widget/LinearLayout#attr\_android:orientation) attribute.
 
 {% tabs %}
 {% tab title="Code" %}
@@ -197,7 +197,7 @@ ViewGroup is a subclass, that is the base class for _layouts_, which are invisib
 
 ### FrameLayout
 
-[`FrameLayout`](https://developer.android.com/reference/android/widget/FrameLayout) is designed to block out an area on the screen to display a single item. Generally, `FrameLayout` should be used to hold a single child view, because it can be difficult to organize child views in a way that's scalable to different screen sizes without the children overlapping each other. You can, however, add multiple children to a `FrameLayout` and control their position within the `FrameLayout` by assigning gravity to each child, using the [`android:layout_gravity`](https://developer.android.com/reference/android/widget/FrameLayout.LayoutParams#attr_android:layout_gravity) attribute.
+[`FrameLayout`](https://developer.android.com/reference/android/widget/FrameLayout) is designed to block out an area on the screen to display a single item. Generally, `FrameLayout` should be used to hold a single child view, because it can be difficult to organize child views in a way that's scalable to different screen sizes without the children overlapping each other. You can, however, add multiple children to a `FrameLayout` and control their position within the `FrameLayout` by assigning gravity to each child, using the [`android:layout_gravity`](https://developer.android.com/reference/android/widget/FrameLayout.LayoutParams#attr\_android:layout\_gravity) attribute.
 
 Child views are drawn in a stack, with the most recently added child on top.
 
@@ -282,16 +282,16 @@ Using the following layout:
 </ViewGroup>
 ```
 
-**What's the difference between** _**A**_ **and** _**B**_**?**
+**What's the difference between **_**A**_** and **_**B**_**?**
 
-A\)
+A)
 
 ```kotlin
 val vg = findViewById<View>(R.id.inner_group) as ViewGroup
 val v: View = findViewById(R.id.inner_leaf)
 ```
 
-B\)
+B)
 
 ```kotlin
 val vg = findViewById<View>(R.id.inner_group) as ViewGroup
@@ -300,17 +300,17 @@ val v = vg.findViewById<View>(R.id.inner_leaf)
 
 Calling `findViewById()` on the root view results in subsequent calls of this function on all of its children, or until the ID is found. Example A finds the ID following these steps:
 
-1. root-&gt;leaf  
-2. root-&gt;inner\_group  
-3. inner\_group-&gt;inner\_leaf
+1. root->leaf &#x20;
+2. root->inner\_group &#x20;
+3. inner\_group->inner\_leaf
 
 Example B has just one step:
 
-1. inner\_group-&gt;inner\_leaf
+1. inner\_group->inner\_leaf
 
 ### Minimising Overdraw
 
-Placing views on top of each other \(usually when using FrameLayout\) introduces overdraw. The UI is rendered in layers, and if you have views overlapping each other, some pixels might be overdrawn multiple times, before the whole layout is finally rendered.
+Placing views on top of each other (usually when using FrameLayout) introduces overdraw. The UI is rendered in layers, and if you have views overlapping each other, some pixels might be overdrawn multiple times, before the whole layout is finally rendered.
 
 See the the image below. The background o window is rendered first, then the background of a ToolBar, then the wide image and finally the poster image on top of it. Pixels in the top poster area were overdrawn as much as 4 times!
 
@@ -326,5 +326,4 @@ You can activate overdraw visualisation in Developer options.
 
 Overdraw can be introduced just by applying a redundant background color:
 
- ![Overdraw example 2](.gitbook/assets/2-overdraw2.png) ![Overdraw example 3](.gitbook/assets/2-overdraw3.png)
-
+&#x20;![Overdraw example 2](.gitbook/assets/2-overdraw2.png) ![Overdraw example 3](.gitbook/assets/2-overdraw3.png)
