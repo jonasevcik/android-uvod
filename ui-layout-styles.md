@@ -233,6 +233,10 @@ Originally introduced in Android 5.0, but with continual development still a val
 
 ![Colors](.gitbook/assets/2-colors.png)
 
+{% hint style="warning" %}
+In material library, the former `colorPrimaryDark` is being referred to as `colorPrimaryVariant`.
+{% endhint %}
+
 #### Idea of Depth
 
 The UI isn't just flat. Individual design elements are laid out or grouped in layers. Layers provide the illusion of depth.
