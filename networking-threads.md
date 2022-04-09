@@ -10,11 +10,11 @@ Network connection requires Internet permission, which is declared in the Androi
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-Permissions are used to inform users about about potentially dangerous or harmful requirements of the app. You can't access wanted resource without defining a permission and user accepting it \(either before installation or runtime\). Defining a permission doesn't only warn before risky behavior of your app, it influences set of usable devices too \(not applicable devices are excluded from downloading such app on the Play store\). I.e. defining a camera permission implies your device has one. 
+Permissions are used to inform users about potentially dangerous or harmful requirements of the app. You can't access a wanted resource without defining permission and the user accepting it (either before installation or runtime). Defining permission doesn't only warn before risky behavior of your app, it influences the set of usable devices too (not applicable devices are excluded from downloading such app on the Play store). I.e. defining camera permission implies your device has one.&#x20;
 
 #### StrictMode
 
-Starting from API 11 \(3.0 Honeycomb\), Android enables StrictMode to watch for network activity on the Main Thread - none is allowed. If you violate this rule, your app crashes with `NetworkOnMainThreadException`. This happens because the purpose of the Main Thread is to handle UI operations and GUI itself. If you block it with non related requests, Main Thread can not handle UI rendering and you start experiencing a jank, or worse, your app can be killed by the system with ANR dialogue \(Application Not Responding\).
+Starting from API 11 (3.0 Honeycomb), Android enables StrictMode to watch for network activity on the Main Thread - none is allowed. If you violate this rule, your app crashes with `NetworkOnMainThreadException`. This happens because the purpose of the Main Thread is to handle UI operations and GUI itself. If you block it with nonrelated requests, Main Thread can not handle UI rendering and you start experiencing a jank, or worse, your app can be killed by the system with ANR dialogue (Application Not Responding).
 
 ### HTTP Clients
 
@@ -26,9 +26,9 @@ Up to API 23, Android SDK contained 2 HTTP client implementations - standard `ja
 implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 ```
 
-[OkHttp](http://square.github.io/okhttp/) is a popular library by Square. It can handle synchronous and asynchronous calls. It defines 3 basic types: `Request`, `Response`, and `Call`. `Request` is a synchronous request, followed by `Response`. `Call` serves the same purpose as `Request`, but it's asynchronous.
+[OkHttp](http://square.github.io/okhttp/) is a popular library by Square. It can handle synchronous and asynchronous calls. It defines 3 basic types: `Request`, `Response`, and `Call`. `Request` is a synchronous request, followed by a `Response`. `Call` serves the same purpose as `Request`, but it's asynchronous.
 
-OkHttp is wide spread library, it's used across Square's library ecosystem and Android [as of Android 4.4](https://twitter.com/JakeWharton/status/482563299511250944) is using OkHttp for its internal `HttpUrlConnection` implementation. Nevertheless, using the library as external dependency means you will get up to date implementation even on older Android versions.
+OkHttp is a wide spread library, it's used across Square's library ecosystem and Android [as of Android 4.4](https://twitter.com/JakeWharton/status/482563299511250944) is using OkHttp for its internal `HttpUrlConnection` implementation. Nevertheless, using the library as an external dependency means you will get up-to-date implementation even on older Android versions.
 
 ```kotlin
 private val client = OkHttpClient()
@@ -50,7 +50,7 @@ fun run() {
 }
 ```
 
-While calling a synchronous `Request`, the executing thread is waiting for `Response`. It is necessary to run this off of the Main Thread, where the asynchronous variant might be useful:
+While calling a synchronous `Request`, the executing thread is waiting for a `Response`. It is necessary to run this off of the Main Thread, where the asynchronous variant might be useful:
 
 ```kotlin
 private val client = OkHttpClient()
@@ -83,18 +83,18 @@ fun run() {
 Async variant with the callback is executed on a networking thread, but be warned, callback functions are still being run on the networking thread. This has several implications:
 
 1. if you decide to update your GUI, you will fail, since all UI related operations must run on the Main Thread
-2. OkHttp uses thread pooling, so next network calls might be blocked
+2. OkHttp uses thread pooling, so the next network calls might be blocked
 
 {% hint style="info" %}
-Handle HTTP clients as singletons, they are heavy object, and they can reuse cache, cookies, connections...
+Handle HTTP clients as singletons, they are heavy objects, and they can reuse cache, cookies, connections...
 {% endhint %}
 
 #### **Retrofit**
 
-[Retrofit](https://square.github.io/retrofit/) is a API client made easy. It's one many excellent Square libraries, making your life in Android easier. It uses annotations to describe the HTTP request:
+[Retrofit](https://square.github.io/retrofit/) is an API client made easy. It's one of many excellent Square libraries, making your life in Android easier. It uses annotations to describe the HTTP request:
 
 * URL parameter replacement and query parameter support
-* Object conversion to request body \(e.g., JSON, protocol buffers\)
+* Object conversion to request body (e.g., JSON, protocol buffers)
 * Multipart request body and file upload
 
 ```kotlin
@@ -123,7 +123,7 @@ interface ApiService {
 
 ### Thread, Runnable
 
-Threads and Runnables are the main constructs to handle threads in Java. They are beyond scope of this course, and are taught in [PV168](http://kore.fi.muni.cz/wiki/index.php/PV168/Vl%C3%A1kna).
+Threads and Runnables are the main constructs to handle threads in Java. They are beyond scope of this course and are taught in [PV168](http://kore.fi.muni.cz/wiki/index.php/PV168/Vl%C3%A1kna).
 
 ```kotlin
 // Thread definition
@@ -151,13 +151,13 @@ Thread(MyRunnable()).start()
 
 ### Handler
 
-`Handler` is used extensively by Android framework to achieve concurrent behavior. A typical use case is to allow a worker thread to post an action to be run in the UI thread.
+`Handler` is used extensively by the Android framework to achieve concurrent behavior. A typical use case is to allow a worker thread to post an action to be run in the UI thread.
 
 Every thread has 0 or 1 `Looper`. Classical `Thread` doesn't have any `Looper`. If you need one, it must be invoked by calling `Looper.prepare()` followed by `Looper.loop()`, or using a `HandlerThread` directly. The Main Thread has always a `Looper`. It is accessible by `Looper.getMainLooper()`.
 
-Every `Looper` iterates over 1 `MessageQueue`. `Looper's` loop\(\) loops over the `MessageQueue` and handles its messages \(if there are any available\).
+Every `Looper` iterates over 1 `MessageQueue`. `Looper's` loop() loops over the `MessageQueue` and handles its messages (if there are any available).
 
-`Handler` is a `Message` producer. Each `Handler` is initialised and connected to a `Looper` \(either explicitly by passing the `Looper`, or it's associated with the `Looper` of a `Thread` it's created in\). When sending a `Message` via `Handler's` `sendMessage()`, the `Message` will be send to a `MessageQueue` of the associated `Looper`. `Handler` can handle messages of a type `Message` or `Runnable`.
+`Handler` is a `Message` producer. Each `Handler` is initialized and connected to a `Looper` (either explicitly by passing the `Looper`, or it's associated with the `Looper` of a `Thread` it's created in). When sending a `Message` via `Handler's` `sendMessage()`, the `Message` will be sent to a `MessageQueue` of the associated `Looper`. `Handler` can handle messages of a type `Message` or `Runnable`.
 
 ![](.gitbook/assets/handler.png)
 
@@ -169,7 +169,7 @@ One Looper can be shared by multiple Handlers.
 
 Each Message must have a Handler capable of its handling.
 
-Example of autocomplete, when every request is send with a delay \(to minimise server's load\):
+Example of autocomplete, when every request is send with a delay (to minimize server's load):
 
 ```kotlin
 private var lastChange: Long = 0
@@ -273,7 +273,7 @@ Dispatchers define a thread on which the coroutine will run:
 
 Builders define, how the coroutine will run:
 
-1. runBlocking - will run synchronously \(useful for testing purposes\)
+1. runBlocking - will run synchronously (useful for testing purposes)
 2. launch - launches the coroutine on a thread specified by its dispatcher
 3. async - special case of launch, which returns `Deffered`, a `Job`, that can be wait upon or cancelled
 
@@ -323,4 +323,3 @@ To avoid memory leaks and unnecessary calculations, when your Activity/Fragment 
 
 1. **lifecycleScope** - to be used in `LifecycleOwners`
 2. **viewModelScope** - to be used in `ViewModels`
-
