@@ -107,7 +107,7 @@ interface ApiService {
 
         private const val API_ENDPOINT = "https://api.chucknorris.io/"
 
-        val apiService by lazy { create() }
+        val instance by lazy { create() }
 
         private fun create(): ApiService = Retrofit.Builder()
             .baseUrl(API_ENDPOINT)
