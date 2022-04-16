@@ -187,7 +187,6 @@ private var lastChange: Long = 0
         handler.postDelayed( // 1st argument - message to be run on the Main Thread
                 autoCompleteRunnable,  // 2nd argument - ms to wait with performing the action
                 300)
-                300)
         lastChange = System.currentTimeMillis()
     }
 
